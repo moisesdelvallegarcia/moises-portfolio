@@ -1,1 +1,306 @@
-this is my index
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moisés Del Valle García - IT Resume</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f9;
+      color: #1e1e1e;
+      padding: 40px;
+    }
+
+    .resume {
+      max-width: 1100px;
+      margin: auto;
+      background: white;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      background: linear-gradient(180deg, #06214a 0%, #0b3a7a 100%);
+      color: white;
+      padding: 32px 26px;
+    }
+
+    .photo {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 28px;
+      border: 5px solid rgba(255,255,255,0.8);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar p,
+    .sidebar li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .sidebar ul {
+      padding-left: 18px;
+    }
+
+    .main {
+      padding: 42px;
+    }
+
+    .main-header h1 {
+      font-size: 52px;
+      line-height: 0.95;
+      color: #06214a;
+      margin-bottom: 14px;
+      font-weight: 800;
+    }
+
+    .main-header h3 {
+      color: #0b57b5;
+      font-size: 20px;
+      margin-bottom: 26px;
+      font-weight: 600;
+    }
+
+    .summary {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 34px;
+    }
+
+    .content-section {
+      margin-bottom: 36px;
+    }
+
+    .content-section h2 {
+      font-size: 24px;
+      color: #06214a;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #dbe4f0;
+      padding-bottom: 10px;
+    }
+
+    .job {
+      margin-bottom: 28px;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .job-header h3 {
+      font-size: 20px;
+      color: #1b1b1b;
+    }
+
+    .job-header span {
+      color: #0b57b5;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .job p.company {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .job ul {
+      padding-left: 20px;
+    }
+
+    .job li {
+      margin-bottom: 8px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .achievement-list li {
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .education,
+    .leadership {
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .education strong,
+    .leadership strong {
+      color: #06214a;
+    }
+
+    @media(max-width: 900px) {
+      .resume {
+        grid-template-columns: 1fr;
+      }
+
+      .main-header h1 {
+        font-size: 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+
+    <aside class="sidebar">
+
+      <div class="photo">
+        <img src="yo.jpg" alt="Moisés Del Valle García">
+      </div>
+
+      <div class="section">
+        <h2>CONTACT</h2>
+        <p>📍 Morelia, Michoacán, Mexico</p>
+        <p>💻 Remote / Hybrid</p>
+        <p>📞 +52 443 342 8744</p>
+        <p>✉️ moises_delvallegarcia@outlook.com</p>
+        <p>🔗 linkedin.com/in/moises-delvalle-garcia</p>
+      </div>
+
+      <div class="section">
+        <h2>TECHNICAL SKILLS</h2>
+        <ul>
+          <li>Manual Testing</li>
+          <li>SQL Validation</li>
+          <li>Technical Support</li>
+          <li>Jira & TestRail</li>
+          <li>Postman</li>
+          <li>MongoDB (Robo3T)</li>
+          <li>Agile / Scrum</li>
+          <li>Production Support</li>
+          <li>Systems Troubleshooting</li>
+          <li>Cross-Environment Validation</li>
+          <li>Basic Networking Concepts</li>
+          <li>Software Deployment Support</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>LANGUAGES</h2>
+        <p>Spanish — Native</p>
+        <p>English — Professional Reading & Writing</p>
+      </div>
+
+    </aside>
+
+    <main class="main">
+
+      <div class="main-header">
+        <h1>MOISÉS<br>DEL VALLE GARCÍA</h1>
+        <h3>Systems Engineer | QA | SQL | IT Support | Data Validation</h3>
+      </div>
+
+      <div class="summary">
+        Systems Engineer with enterprise experience supporting applications across UAT, staging, and production environments. Skilled in QA testing, SQL validation, technical troubleshooting, deployment support, and cross-functional collaboration within Agile teams. Strong multidisciplinary IT background including systems, databases, software validation, and technical support, with adaptability across diverse technology environments.
+      </div>
+
+      <section class="content-section">
+        <h2>PROFESSIONAL EXPERIENCE</h2>
+
+        <div class="job">
+          <div class="job-header">
+            <h3>QA Engineer — GET (GeTechnologies)</h3>
+            <span>Apr 2024 – Oct 2025</span>
+          </div>
+          <p class="company">Client: Farmacias del Ahorro</p>
+
+          <ul>
+            <li>Supported UAT validation and production deployment processes for enterprise pharmacy systems.</li>
+            <li>Executed SQL-based data validation across multiple environments (UAT, staging, production).</li>
+            <li>Collaborated with development and DevOps teams during release cycles.</li>
+            <li>Verified production incidents and performed functional testing activities.</li>
+            <li>Participated in Agile ceremonies and contributed to QA process improvements.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <h3>QA Test Engineer — SCIO</h3>
+            <span>Sep 2021 – Oct 2023</span>
+          </div>
+          <p class="company">Client: Aceable</p>
+
+          <ul>
+            <li>Executed manual testing across Web, Android, and iOS platforms.</li>
+            <li>Designed and maintained test cases using Jira and TestRail.</li>
+            <li>Performed MongoDB data validation using Robo3T.</li>
+            <li>Identified, documented, and tracked software defects.</li>
+            <li>Collaborated with developers and product teams during sprint cycles.</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section class="content-section">
+        <h2>KEY ACHIEVEMENTS</h2>
+
+        <ul class="achievement-list">
+          <li>Supported production deployment validations for enterprise applications.</li>
+          <li>Executed SQL validations that ensured data integrity across multiple environments.</li>
+          <li>Contributed to QA process improvements and testing coverage.</li>
+          <li>Recognized for analytical thinking and attention to detail.</li>
+        </ul>
+      </section>
+
+      <section class="content-section education">
+        <h2>EDUCATION</h2>
+
+        <strong>Instituto Tecnológico de Morelia</strong><br>
+        Ingeniería en Sistemas Computacionales — 2018
+      </section>
+
+      <section class="content-section leadership">
+        <h2>LEADERSHIP</h2>
+
+        <strong>President — Rotaract Morelia Camelinas Centenario</strong><br>
+        2024 – 2025
+
+        <ul style="margin-top: 12px; padding-left: 20px;">
+          <li>Led organizational planning and team coordination.</li>
+          <li>Collaborated with multidisciplinary teams and event management.</li>
+          <li>Strengthened leadership, communication, and problem-solving skills.</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
