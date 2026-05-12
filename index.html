@@ -2,305 +2,591 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moisés Del Valle García - IT Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moisés Del Valle García | Systems Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f6f9;
-      color: #1e1e1e;
-      padding: 40px;
+    html{
+      scroll-behavior:smooth;
     }
 
-    .resume {
-      max-width: 1100px;
-      margin: auto;
-      background: white;
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-      border-radius: 16px;
-      overflow: hidden;
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f4f7fb;
+      color:#1f2937;
+      line-height:1.7;
     }
 
-    .sidebar {
-      background: linear-gradient(180deg, #06214a 0%, #0b3a7a 100%);
-      color: white;
-      padding: 32px 26px;
+    a{
+      text-decoration:none;
+      color:inherit;
     }
 
-    .photo {
-      width: 210px;
-      height: 210px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto 28px;
-      border: 5px solid rgba(255,255,255,0.8);
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
     }
 
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:1000;
+      background:rgba(6, 33, 74, 0.95);
+      backdrop-filter:blur(10px);
+      padding:18px 0;
     }
 
-    .section {
-      margin-bottom: 30px;
+    .nav-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
 
-    .section h2 {
-      font-size: 20px;
-      margin-bottom: 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      padding-bottom: 8px;
-      letter-spacing: 0.5px;
+    .logo{
+      color:white;
+      font-weight:700;
+      font-size:1.1rem;
+      letter-spacing:1px;
     }
 
-    .sidebar p,
-    .sidebar li {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.92);
+    .nav-links{
+      display:flex;
+      gap:28px;
     }
 
-    .sidebar ul {
-      padding-left: 18px;
+    .nav-links a{
+      color:white;
+      font-size:0.95rem;
+      transition:0.3s;
     }
 
-    .main {
-      padding: 42px;
+    .nav-links a:hover{
+      color:#60a5fa;
     }
 
-    .main-header h1 {
-      font-size: 52px;
-      line-height: 0.95;
-      color: #06214a;
-      margin-bottom: 14px;
-      font-weight: 800;
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      background:linear-gradient(135deg,#06214a 0%, #0b57b5 100%);
+      color:white;
+      padding-top:120px;
     }
 
-    .main-header h3 {
-      color: #0b57b5;
-      font-size: 20px;
-      margin-bottom: 26px;
-      font-weight: 600;
+    .hero-content{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:center;
+      gap:60px;
     }
 
-    .summary {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #333;
-      margin-bottom: 34px;
+    .hero-text h1{
+      font-size:4rem;
+      line-height:1;
+      margin-bottom:20px;
+      font-weight:800;
     }
 
-    .content-section {
-      margin-bottom: 36px;
+    .hero-text h2{
+      font-size:1.4rem;
+      color:#bfdbfe;
+      margin-bottom:24px;
+      font-weight:500;
     }
 
-    .content-section h2 {
-      font-size: 24px;
-      color: #06214a;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #dbe4f0;
-      padding-bottom: 10px;
+    .hero-text p{
+      font-size:1.05rem;
+      max-width:600px;
+      color:#e5e7eb;
+      margin-bottom:35px;
     }
 
-    .job {
-      margin-bottom: 28px;
+    .buttons{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
     }
 
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
+    .btn{
+      padding:14px 26px;
+      border-radius:12px;
+      font-weight:600;
+      transition:0.3s;
+      display:inline-block;
     }
 
-    .job-header h3 {
-      font-size: 20px;
-      color: #1b1b1b;
+    .btn-primary{
+      background:white;
+      color:#06214a;
     }
 
-    .job-header span {
-      color: #0b57b5;
-      font-weight: bold;
-      font-size: 14px;
+    .btn-primary:hover{
+      transform:translateY(-3px);
     }
 
-    .job p.company {
-      font-style: italic;
-      color: #666;
-      margin-bottom: 12px;
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.4);
+      color:white;
     }
 
-    .job ul {
-      padding-left: 20px;
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.1);
     }
 
-    .job li {
-      margin-bottom: 8px;
-      line-height: 1.7;
-      color: #333;
+    .hero-image{
+      display:flex;
+      justify-content:center;
     }
 
-    .achievement-list li {
-      margin-bottom: 10px;
-      line-height: 1.7;
+    .hero-image img{
+      width:340px;
+      height:340px;
+      border-radius:50%;
+      object-fit:cover;
+      border:6px solid rgba(255,255,255,0.6);
+      box-shadow:0 10px 40px rgba(0,0,0,0.35);
     }
 
-    .education,
-    .leadership {
-      line-height: 1.8;
-      color: #333;
+    /* SECTION */
+
+    section{
+      padding:90px 0;
     }
 
-    .education strong,
-    .leadership strong {
-      color: #06214a;
+    .section-title{
+      font-size:2.3rem;
+      color:#06214a;
+      margin-bottom:50px;
+      text-align:center;
+      font-weight:800;
     }
 
-    @media(max-width: 900px) {
-      .resume {
-        grid-template-columns: 1fr;
+    /* ABOUT */
+
+    .about{
+      background:white;
+    }
+
+    .about p{
+      max-width:900px;
+      margin:auto;
+      text-align:center;
+      font-size:1.05rem;
+      color:#4b5563;
+    }
+
+    /* EXPERIENCE */
+
+    .experience-grid{
+      display:grid;
+      gap:30px;
+    }
+
+    .card{
+      background:white;
+      padding:35px;
+      border-radius:20px;
+      box-shadow:0 5px 25px rgba(0,0,0,0.06);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .card h3{
+      color:#06214a;
+      font-size:1.3rem;
+    }
+
+    .card span{
+      color:#0b57b5;
+      font-weight:600;
+    }
+
+    .company{
+      color:#6b7280;
+      margin-bottom:18px;
+      font-style:italic;
+    }
+
+    .card ul{
+      padding-left:20px;
+    }
+
+    .card li{
+      margin-bottom:10px;
+      color:#374151;
+    }
+
+    /* SKILLS */
+
+    .skills{
+      background:white;
+    }
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill-box{
+      background:#f8fafc;
+      padding:28px;
+      border-radius:18px;
+      border:1px solid #e5e7eb;
+    }
+
+    .skill-box h3{
+      margin-bottom:16px;
+      color:#06214a;
+    }
+
+    .skill-box ul{
+      padding-left:18px;
+    }
+
+    .skill-box li{
+      margin-bottom:8px;
+      color:#4b5563;
+    }
+
+    /* LEADERSHIP */
+
+    .leadership p{
+      max-width:850px;
+      margin:auto;
+      text-align:center;
+      color:#4b5563;
+      font-size:1.05rem;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      background:#06214a;
+      color:white;
+      text-align:center;
+    }
+
+    .contact h2{
+      color:white;
+    }
+
+    .contact p{
+      margin-bottom:12px;
+      color:#d1d5db;
+    }
+
+    .contact a{
+      color:#93c5fd;
+    }
+
+    footer{
+      background:#04152f;
+      color:#9ca3af;
+      text-align:center;
+      padding:22px;
+      font-size:0.9rem;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      .hero-content{
+        grid-template-columns:1fr;
+        text-align:center;
       }
 
-      .main-header h1 {
-        font-size: 42px;
+      .hero-text h1{
+        font-size:3rem;
       }
+
+      .buttons{
+        justify-content:center;
+      }
+
+      .hero-image img{
+        width:260px;
+        height:260px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
     }
+
   </style>
 </head>
 <body>
-  <div class="resume">
 
-    <aside class="sidebar">
+  <!-- NAVBAR -->
 
-      <div class="photo">
-        <img src="yo.jpg" alt="Moisés Del Valle García">
+  <nav>
+    <div class="container nav-content">
+
+      <div class="logo">
+        MOISÉS DEL VALLE
       </div>
 
-      <div class="section">
-        <h2>CONTACT</h2>
-        <p>📍 Morelia, Michoacán, Mexico</p>
-        <p>💻 Remote / Hybrid</p>
-        <p>📞 +52 443 342 8744</p>
-        <p>✉️ moises_delvallegarcia@outlook.com</p>
-        <p>🔗 linkedin.com/in/moises-delvalle-garcia</p>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
       </div>
 
-      <div class="section">
-        <h2>TECHNICAL SKILLS</h2>
-        <ul>
-          <li>Manual Testing</li>
-          <li>SQL Validation</li>
-          <li>Technical Support</li>
-          <li>Jira & TestRail</li>
-          <li>Postman</li>
-          <li>MongoDB (Robo3T)</li>
-          <li>Agile / Scrum</li>
-          <li>Production Support</li>
-          <li>Systems Troubleshooting</li>
-          <li>Cross-Environment Validation</li>
-          <li>Basic Networking Concepts</li>
-          <li>Software Deployment Support</li>
-        </ul>
-      </div>
+    </div>
+  </nav>
 
-      <div class="section">
-        <h2>LANGUAGES</h2>
-        <p>Spanish — Native</p>
-        <p>English — Professional Reading & Writing</p>
-      </div>
+  <!-- HERO -->
 
-    </aside>
+  <section class="hero">
 
-    <main class="main">
+    <div class="container hero-content">
 
-      <div class="main-header">
+      <div class="hero-text">
+
         <h1>MOISÉS<br>DEL VALLE GARCÍA</h1>
-        <h3>Systems Engineer | QA | SQL | IT Support | Data Validation</h3>
-      </div>
 
-      <div class="summary">
-        Systems Engineer with enterprise experience supporting applications across UAT, staging, and production environments. Skilled in QA testing, SQL validation, technical troubleshooting, deployment support, and cross-functional collaboration within Agile teams. Strong multidisciplinary IT background including systems, databases, software validation, and technical support, with adaptability across diverse technology environments.
-      </div>
+        <h2>Systems Engineer | QA | SQL | IT Support</h2>
 
-      <section class="content-section">
-        <h2>PROFESSIONAL EXPERIENCE</h2>
+        <p>
+          Systems Engineer with enterprise experience supporting applications across UAT,
+          staging, and production environments. Skilled in QA testing, SQL validation,
+          deployment support, troubleshooting, and cross-functional collaboration
+          within Agile teams.
+        </p>
 
-        <div class="job">
-          <div class="job-header">
-            <h3>QA Engineer — GET (GeTechnologies)</h3>
-            <span>Apr 2024 – Oct 2025</span>
-          </div>
-          <p class="company">Client: Farmacias del Ahorro</p>
+        <div class="buttons">
 
-          <ul>
-            <li>Supported UAT validation and production deployment processes for enterprise pharmacy systems.</li>
-            <li>Executed SQL-based data validation across multiple environments (UAT, staging, production).</li>
-            <li>Collaborated with development and DevOps teams during release cycles.</li>
-            <li>Verified production incidents and performed functional testing activities.</li>
-            <li>Participated in Agile ceremonies and contributed to QA process improvements.</li>
-          </ul>
+          <a href="Moises_Del_Valle_Garcia_CV.pdf" class="btn btn-primary" download>
+            Download CV
+          </a>
+
+          <a href="https://linkedin.com" target="_blank" class="btn btn-secondary">
+            LinkedIn
+          </a>
+
         </div>
 
-        <div class="job">
-          <div class="job-header">
-            <h3>QA Test Engineer — SCIO</h3>
-            <span>Sep 2021 – Oct 2023</span>
+      </div>
+
+      <div class="hero-image">
+        <img src="images/profile.jpg" alt="Moisés Del Valle García">
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <div class="container">
+
+      <h2 class="section-title">About Me</h2>
+
+      <p>
+        I am a Systems Engineer with multidisciplinary IT experience including QA,
+        SQL validation, production support, software troubleshooting, and Agile collaboration.
+        I enjoy learning new technologies and adapting to diverse technical environments.
+        Currently focused on growing toward Data Analysis, Business Intelligence, and enterprise technology solutions.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience">
+
+    <div class="container">
+
+      <h2 class="section-title">Professional Experience</h2>
+
+      <div class="experience-grid">
+
+        <div class="card">
+
+          <div class="card-top">
+            <h3>QA Engineer — GET (GeTechnologies)</h3>
+            <span>2024 – 2025</span>
           </div>
-          <p class="company">Client: Aceable</p>
+
+          <div class="company">
+            Client: Farmacias del Ahorro
+          </div>
 
           <ul>
-            <li>Executed manual testing across Web, Android, and iOS platforms.</li>
+            <li>Supported UAT validation and production deployment processes.</li>
+            <li>Executed SQL-based validations across multiple environments.</li>
+            <li>Collaborated with development and DevOps teams during release cycles.</li>
+            <li>Verified production incidents and functional testing activities.</li>
+            <li>Participated in Agile ceremonies and QA process improvements.</li>
+          </ul>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-top">
+            <h3>QA Test Engineer — SCIO</h3>
+            <span>2021 – 2023</span>
+          </div>
+
+          <div class="company">
+            Client: Aceable
+          </div>
+
+          <ul>
+            <li>Executed manual testing on Web, Android, and iOS applications.</li>
             <li>Designed and maintained test cases using Jira and TestRail.</li>
             <li>Performed MongoDB data validation using Robo3T.</li>
-            <li>Identified, documented, and tracked software defects.</li>
-            <li>Collaborated with developers and product teams during sprint cycles.</li>
+            <li>Tracked software defects and collaborated with development teams.</li>
+            <li>Supported sprint testing and feature validation processes.</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section class="skills" id="skills">
+
+    <div class="container">
+
+      <h2 class="section-title">Technical Skills</h2>
+
+      <div class="skills-grid">
+
+        <div class="skill-box">
+          <h3>QA & Testing</h3>
+          <ul>
+            <li>Manual Testing</li>
+            <li>Regression Testing</li>
+            <li>Smoke Testing</li>
+            <li>UAT Validation</li>
+            <li>Bug Tracking</li>
           </ul>
         </div>
 
-      </section>
+        <div class="skill-box">
+          <h3>Databases</h3>
+          <ul>
+            <li>SQL</li>
+            <li>MongoDB</li>
+            <li>Data Validation</li>
+            <li>Reporting</li>
+          </ul>
+        </div>
 
-      <section class="content-section">
-        <h2>KEY ACHIEVEMENTS</h2>
+        <div class="skill-box">
+          <h3>Tools</h3>
+          <ul>
+            <li>Jira</li>
+            <li>TestRail</li>
+            <li>Postman</li>
+            <li>Agile / Scrum</li>
+          </ul>
+        </div>
 
-        <ul class="achievement-list">
-          <li>Supported production deployment validations for enterprise applications.</li>
-          <li>Executed SQL validations that ensured data integrity across multiple environments.</li>
-          <li>Contributed to QA process improvements and testing coverage.</li>
-          <li>Recognized for analytical thinking and attention to detail.</li>
-        </ul>
-      </section>
+        <div class="skill-box">
+          <h3>IT & Systems</h3>
+          <ul>
+            <li>Technical Support</li>
+            <li>Troubleshooting</li>
+            <li>Networking Basics</li>
+            <li>Deployment Support</li>
+          </ul>
+        </div>
 
-      <section class="content-section education">
-        <h2>EDUCATION</h2>
+      </div>
 
-        <strong>Instituto Tecnológico de Morelia</strong><br>
-        Ingeniería en Sistemas Computacionales — 2018
-      </section>
+    </div>
 
-      <section class="content-section leadership">
-        <h2>LEADERSHIP</h2>
+  </section>
 
-        <strong>President — Rotaract Morelia Camelinas Centenario</strong><br>
-        2024 – 2025
+  <!-- LEADERSHIP -->
 
-        <ul style="margin-top: 12px; padding-left: 20px;">
-          <li>Led organizational planning and team coordination.</li>
-          <li>Collaborated with multidisciplinary teams and event management.</li>
-          <li>Strengthened leadership, communication, and problem-solving skills.</li>
-        </ul>
-      </section>
+  <section class="leadership" id="leadership">
 
-    </main>
-  </div>
+    <div class="container">
+
+      <h2 class="section-title">Leadership</h2>
+
+      <p>
+        President of Rotaract Morelia Camelinas Centenario (2024–2025),
+        leading organizational planning, team coordination, communication,
+        and multidisciplinary collaboration initiatives.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+      <h2 class="section-title">Contact</h2>
+
+      <p>📍 Morelia, Michoacán, Mexico</p>
+      <p>📞 +52 443 342 8744</p>
+      <p>✉️ moises_delvallegarcia@outlook.com</p>
+
+      <p>
+        <a href="https://linkedin.com" target="_blank">
+          LinkedIn Profile
+        </a>
+      </p>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Moisés Del Valle García — Systems Engineer Portfolio
+  </footer>
+
 </body>
 </html>
