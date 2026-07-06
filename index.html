@@ -2,591 +2,936 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yo Soy Moisés Del Valle García | Systems Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Portfolio of Moises Del Valle Garcia, Systems Engineer focused on QA, SQL, IT support, automation, and practical AI tools."
+  />
+  <title>Moises Del Valle Garcia | Systems Engineer</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html{
-      scroll-behavior:smooth;
+    :root {
+      color-scheme: light;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #dbe3ee;
+      --panel: #ffffff;
+      --soft: #f5f7fb;
+      --blue: #0b57b5;
+      --navy: #06214a;
+      --cyan: #38bdf8;
+      --green: #16a34a;
+      --red: #dc2626;
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
     }
 
-    body{
-      font-family:'Inter',sans-serif;
-      background:#f4f7fb;
-      color:#1f2937;
-      line-height:1.7;
+    html {
+      scroll-behavior: smooth;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
+    body {
+      background: var(--soft);
+      color: var(--ink);
+      font-family: "Inter", sans-serif;
+      line-height: 1.7;
     }
 
-    .container{
-      width:90%;
-      max-width:1200px;
-      margin:auto;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    /* NAVBAR */
-
-    nav{
-      position:fixed;
-      width:100%;
-      top:0;
-      z-index:1000;
-      background:rgba(6, 33, 74, 0.95);
-      backdrop-filter:blur(10px);
-      padding:18px 0;
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
     }
 
-    .nav-content{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+    .container {
+      margin: auto;
+      max-width: 1180px;
+      width: min(92%, 1180px);
     }
 
-    .logo{
-      color:white;
-      font-weight:700;
-      font-size:1.1rem;
-      letter-spacing:1px;
+    nav {
+      backdrop-filter: blur(18px);
+      background: rgba(6, 33, 74, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      left: 0;
+      padding: 16px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
     }
 
-    .nav-links{
-      display:flex;
-      gap:28px;
+    .nav-content {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
     }
 
-    .nav-links a{
-      color:white;
-      font-size:0.95rem;
-      transition:0.3s;
+    .logo {
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .nav-links a:hover{
-      color:#60a5fa;
+    .nav-links {
+      display: flex;
+      gap: 24px;
     }
 
-    /* HERO */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      background:linear-gradient(135deg,#06214a 0%, #0b57b5 100%);
-      color:white;
-      padding-top:120px;
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: color 0.2s ease;
     }
 
-    .hero-content{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      align-items:center;
-      gap:60px;
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: white;
+      outline: none;
     }
 
-    .hero-text h1{
-      font-size:4rem;
-      line-height:1;
-      margin-bottom:20px;
-      font-weight:800;
+    section {
+      padding: 92px 0;
     }
 
-    .hero-text h2{
-      font-size:1.4rem;
-      color:#bfdbfe;
-      margin-bottom:24px;
-      font-weight:500;
+    .hero {
+      align-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.28), transparent 34rem),
+        linear-gradient(135deg, #04152f 0%, #06214a 45%, #0b57b5 100%);
+      color: white;
+      display: flex;
+      min-height: 100vh;
+      padding-top: 110px;
     }
 
-    .hero-text p{
-      font-size:1.05rem;
-      max-width:600px;
-      color:#e5e7eb;
-      margin-bottom:35px;
+    .hero-content {
+      align-items: center;
+      display: grid;
+      gap: 56px;
+      grid-template-columns: 1.08fr 0.92fr;
     }
 
-    .buttons{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      margin-bottom: 18px;
+      text-transform: uppercase;
     }
 
-    .btn{
-      padding:14px 26px;
-      border-radius:12px;
-      font-weight:600;
-      transition:0.3s;
-      display:inline-block;
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 0.92;
+      margin-bottom: 22px;
+      max-width: 760px;
     }
 
-    .btn-primary{
-      background:white;
-      color:#06214a;
+    .hero h2 {
+      color: #bfdbfe;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-weight: 600;
+      margin-bottom: 20px;
     }
 
-    .btn-primary:hover{
-      transform:translateY(-3px);
+    .hero p {
+      color: #e5e7eb;
+      font-size: 1.05rem;
+      margin-bottom: 34px;
+      max-width: 670px;
     }
 
-    .btn-secondary{
-      border:1px solid rgba(255,255,255,0.4);
-      color:white;
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
     }
 
-    .btn-secondary:hover{
-      background:rgba(255,255,255,0.1);
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      font-weight: 900;
+      justify-content: center;
+      padding: 14px 22px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
-    .hero-image{
-      display:flex;
-      justify-content:center;
+    .btn:hover,
+    .btn:focus-visible {
+      outline: none;
+      transform: translateY(-2px);
     }
 
-    .hero-image img{
-      width:340px;
-      height:340px;
-      border-radius:50%;
-      object-fit:cover;
-      border:6px solid rgba(255,255,255,0.6);
-      box-shadow:0 10px 40px rgba(0,0,0,0.35);
+    .btn-primary {
+      background: white;
+      color: var(--navy);
     }
 
-    /* SECTION */
-
-    section{
-      padding:90px 0;
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      box-shadow: 0 16px 34px rgba(255, 255, 255, 0.22);
     }
 
-    .section-title{
-      font-size:2.3rem;
-      color:#06214a;
-      margin-bottom:50px;
-      text-align:center;
-      font-weight:800;
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: white;
     }
 
-    /* ABOUT */
-
-    .about{
-      background:white;
+    .hero-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 34px;
+      padding: 18px;
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
     }
 
-    .about p{
-      max-width:900px;
-      margin:auto;
-      text-align:center;
-      font-size:1.05rem;
-      color:#4b5563;
+    .hero-image img {
+      aspect-ratio: 1;
+      border-radius: 28px;
+      display: block;
+      object-fit: cover;
+      width: 100%;
     }
 
-    /* EXPERIENCE */
-
-    .experience-grid{
-      display:grid;
-      gap:30px;
+    .hero-meta {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 14px;
     }
 
-    .card{
-      background:white;
-      padding:35px;
-      border-radius:20px;
-      box-shadow:0 5px 25px rgba(0,0,0,0.06);
-      transition:0.3s;
+    .meta-pill {
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      color: #dbeafe;
+      font-size: 0.86rem;
+      font-weight: 800;
+      padding: 14px;
     }
 
-    .card:hover{
-      transform:translateY(-5px);
+    .section-title {
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin: 0 auto 42px;
+      max-width: 760px;
+      text-align: center;
     }
 
-    .card-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:12px;
-      flex-wrap:wrap;
-      gap:10px;
+    .section-copy {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: -24px auto 42px;
+      max-width: 780px;
+      text-align: center;
     }
 
-    .card h3{
-      color:#06214a;
-      font-size:1.3rem;
+    .about {
+      background: white;
     }
 
-    .card span{
-      color:#0b57b5;
-      font-weight:600;
+    .about p,
+    .leadership p {
+      color: #475569;
+      font-size: 1.07rem;
+      margin: auto;
+      max-width: 900px;
+      text-align: center;
     }
 
-    .company{
-      color:#6b7280;
-      margin-bottom:18px;
-      font-style:italic;
+    .experience-grid,
+    .skills-grid {
+      display: grid;
+      gap: 24px;
     }
 
-    .card ul{
-      padding-left:20px;
+    .card,
+    .skill-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 30px;
     }
 
-    .card li{
-      margin-bottom:10px;
-      color:#374151;
+    .card-top {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      margin-bottom: 12px;
     }
 
-    /* SKILLS */
-
-    .skills{
-      background:white;
+    .card h3,
+    .skill-box h3 {
+      color: var(--navy);
+      font-size: 1.18rem;
+      line-height: 1.25;
     }
 
-    .skills-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:25px;
+    .card span {
+      color: var(--blue);
+      font-weight: 900;
     }
 
-    .skill-box{
-      background:#f8fafc;
-      padding:28px;
-      border-radius:18px;
-      border:1px solid #e5e7eb;
+    .company {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 18px;
     }
 
-    .skill-box h3{
-      margin-bottom:16px;
-      color:#06214a;
+    .card ul,
+    .skill-box ul {
+      padding-left: 20px;
     }
 
-    .skill-box ul{
-      padding-left:18px;
+    .card li,
+    .skill-box li {
+      color: #475569;
+      margin-bottom: 9px;
     }
 
-    .skill-box li{
-      margin-bottom:8px;
-      color:#4b5563;
+    .skills {
+      background: white;
     }
 
-    /* LEADERSHIP */
-
-    .leadership p{
-      max-width:850px;
-      margin:auto;
-      text-align:center;
-      color:#4b5563;
-      font-size:1.05rem;
+    .skills-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    /* CONTACT */
-
-    .contact{
-      background:#06214a;
-      color:white;
-      text-align:center;
+    .skill-box {
+      box-shadow: none;
     }
 
-    .contact h2{
-      color:white;
+    .voice-lab {
+      background:
+        radial-gradient(circle at 12% 20%, rgba(56, 189, 248, 0.18), transparent 22rem),
+        linear-gradient(180deg, #f8fafc 0%, #eef4fb 100%);
     }
 
-    .contact p{
-      margin-bottom:12px;
-      color:#d1d5db;
+    .voice-shell {
+      background: #071935;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      color: white;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 0.9fr 1.1fr;
+      overflow: hidden;
+      padding: 26px;
     }
 
-    .contact a{
-      color:#93c5fd;
+    .voice-panel {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 26px;
+      padding: 24px;
     }
 
-    footer{
-      background:#04152f;
-      color:#9ca3af;
-      text-align:center;
-      padding:22px;
-      font-size:0.9rem;
+    .voice-panel h3 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 14px;
     }
 
-    /* MOBILE */
+    .voice-panel p {
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
 
-    @media(max-width:900px){
+    .voice-controls {
+      display: grid;
+      gap: 14px;
+    }
 
-      .hero-content{
-        grid-template-columns:1fr;
-        text-align:center;
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field span {
+      color: #dbeafe;
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .field select,
+    .transcript-box {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      color: var(--ink);
+      padding: 13px 14px;
+      width: 100%;
+    }
+
+    .record-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .record-button {
+      background: #22c55e;
+      color: #04152f;
+      min-width: 180px;
+    }
+
+    .record-button.is-recording {
+      background: #ef4444;
+      color: white;
+    }
+
+    .utility-button {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .status {
+      border-radius: 16px;
+      color: #dbeafe;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-top: 16px;
+      min-height: 28px;
+    }
+
+    .status strong {
+      color: white;
+    }
+
+    .transcript-box {
+      min-height: 340px;
+      resize: vertical;
+    }
+
+    .transcript-meta {
+      color: #93c5fd;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      font-weight: 800;
+      gap: 12px;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+
+    .leadership {
+      background: var(--soft);
+    }
+
+    .contact {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      color: white;
+    }
+
+    .contact p {
+      color: #d1d5db;
+      margin-bottom: 12px;
+    }
+
+    .contact a {
+      color: #93c5fd;
+      font-weight: 800;
+    }
+
+    footer {
+      background: #04152f;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      padding: 22px;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero-content,
+      .voice-shell {
+        grid-template-columns: 1fr;
       }
 
-      .hero-text h1{
-        font-size:3rem;
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      .buttons{
-        justify-content:center;
-      }
-
-      .hero-image img{
-        width:260px;
-        height:260px;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
     }
 
+    @media (max-width: 720px) {
+      nav {
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .hero {
+        padding-top: 96px;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .buttons,
+      .record-row {
+        justify-content: center;
+      }
+
+      .hero-meta,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .voice-shell {
+        border-radius: 24px;
+        padding: 14px;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- NAVBAR -->
-
   <nav>
     <div class="container nav-content">
-
-      <div class="logo">
-        YO SOY MOY 
-      </div>
-
-      <div class="nav-links">
+      <a class="logo" href="#top">Yo Soy Moy</a>
+      <div class="nav-links" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
-        <a href="#leadership">Leadership</a>
+        <a href="#voice-lab">Voice Lab</a>
         <a href="#contact">Contact</a>
       </div>
-
     </div>
   </nav>
 
-  <!-- HERO -->
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <p class="eyebrow">Systems Engineer • QA • SQL • Automation</p>
+          <h1>Moises Del Valle Garcia</h1>
+          <h2>Building reliable systems and practical AI-powered tools.</h2>
+          <p>
+            Systems Engineer with enterprise experience supporting applications across UAT,
+            staging, and production environments. Skilled in QA testing, SQL validation,
+            deployment support, troubleshooting, and cross-functional collaboration.
+          </p>
 
-  <section class="hero">
+          <div class="buttons">
+            <a href="YO SOY Moises Del Valle Garcia CV.pdf" class="btn btn-primary" download>
+              Download CV
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mois%C3%A9s-del-valle-garc%C3%ADa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary"
+            >
+              LinkedIn
+            </a>
+            <a href="#voice-lab" class="btn btn-secondary">Try Voice Lab</a>
+          </div>
+        </div>
 
-    <div class="container hero-content">
+        <div class="hero-card">
+          <div class="hero-image">
+            <img src="images/yo soy.jpg" alt="Moises Del Valle Garcia" />
+          </div>
+          <div class="hero-meta">
+            <div class="meta-pill">QA validation</div>
+            <div class="meta-pill">SQL reporting</div>
+            <div class="meta-pill">IT support</div>
+            <div class="meta-pill">AI tooling</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <div class="hero-text">
-
-        <h1>MOISÉS<br>DEL VALLE GARCÍA</h1>
-
-        <h2>Systems Engineer | QA | SQL | IT Support</h2>
-
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
         <p>
-          Systems Engineer with enterprise experience supporting applications across UAT,
-          staging, and production environments. Skilled in QA testing, SQL validation,
-          deployment support, troubleshooting, and cross-functional collaboration
-          within Agile teams.
+          I am a Systems Engineer with multidisciplinary IT experience including QA,
+          SQL validation, production support, software troubleshooting, and Agile collaboration.
+          I enjoy learning new technologies and adapting to diverse technical environments.
+          I am currently focused on growing toward Data Analysis, Business Intelligence,
+          automation, and enterprise technology solutions.
+        </p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="experience-grid">
+          <article class="card">
+            <div class="card-top">
+              <h3>QA Engineer - GET (GeTechnologies)</h3>
+              <span>2024 - 2025</span>
+            </div>
+            <div class="company">Client: Farmacias del Ahorro</div>
+            <ul>
+              <li>Supported UAT validation and production deployment processes.</li>
+              <li>Executed SQL-based validations across multiple environments.</li>
+              <li>Collaborated with development and DevOps teams during release cycles.</li>
+              <li>Verified production incidents and functional testing activities.</li>
+              <li>Participated in Agile ceremonies and QA process improvements.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <h3>QA Test Engineer - SCIO</h3>
+              <span>2021 - 2023</span>
+            </div>
+            <div class="company">Client: Aceable</div>
+            <ul>
+              <li>Executed manual testing on Web, Android, and iOS applications.</li>
+              <li>Designed and maintained test cases using Jira and TestRail.</li>
+              <li>Performed MongoDB data validation using Robo3T.</li>
+              <li>Tracked software defects and collaborated with development teams.</li>
+              <li>Supported sprint testing and feature validation processes.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills">
+      <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+          <article class="skill-box">
+            <h3>QA & Testing</h3>
+            <ul>
+              <li>Manual Testing</li>
+              <li>Regression Testing</li>
+              <li>Smoke Testing</li>
+              <li>UAT Validation</li>
+              <li>Bug Tracking</li>
+            </ul>
+          </article>
+
+          <article class="skill-box">
+            <h3>Databases</h3>
+            <ul>
+              <li>SQL</li>
+              <li>MongoDB</li>
+              <li>Data Validation</li>
+              <li>Reporting</li>
+            </ul>
+          </article>
+
+          <article class="skill-box">
+            <h3>Tools</h3>
+            <ul>
+              <li>Jira</li>
+              <li>TestRail</li>
+              <li>Postman</li>
+              <li>Agile / Scrum</li>
+            </ul>
+          </article>
+
+          <article class="skill-box">
+            <h3>IT & Systems</h3>
+            <ul>
+              <li>Technical Support</li>
+              <li>Troubleshooting</li>
+              <li>Networking Basics</li>
+              <li>Deployment Support</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="voice-lab" id="voice-lab">
+      <div class="container">
+        <h2 class="section-title">Voice Recognition Lab</h2>
+        <p class="section-copy">
+          A browser-based speech-to-text tool built with the Web Speech API. It is useful for
+          quick notes, QA observations, meeting summaries, and bilingual transcription tests.
         </p>
 
-        <div class="buttons">
+        <div class="voice-shell">
+          <div class="voice-panel">
+            <p class="eyebrow">Interactive portfolio project</p>
+            <h3>Speak, capture, edit, and export notes.</h3>
+            <p>
+              Choose a language, start recording, and your browser will transcribe speech in
+              real time. No backend is connected in this first version.
+            </p>
 
-          <a href="YO SOY Moises Del Valle Garcia CV.pdf" class="btn btn-primary" download>
-            Download CV
+            <div class="voice-controls">
+              <label class="field">
+                <span>Recognition language</span>
+                <select id="voiceLanguage">
+                  <option value="es-MX">Spanish - Mexico</option>
+                  <option value="en-US">English - United States</option>
+                  <option value="es-US">Spanish - United States</option>
+                </select>
+              </label>
+
+              <div class="record-row">
+                <button class="btn record-button" id="recordButton" type="button">
+                  Start Listening
+                </button>
+                <button class="btn utility-button" id="copyButton" type="button">
+                  Copy
+                </button>
+                <button class="btn utility-button" id="downloadButton" type="button">
+                  Download TXT
+                </button>
+                <button class="btn utility-button" id="clearButton" type="button">
+                  Clear
+                </button>
+              </div>
+
+              <p class="status" id="voiceStatus">
+                <strong>Status:</strong> Checking browser support...
+              </p>
+            </div>
+          </div>
+
+          <div class="voice-panel">
+            <label class="field">
+              <span>Transcript</span>
+              <textarea
+                id="transcriptBox"
+                class="transcript-box"
+                placeholder="Your voice notes will appear here..."
+              ></textarea>
+            </label>
+            <div class="transcript-meta">
+              <span id="wordCount">0 words</span>
+              <span id="charCount">0 characters</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="leadership" id="leadership">
+      <div class="container">
+        <h2 class="section-title">Leadership</h2>
+        <p>
+          President of Rotaract Morelia Camelinas Centenario (2024-2025), leading
+          organizational planning, team coordination, communication, and multidisciplinary
+          collaboration initiatives.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p>Location: Morelia, Michoacan, Mexico</p>
+        <p>Phone: +52 443 342 8744</p>
+        <p>Email: moises_delvalle_garcia@outlook.com</p>
+        <p>
+          <a
+            href="https://www.linkedin.com/in/mois%C3%A9s-del-valle-garc%C3%ADa/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn Profile
           </a>
-
-          <a href="https://www.linkedin.com/in/mois%C3%A9s-del-valle-garc%C3%ADa/" target="_blank" class="btn btn-secondary">
-            LinkedIn
-          </a>
-
-        </div>
-
+        </p>
       </div>
-
-      <div class="hero-image">
-        <img src="images/yo soy.jpg" alt="Moisés Del Valle García">
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ABOUT -->
-
-  <section class="about" id="about">
-
-    <div class="container">
-
-      <h2 class="section-title">About Me</h2>
-
-      <p>
-        I am a Systems Engineer with multidisciplinary IT experience including QA,
-        SQL validation, production support, software troubleshooting, and Agile collaboration.
-        I enjoy learning new technologies and adapting to diverse technical environments.
-        Currently focused on growing toward Data Analysis, Business Intelligence, and enterprise technology solutions.
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- EXPERIENCE -->
-
-  <section id="experience">
-
-    <div class="container">
-
-      <h2 class="section-title">Professional Experience</h2>
-
-      <div class="experience-grid">
-
-        <div class="card">
-
-          <div class="card-top">
-            <h3>QA Engineer — GET (GeTechnologies)</h3>
-            <span>2024 – 2025</span>
-          </div>
-
-          <div class="company">
-            Client: Farmacias del Ahorro
-          </div>
-
-          <ul>
-            <li>Supported UAT validation and production deployment processes.</li>
-            <li>Executed SQL-based validations across multiple environments.</li>
-            <li>Collaborated with development and DevOps teams during release cycles.</li>
-            <li>Verified production incidents and functional testing activities.</li>
-            <li>Participated in Agile ceremonies and QA process improvements.</li>
-          </ul>
-
-        </div>
-
-        <div class="card">
-
-          <div class="card-top">
-            <h3>QA Test Engineer — SCIO</h3>
-            <span>2021 – 2023</span>
-          </div>
-
-          <div class="company">
-            Client: Aceable
-          </div>
-
-          <ul>
-            <li>Executed manual testing on Web, Android, and iOS applications.</li>
-            <li>Designed and maintained test cases using Jira and TestRail.</li>
-            <li>Performed MongoDB data validation using Robo3T.</li>
-            <li>Tracked software defects and collaborated with development teams.</li>
-            <li>Supported sprint testing and feature validation processes.</li>
-          </ul>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- SKILLS -->
-
-  <section class="skills" id="skills">
-
-    <div class="container">
-
-      <h2 class="section-title">Technical Skills</h2>
-
-      <div class="skills-grid">
-
-        <div class="skill-box">
-          <h3>QA & Testing</h3>
-          <ul>
-            <li>Manual Testing</li>
-            <li>Regression Testing</li>
-            <li>Smoke Testing</li>
-            <li>UAT Validation</li>
-            <li>Bug Tracking</li>
-          </ul>
-        </div>
-
-        <div class="skill-box">
-          <h3>Databases</h3>
-          <ul>
-            <li>SQL</li>
-            <li>MongoDB</li>
-            <li>Data Validation</li>
-            <li>Reporting</li>
-          </ul>
-        </div>
-
-        <div class="skill-box">
-          <h3>Tools</h3>
-          <ul>
-            <li>Jira</li>
-            <li>TestRail</li>
-            <li>Postman</li>
-            <li>Agile / Scrum</li>
-          </ul>
-        </div>
-
-        <div class="skill-box">
-          <h3>IT & Systems</h3>
-          <ul>
-            <li>Technical Support</li>
-            <li>Troubleshooting</li>
-            <li>Networking Basics</li>
-            <li>Deployment Support</li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- LEADERSHIP -->
-
-  <section class="leadership" id="leadership">
-
-    <div class="container">
-
-      <h2 class="section-title">Leadership</h2>
-
-      <p>
-        President of Rotaract Morelia Camelinas Centenario (2024–2025),
-        leading organizational planning, team coordination, communication,
-        and multidisciplinary collaboration initiatives.
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-
-  <section class="contact" id="contact">
-
-    <div class="container">
-
-      <h2 class="section-title">Contact</h2>
-
-      <p>📍 Morelia, Michoacán, Mexico</p>
-      <p>📞 +52 443 342 8744</p>
-      <p>✉️ moises_delvalle_garcia@outlook.com</p>
-
-      <p>
-<a href="https://www.linkedin.com/in/mois%C3%A9s-del-valle-garc%C3%ADa/" target="_blank" rel="noopener noreferrer">
-  LinkedIn Profile
-</a>
-      </p>
-
-    </div>
-
-  </section>
+    </section>
+  </main>
 
   <footer>
-    © 2026 Moisés Del Valle García — Systems Engineer Portfolio
+    © 2026 Moises Del Valle Garcia - Systems Engineer Portfolio
   </footer>
 
+  <script>
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recordButton = document.getElementById("recordButton");
+    const copyButton = document.getElementById("copyButton");
+    const downloadButton = document.getElementById("downloadButton");
+    const clearButton = document.getElementById("clearButton");
+    const languageSelect = document.getElementById("voiceLanguage");
+    const statusText = document.getElementById("voiceStatus");
+    const transcriptBox = document.getElementById("transcriptBox");
+    const wordCount = document.getElementById("wordCount");
+    const charCount = document.getElementById("charCount");
+
+    let recognition = null;
+    let isRecording = false;
+
+    function updateCounts() {
+      const text = transcriptBox.value.trim();
+      const words = text ? text.split(/\s+/).length : 0;
+      wordCount.textContent = `${words} ${words === 1 ? "word" : "words"}`;
+      charCount.textContent = `${transcriptBox.value.length} characters`;
+    }
+
+    function setStatus(message) {
+      statusText.innerHTML = `<strong>Status:</strong> ${message}`;
+    }
+
+    function setRecordingState(nextState) {
+      isRecording = nextState;
+      recordButton.textContent = isRecording ? "Stop Listening" : "Start Listening";
+      recordButton.classList.toggle("is-recording", isRecording);
+    }
+
+    function createRecognition() {
+      const instance = new SpeechRecognition();
+      instance.continuous = true;
+      instance.interimResults = true;
+      instance.lang = languageSelect.value;
+
+      instance.onstart = () => {
+        setRecordingState(true);
+        setStatus("Listening. Speak clearly and keep this tab open.");
+      };
+
+      instance.onend = () => {
+        setRecordingState(false);
+        setStatus("Paused. You can start again when ready.");
+      };
+
+      instance.onerror = (event) => {
+        setRecordingState(false);
+        setStatus(`Recognition error: ${event.error}.`);
+      };
+
+      instance.onresult = (event) => {
+        let finalTranscript = "";
+        let interimTranscript = "";
+
+        for (let i = event.resultIndex; i < event.results.length; i += 1) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            finalTranscript += transcript;
+          } else {
+            interimTranscript += transcript;
+          }
+        }
+
+        if (finalTranscript) {
+          const separator = transcriptBox.value.trim() ? " " : "";
+          transcriptBox.value += `${separator}${finalTranscript.trim()}`;
+        }
+
+        if (interimTranscript) {
+          setStatus(`Listening: ${interimTranscript.trim()}`);
+        }
+
+        updateCounts();
+      };
+
+      return instance;
+    }
+
+    if (!SpeechRecognition) {
+      recordButton.disabled = true;
+      recordButton.textContent = "Not Supported";
+      setStatus("This browser does not support Web Speech API. Try Chrome or Edge.");
+    } else {
+      recognition = createRecognition();
+      setStatus("Ready. Select a language and press Start Listening.");
+    }
+
+    recordButton.addEventListener("click", () => {
+      if (!recognition) return;
+
+      if (isRecording) {
+        recognition.stop();
+        return;
+      }
+
+      recognition.lang = languageSelect.value;
+      recognition.start();
+    });
+
+    languageSelect.addEventListener("change", () => {
+      if (!recognition) return;
+      if (isRecording) recognition.stop();
+      recognition = createRecognition();
+      setStatus("Language updated. Press Start Listening.");
+    });
+
+    transcriptBox.addEventListener("input", updateCounts);
+
+    copyButton.addEventListener("click", async () => {
+      if (!transcriptBox.value.trim()) {
+        setStatus("Nothing to copy yet.");
+        return;
+      }
+
+      await navigator.clipboard.writeText(transcriptBox.value);
+      setStatus("Transcript copied to clipboard.");
+    });
+
+    downloadButton.addEventListener("click", () => {
+      if (!transcriptBox.value.trim()) {
+        setStatus("Nothing to download yet.");
+        return;
+      }
+
+      const blob = new Blob([transcriptBox.value], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "voice-transcript.txt";
+      link.click();
+      URL.revokeObjectURL(link.href);
+      setStatus("Transcript downloaded.");
+    });
+
+    clearButton.addEventListener("click", () => {
+      transcriptBox.value = "";
+      updateCounts();
+      setStatus("Transcript cleared.");
+    });
+
+    updateCounts();
+  </script>
 </body>
 </html>
