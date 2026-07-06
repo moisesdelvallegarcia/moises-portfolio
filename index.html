@@ -558,6 +558,18 @@
       margin-bottom: 0;
     }
 
+    .ai-button {
+      background: #38bdf8;
+      color: #04152f;
+    }
+
+    .ai-button:disabled {
+      background: #94a3b8;
+      color: #334155;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .transcript-box {
       min-height: 340px;
       resize: vertical;
@@ -906,10 +918,21 @@
                   <span>Upload audio file</span>
                   <input class="file-input" id="audioUpload" type="file" accept="audio/*" />
                 </label>
+                <label class="field">
+                  <span>AI transcription model</span>
+                  <select id="transcriptionModel">
+                    <option value="gpt-4o-mini-transcribe">Fast AI transcription</option>
+                    <option value="gpt-4o-transcribe">Higher accuracy transcription</option>
+                    <option value="whisper-1">Whisper legacy</option>
+                  </select>
+                </label>
                 <audio class="audio-player" id="audioPlayer" controls hidden></audio>
                 <p class="audio-file-info" id="audioFileInfo">No audio selected yet.</p>
 
                 <div class="record-row">
+                  <button class="btn ai-button" id="transcribeFileButton" type="button" disabled>
+                    Transcribe with AI
+                  </button>
                   <button class="btn utility-button" id="playAndListenButton" type="button" disabled>
                     Play + Listen
                   </button>
@@ -919,8 +942,8 @@
                 </div>
 
                 <p class="audio-note">
-                  Browser speech recognition listens through the microphone. For exact file
-                  transcription, this can later connect to a secure Whisper/OpenAI backend.
+                  AI transcription works on the deployed site when OPENAI_API_KEY is configured
+                  in Vercel. Play + Listen is only a browser fallback.
                 </p>
               </div>
             </div>
@@ -992,6 +1015,8 @@
     const audioUpload = document.getElementById("audioUpload");
     const audioPlayer = document.getElementById("audioPlayer");
     const audioFileInfo = document.getElementById("audioFileInfo");
+    const transcriptionModel = document.getElementById("transcriptionModel");
+    const transcribeFileButton = document.getElementById("transcribeFileButton");
     const playAndListenButton = document.getElementById("playAndListenButton");
     const clearAudioButton = document.getElementById("clearAudioButton");
 
@@ -1087,6 +1112,7 @@
       audioPlayer.removeAttribute("src");
       audioPlayer.hidden = true;
       audioFileInfo.textContent = "No audio selected yet.";
+      transcribeFileButton.disabled = true;
       playAndListenButton.disabled = true;
       clearAudioButton.disabled = true;
     }
@@ -1134,9 +1160,55 @@
       audioPlayer.src = audioObjectUrl;
       audioPlayer.hidden = false;
       audioFileInfo.textContent = `${file.name} - ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+      transcribeFileButton.disabled = false;
       playAndListenButton.disabled = false;
       clearAudioButton.disabled = false;
-      setStatus("Audio loaded. Press Play + Listen to test browser transcription.");
+      setStatus("Audio loaded. Press Transcribe with AI for file transcription.");
+    });
+
+    transcribeFileButton.addEventListener("click", async () => {
+      const file = audioUpload.files?.[0];
+
+      if (!file) {
+        setStatus("Upload an audio file first.");
+        return;
+      }
+
+      if (file.size > 25 * 1024 * 1024) {
+        setStatus("File is too large. Please upload audio under 25 MB.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("audio", file);
+      formData.append("language", languageSelect.value);
+      formData.append("model", transcriptionModel.value);
+
+      transcribeFileButton.disabled = true;
+      transcribeFileButton.textContent = "Transcribing...";
+      setStatus("Uploading audio to AI transcription service.");
+
+      try {
+        const response = await fetch("/api/transcribe", {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || "Transcription failed.");
+        }
+
+        transcriptBox.value = result.text || "";
+        updateCounts();
+        setStatus("AI transcription complete. Review and edit the transcript if needed.");
+      } catch (error) {
+        setStatus(`AI transcription failed: ${error.message}`);
+      } finally {
+        transcribeFileButton.disabled = false;
+        transcribeFileButton.textContent = "Transcribe with AI";
+      }
     });
 
     playAndListenButton.addEventListener("click", async () => {
