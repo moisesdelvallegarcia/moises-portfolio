@@ -334,6 +334,81 @@
       box-shadow: none;
     }
 
+    .apps {
+      background: #f8fafc;
+    }
+
+    .apps-grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .app-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      min-height: 300px;
+      padding: 26px;
+    }
+
+    .app-badge {
+      align-self: flex-start;
+      background: #dbeafe;
+      border-radius: 999px;
+      color: var(--blue);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      margin-bottom: 22px;
+      padding: 8px 12px;
+      text-transform: uppercase;
+    }
+
+    .app-card h3 {
+      color: var(--navy);
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      margin-bottom: 12px;
+    }
+
+    .app-card p {
+      color: var(--muted);
+      flex: 1;
+      margin-bottom: 22px;
+    }
+
+    .app-link {
+      align-items: center;
+      background: var(--navy);
+      border-radius: 14px;
+      color: white;
+      display: inline-flex;
+      font-weight: 900;
+      justify-content: center;
+      padding: 12px 16px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .app-link:hover,
+    .app-link:focus-visible {
+      background: var(--blue);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .app-link.is-disabled {
+      background: #e2e8f0;
+      color: #64748b;
+      cursor: default;
+      pointer-events: none;
+    }
+
     .voice-lab {
       background:
         radial-gradient(circle at 12% 20%, rgba(56, 189, 248, 0.18), transparent 22rem),
@@ -494,6 +569,10 @@
       .skills-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .apps-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 720px) {
@@ -523,7 +602,8 @@
       }
 
       .hero-meta,
-      .skills-grid {
+      .skills-grid,
+      .apps-grid {
         grid-template-columns: 1fr;
       }
 
@@ -542,7 +622,7 @@
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
-        <a href="#voice-lab">Voice Lab</a>
+        <a href="#apps">Apps</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -573,7 +653,7 @@
             >
               LinkedIn
             </a>
-            <a href="#voice-lab" class="btn btn-secondary">Try Voice Lab</a>
+            <a href="#apps" class="btn btn-secondary">Open Apps</a>
           </div>
         </div>
 
@@ -684,6 +764,46 @@
               <li>Networking Basics</li>
               <li>Deployment Support</li>
             </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="apps" id="apps">
+      <div class="container">
+        <h2 class="section-title">Applications</h2>
+        <p class="section-copy">
+          A quick launcher for small tools, demos, and experiments I build for real workflows.
+        </p>
+
+        <div class="apps-grid">
+          <article class="app-card">
+            <span class="app-badge">Available</span>
+            <h3>Voice Recognition Lab</h3>
+            <p>
+              Browser-based speech-to-text for quick notes, QA observations, meeting summaries,
+              and bilingual transcription tests.
+            </p>
+            <a class="app-link" href="#voice-lab">Open app</a>
+          </article>
+
+          <article class="app-card">
+            <span class="app-badge">Next</span>
+            <h3>SQL Notes Helper</h3>
+            <p>
+              A future space for SQL snippets, validation notes, and QA-friendly query templates.
+            </p>
+            <span class="app-link is-disabled">Coming soon</span>
+          </article>
+
+          <article class="app-card">
+            <span class="app-badge">Next</span>
+            <h3>QA Checklist Builder</h3>
+            <p>
+              A future tool for turning feature notes into structured smoke, regression, and UAT
+              checklists.
+            </p>
+            <span class="app-link is-disabled">Coming soon</span>
           </article>
         </div>
       </div>
