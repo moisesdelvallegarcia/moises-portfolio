@@ -512,6 +512,52 @@
       color: white;
     }
 
+    .audio-upload {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 22px;
+      margin-top: 18px;
+      padding: 16px;
+    }
+
+    .file-input {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .file-input::file-selector-button {
+      background: var(--navy);
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      cursor: pointer;
+      font-weight: 900;
+      margin-right: 12px;
+      padding: 10px 14px;
+    }
+
+    .audio-player {
+      margin-top: 14px;
+      width: 100%;
+    }
+
+    .audio-file-info,
+    .audio-note {
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    .audio-note {
+      color: #93c5fd;
+      margin-bottom: 0;
+    }
+
     .transcript-box {
       min-height: 340px;
       resize: vertical;
@@ -854,6 +900,29 @@
               <p class="status" id="voiceStatus">
                 <strong>Status:</strong> Checking browser support...
               </p>
+
+              <div class="audio-upload">
+                <label class="field">
+                  <span>Upload audio file</span>
+                  <input class="file-input" id="audioUpload" type="file" accept="audio/*" />
+                </label>
+                <audio class="audio-player" id="audioPlayer" controls hidden></audio>
+                <p class="audio-file-info" id="audioFileInfo">No audio selected yet.</p>
+
+                <div class="record-row">
+                  <button class="btn utility-button" id="playAndListenButton" type="button" disabled>
+                    Play + Listen
+                  </button>
+                  <button class="btn utility-button" id="clearAudioButton" type="button" disabled>
+                    Remove Audio
+                  </button>
+                </div>
+
+                <p class="audio-note">
+                  Browser speech recognition listens through the microphone. For exact file
+                  transcription, this can later connect to a secure Whisper/OpenAI backend.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -920,9 +989,15 @@
     const transcriptBox = document.getElementById("transcriptBox");
     const wordCount = document.getElementById("wordCount");
     const charCount = document.getElementById("charCount");
+    const audioUpload = document.getElementById("audioUpload");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const audioFileInfo = document.getElementById("audioFileInfo");
+    const playAndListenButton = document.getElementById("playAndListenButton");
+    const clearAudioButton = document.getElementById("clearAudioButton");
 
     let recognition = null;
     let isRecording = false;
+    let audioObjectUrl = null;
 
     function updateCounts() {
       const text = transcriptBox.value.trim();
@@ -990,6 +1065,32 @@
       return instance;
     }
 
+    function startRecognition() {
+      if (!recognition) return;
+
+      recognition.lang = languageSelect.value;
+
+      try {
+        recognition.start();
+      } catch (error) {
+        setStatus("Recognition is already active or the browser blocked a new session.");
+      }
+    }
+
+    function clearUploadedAudio() {
+      if (audioObjectUrl) {
+        URL.revokeObjectURL(audioObjectUrl);
+        audioObjectUrl = null;
+      }
+
+      audioUpload.value = "";
+      audioPlayer.removeAttribute("src");
+      audioPlayer.hidden = true;
+      audioFileInfo.textContent = "No audio selected yet.";
+      playAndListenButton.disabled = true;
+      clearAudioButton.disabled = true;
+    }
+
     if (!SpeechRecognition) {
       recordButton.disabled = true;
       recordButton.textContent = "Not Supported";
@@ -1007,8 +1108,7 @@
         return;
       }
 
-      recognition.lang = languageSelect.value;
-      recognition.start();
+      startRecognition();
     });
 
     languageSelect.addEventListener("change", () => {
@@ -1019,6 +1119,51 @@
     });
 
     transcriptBox.addEventListener("input", updateCounts);
+
+    audioUpload.addEventListener("change", () => {
+      const file = audioUpload.files?.[0];
+
+      if (!file) {
+        clearUploadedAudio();
+        return;
+      }
+
+      if (audioObjectUrl) URL.revokeObjectURL(audioObjectUrl);
+
+      audioObjectUrl = URL.createObjectURL(file);
+      audioPlayer.src = audioObjectUrl;
+      audioPlayer.hidden = false;
+      audioFileInfo.textContent = `${file.name} - ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+      playAndListenButton.disabled = false;
+      clearAudioButton.disabled = false;
+      setStatus("Audio loaded. Press Play + Listen to test browser transcription.");
+    });
+
+    playAndListenButton.addEventListener("click", async () => {
+      if (!audioPlayer.src) {
+        setStatus("Upload an audio file first.");
+        return;
+      }
+
+      startRecognition();
+      audioPlayer.currentTime = 0;
+
+      try {
+        await audioPlayer.play();
+        setStatus("Playing audio. Keep your speakers audible so the browser can listen.");
+      } catch (error) {
+        setStatus("The browser blocked audio playback. Press play on the audio control manually.");
+      }
+    });
+
+    audioPlayer.addEventListener("ended", () => {
+      setStatus("Audio finished. Review and edit the transcript if needed.");
+    });
+
+    clearAudioButton.addEventListener("click", () => {
+      clearUploadedAudio();
+      setStatus("Audio removed.");
+    });
 
     copyButton.addEventListener("click", async () => {
       if (!transcriptBox.value.trim()) {
