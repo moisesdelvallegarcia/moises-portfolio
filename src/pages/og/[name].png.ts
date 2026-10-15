@@ -52,8 +52,11 @@ export const GET: APIRoute = async ({ props }) => {
       width: 72, height: 72, viewBox: '0 0 40 40',
       children: [
         { type: 'rect', props: { width: 40, height: 40, rx: 10, fill: '#FAF9F6' } },
-        { type: 'path', props: { d: 'M10 29V12l10 10 10-10v17', fill: 'none', stroke: '#D2382C', 'stroke-width': 3.2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' } },
-        ...[[10, 12], [20, 22], [30, 12], [10, 29], [30, 29]].map(([cx, cy]) => ({ type: 'circle', props: { cx, cy, r: 2.8, fill: '#0E0F12' } })),
+        { type: 'g', props: { transform: 'translate(.8 .6)', fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', children: [
+          { type: 'path', props: { d: 'M14.5 29.5c-3.2-1.6-4.3-4.4-3-7.2 1.2-2.5 3.6-4.1 4.2-6.7.5-2.2-.6-4.4-2.8-4.9-2-.4-3.7.8-4.1 2.6', stroke: '#0E0F12', 'stroke-width': 2.8 } },
+          { type: 'path', props: { d: 'M14.5 29.5h11.2c3.6 0 6.3-2.6 6.8-6.8-2.6 1.6-5.4 1.4-8.4-.4-2.6-1.6-5-1.2-6.6.9', stroke: '#0E0F12', 'stroke-width': 2.8 } },
+          { type: 'path', props: { d: 'M8.8 13.3 6 15.6l3.6-.5', fill: '#D2382C', stroke: '#D2382C', 'stroke-width': 1.6 } },
+        ] } },
       ],
     },
   };

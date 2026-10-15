@@ -1,15 +1,15 @@
 ---
-// Logo: una "M" dibujada como flujo de automatización (nodos conectados).
-interface Props { size?: number; withName?: boolean; }
-const { size = 36, withName = true } = Astro.props;
+// Logo: un cisne de una sola línea (blanco sobre negro, con el pico rojo).
+interface Props { size?: number; withName?: boolean; onDark?: boolean; }
+const { size = 36, withName = true, onDark = false } = Astro.props;
 ---
 <span class="inline-flex items-center gap-2.5">
   <svg width={size} height={size} viewBox="0 0 40 40" aria-hidden="true" class="shrink-0">
-    <rect width="40" height="40" rx="10" fill="#0E0F12" />
-    <path d="M10 29V12l10 10 10-10v17" fill="none" stroke="#D2382C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
-    <g fill="#FAF9F6">
-      <circle cx="10" cy="12" r="2.8" /><circle cx="20" cy="22" r="2.8" /><circle cx="30" cy="12" r="2.8" />
-      <circle cx="10" cy="29" r="2.8" /><circle cx="30" cy="29" r="2.8" />
+    <rect x=".5" y=".5" width="39" height="39" rx="9.5" fill="#0E0F12" stroke={onDark ? '#9AA0A6' : '#0E0F12'} stroke-opacity={onDark ? 0.5 : 1} />
+    <g transform="translate(.8 .6)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.5 29.5c-3.2-1.6-4.3-4.4-3-7.2 1.2-2.5 3.6-4.1 4.2-6.7.5-2.2-.6-4.4-2.8-4.9-2-.4-3.7.8-4.1 2.6" stroke="#FAF9F6" stroke-width="2.8" />
+      <path d="M14.5 29.5h11.2c3.6 0 6.3-2.6 6.8-6.8-2.6 1.6-5.4 1.4-8.4-.4-2.6-1.6-5-1.2-6.6.9" stroke="#FAF9F6" stroke-width="2.8" />
+      <path d="M8.8 13.3 6 15.6l3.6-.5" fill="#D2382C" stroke="#D2382C" stroke-width="1.6" />
     </g>
   </svg>
   {withName && (
