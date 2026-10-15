@@ -51,25 +51,25 @@ export const GET: APIRoute = async ({ props }) => {
     props: {
       width: 72, height: 72, viewBox: '0 0 40 40',
       children: [
-        { type: 'rect', props: { width: 40, height: 40, rx: 10, fill: '#F7F4EE' } },
-        { type: 'path', props: { d: 'M10 29V12l10 10 10-10v17', fill: 'none', stroke: '#E2702A', 'stroke-width': 3.2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' } },
-        ...[[10, 12], [20, 22], [30, 12], [10, 29], [30, 29]].map(([cx, cy]) => ({ type: 'circle', props: { cx, cy, r: 2.8, fill: '#0F1B2D' } })),
+        { type: 'rect', props: { width: 40, height: 40, rx: 10, fill: '#FAF9F6' } },
+        { type: 'path', props: { d: 'M10 29V12l10 10 10-10v17', fill: 'none', stroke: '#D2382C', 'stroke-width': 3.2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' } },
+        ...[[10, 12], [20, 22], [30, 12], [10, 29], [30, 29]].map(([cx, cy]) => ({ type: 'circle', props: { cx, cy, r: 2.8, fill: '#0E0F12' } })),
       ],
     },
   };
   const tree = h('div', {
     width: 1200, height: 630, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-    padding: 72, background: '#0F1B2D', color: '#F7F4EE', fontFamily: 'Inter',
+    padding: 72, background: '#0E0F12', color: '#FAF9F6', fontFamily: 'Inter',
   }, [
     h('div', { display: 'flex', alignItems: 'center', gap: 20 }, [
       logo,
       h('div', { fontFamily: 'Bricolage', fontSize: 34, fontWeight: 800 }, 'Moisés Del Valle García'),
     ]),
     h('div', { display: 'flex', flexDirection: 'column', gap: 18 }, [
-      h('div', { fontSize: 30, color: '#F0915A', textTransform: 'uppercase', letterSpacing: 3 }, kicker),
+      h('div', { fontSize: 30, color: '#F0675C', textTransform: 'uppercase', letterSpacing: 3 }, kicker),
       h('div', { fontFamily: 'Bricolage', fontSize: title.length > 48 ? 64 : 78, fontWeight: 800, lineHeight: 1.05, maxWidth: 1000 }, title),
     ]),
-    h('div', { display: 'flex', height: 10, width: 220, background: '#E2702A', borderRadius: 5 }),
+    h('div', { display: 'flex', height: 10, width: 220, background: '#D2382C', borderRadius: 5 }),
   ]);
   const svg = await satori(tree as never, { width: 1200, height: 630, fonts });
   const png = await sharp(Buffer.from(svg)).png().toBuffer();

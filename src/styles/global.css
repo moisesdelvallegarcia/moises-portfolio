@@ -3,25 +3,27 @@
 @import '@fontsource-variable/inter/wght.css';
 
 /*
-  Paleta (contraste AA verificado sobre el fondo en que se usa):
-  - ink    #0F1B2D  texto y secciones oscuras
-  - paper  #F7F4EE  fondo general (cálido, no blanco puro)
-  - sand   #ECE5D8  tarjetas y bandas
-  - amber  #E2702A  fondo de botones (texto ink encima, 5.4:1)
-  - rust   #A84A12  acento como texto sobre paper (5.2:1)
-  - glow   #F0915A  acento como texto sobre ink (7.4:1)
+  Paleta "cisne blanco y cisne negro" (contraste AA verificado sobre el fondo en que se usa):
+  - ink    #0E0F12  negro cisne: texto y secciones oscuras
+  - paper  #FAF9F6  blanco pluma: fondo general
+  - sand   #EEECE7  gris pluma: tarjetas y bandas
+  - amber  #D2382C  rojo pico: fondo de botones (texto blanco encima, 4.8:1)
+  - rust   #B22A20  rojo pico oscuro: acento como texto sobre paper (6.2:1)
+  - glow   #F0675C  rojo pico claro: acento como texto sobre ink (6.2:1)
+  - silver #9AA0A6  gris plata: solo decorativo
   - leaf   #1F7A4D  WhatsApp (texto blanco encima, 5.3:1)
 */
 @theme {
-  --color-ink: #0f1b2d;
-  --color-ink-soft: #1c2b42;
-  --color-paper: #f7f4ee;
-  --color-sand: #ece5d8;
-  --color-line: #d9d0bf;
-  --color-muted: #4a5568;
-  --color-amber: #e2702a;
-  --color-rust: #a84a12;
-  --color-glow: #f0915a;
+  --color-ink: #0e0f12;
+  --color-ink-soft: #1d1f24;
+  --color-paper: #faf9f6;
+  --color-sand: #eeece7;
+  --color-line: #dcd9d2;
+  --color-muted: #4b5058;
+  --color-amber: #d2382c;
+  --color-rust: #b22a20;
+  --color-glow: #f0675c;
+  --color-silver: #9aa0a6;
   --color-leaf: #1f7a4d;
   --color-leaf-dark: #17603c;
 
@@ -62,7 +64,7 @@
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-display text-base font-semibold transition-colors;
   }
   .btn-primary {
-    @apply bg-amber text-ink hover:bg-glow;
+    @apply bg-amber text-white hover:bg-rust;
   }
   .btn-whatsapp {
     @apply bg-leaf text-white hover:bg-leaf-dark;
