@@ -17,9 +17,11 @@ interface Props {
   jsonLd?: object[];
   /** Ruta de la sección para marcarla en el menú */
   current?: string;
+  /** Páginas que no deben aparecer en Google (por ejemplo, la 404). */
+  noindex?: boolean;
 }
 
-const { lang, title, description, alternates, ogImage = `home-${lang}`, ogType = 'website', jsonLd = [], current } = Astro.props;
+const { lang, title, description, alternates, ogImage = `home-${lang}`, ogType = 'website', jsonLd = [], current, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 const fullTitle = title.includes(SITE.shortName) ? title : `${title} | ${SITE.name}`;
 const ogUrl = new URL(`/og/${ogImage}.png`, SITE.url).href;
@@ -34,7 +36,7 @@ const t = UI[lang];
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     {Object.entries(alternates).map(([l, path]) => (
       <link rel="alternate" hreflang={hreflang[l as Lang]} href={new URL(path, SITE.url).href} />
     ))}
