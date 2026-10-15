@@ -4,7 +4,10 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://moisesdelvalle.com',
+  // Dirección pública del sitio: se usa en canonical, hreflang, sitemap y robots.
+  // Mientras no haya dominio propio es la dirección gratis de Cloudflare Pages;
+  // al comprar moisesdelvalle.com solo se cambia esta línea.
+  site: 'https://moisesdelvalle.pages.dev',
   trailingSlash: 'always',
   i18n: {
     defaultLocale: 'es',

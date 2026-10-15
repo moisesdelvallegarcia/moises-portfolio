@@ -2,22 +2,24 @@
 
 Lo que Moisés hace fuera del código, en este orden.
 
-## 1. Dominio
-- [ ] Comprar **moisesdelvalle.com** (Namecheap, Cloudflare o GoDaddy; alrededor de USD 12 al año).
-- [ ] En Vercel: proyecto → Settings → Domains → agregar `moisesdelvalle.com` y `www.moisesdelvalle.com`.
-- [ ] En el lugar donde compraste el dominio, poner los registros DNS que Vercel te muestre (normalmente un `A` a `76.76.21.21` y un `CNAME` de `www` a `cname.vercel-dns.com`).
-- [ ] Si algún día cambia el dominio, actualizar `site` en `astro.config.mjs`, `SITE.url` en `src/lib/site.ts` y `public/robots.txt`.
+## 1. Publicar gratis en Cloudflare Pages
+- [ ] Crear cuenta en dash.cloudflare.com/sign-up (gratis).
+- [ ] Workers & Pages → Create → pestaña **Pages** → **Connect to Git** → autorizar GitHub y elegir `moises-portfolio`.
+- [ ] Nombre del proyecto: **moisesdelvalle** (así la dirección queda `moisesdelvalle.pages.dev`; si cambia, actualizar `site` en `astro.config.mjs`).
+- [ ] Framework preset: **Astro** · Build command: `npm run build` · Build output directory: `dist`.
+- [ ] Production branch: `main`. Cada PR tiene su vista previa automática.
+- [ ] Cuando el sitio nuevo esté publicado: desactivar GitHub Pages (Settings → Pages) y borrar el proyecto de Vercel.
 
-## 2. Vercel
-- [ ] vercel.com → Add New → Project → importar `moises-portfolio` desde GitHub (Vercel detecta Astro solo).
-- [ ] Con eso cada Pull Request tiene su vista previa automática.
-- [ ] Antes de publicar con el dominio: el plan gratis (Hobby) es solo para uso no comercial; para el sitio del negocio corresponde Pro (USD 20 al mes).
-- [ ] Desactivar GitHub Pages en el repo (Settings → Pages) cuando el sitio nuevo esté publicado.
+## 2. Dominio (cuando se compre)
+- [ ] Cloudflare → Domain Registration → Register Domains → **moisesdelvalle.com** (alrededor de USD 10 al año, sin margen de reventa).
+- [ ] Workers & Pages → moisesdelvalle → Custom domains → agregar `moisesdelvalle.com` y `www.moisesdelvalle.com` (Cloudflare pone el DNS solo).
+- [ ] Cambiar `site` en `astro.config.mjs` a `https://moisesdelvalle.com` y publicar.
+- [ ] Redirigir `moisesdelvalle.pages.dev` al dominio (Bulk Redirects en Cloudflare) para no tener dos copias en Google.
 
 ## 3. Google Search Console
-- [ ] search.google.com/search-console → Agregar propiedad → tipo **Dominio** → `moisesdelvalle.com`.
-- [ ] Verificar con el registro `TXT` que te da Google, en el DNS del dominio.
-- [ ] Sitemaps → enviar `https://moisesdelvalle.com/sitemap-index.xml`.
+- [ ] search.google.com/search-console → Agregar propiedad → tipo **Dominio** → `moisesdelvalle.com` (antes de tener dominio: tipo **Prefijo de URL** con `https://moisesdelvalle.pages.dev/`).
+- [ ] Verificar con el registro `TXT` en el DNS del dominio (o, con pages.dev, con la etiqueta HTML que da Google).
+- [ ] Sitemaps → enviar `/sitemap-index.xml` del sitio.
 - [ ] Inspección de URLs → pedir indexación de `/` y `/en/`.
 
 ## 4. Perfil de Negocio de Google

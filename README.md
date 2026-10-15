@@ -1,4 +1,4 @@
-# moisesdelvalle.com
+# Moisés Del Valle García · sitio personal
 
 Sitio personal de **Moisés Del Valle García**: automatización con IA para negocios en México y Estados Unidos.
 Bilingüe: español en `/` e inglés en `/en/`.
@@ -48,5 +48,6 @@ Cuando tengas el dato real, agrégalo así: `results: ["Ya no se captura ninguna
 
 ## Stack
 
-Astro 6 + TypeScript + Tailwind CSS 4. Sitio estático, sin servidor ni variables de entorno.
+Astro 6 + TypeScript + Tailwind CSS 4. Sitio estático, sin servidor ni variables de entorno, publicado gratis en Cloudflare Pages.
+La dirección pública está en `site` (`astro.config.mjs`); de ahí salen canonical, hreflang, sitemap y robots.
 Las imágenes para redes sociales (`/og/*.png`) se generan al compilar con satori.

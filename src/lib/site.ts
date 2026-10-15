@@ -6,7 +6,7 @@ export type Lang = 'es' | 'en';
 export const SITE = {
   name: 'Moisés Del Valle García',
   shortName: 'Moisés Del Valle',
-  url: 'https://moisesdelvalle.com',
+  url: import.meta.env.SITE.replace(/\/$/, ''),
   city: 'Morelia, Michoacán',
   whatsapp: '524433428744',
   email: 'moises_delvalle_garcia@outlook.com',
