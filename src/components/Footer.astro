@@ -27,7 +27,7 @@ const year = new Date().getFullYear();
         <li><a href={SITE.instagram} target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-glow"><Icon name="instagram" />Instagram</a></li>
       )}
       <li><a href={SITE.linkedin} target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-glow"><Icon name="linkedin" />LinkedIn</a></li>
-      <li><a href={`mailto:${SITE.email}`} class="inline-flex items-center gap-2 break-all hover:text-glow"><Icon name="mail" />{SITE.email}</a></li>
+      <li><a href={`mailto:${SITE.email}`} class="inline-flex items-center gap-2 hover:text-glow"><Icon name="mail" />{lang === 'es' ? 'Correo' : 'Email'}</a></li>
       <li class="text-paper/70">{SITE.city}, México</li>
     </ul>
   </div>

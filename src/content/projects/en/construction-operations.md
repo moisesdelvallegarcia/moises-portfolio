@@ -17,4 +17,4 @@ results: []
 stack: ["Node.js", "Supabase (PostgreSQL)", "OpenAI", "Telegram", "Render"]
 ---
 
-This is the largest system I've built and it keeps growing: it started by reading fuel receipts and now connects most of the operation. The rule from day one was that nobody had to change how they work — the system adapts to the tools the crew already used.
+This is the largest system I've built and it keeps growing: it started by reading receipts and now connects most of the operation. The rule from day one was that nobody had to change how they work — the system adapts to the tools the crew already used.

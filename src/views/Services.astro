@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { ROUTES, type Lang } from '../lib/site';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const copy = {
+  es: {
+    title: 'Servicios de automatización con IA para negocios',
+    description: 'Automatizo pedidos y citas por WhatsApp, captura de facturas, seguimiento a clientes, reportes e integraciones entre sistemas. Para negocios en México y EE. UU.',
+    eyebrow: 'Servicios',
+    h1: 'Lo que puedo automatizar en tu negocio',
+    intro: 'No vendo herramientas: construyo el sistema que tu negocio necesita, conectado a lo que ya usas. Estos son los trabajos más comunes.',
+    servicesTitle: 'Tipos de automatización',
+    services: [
+      ['Pedidos y citas por WhatsApp', 'Un asistente que responde lo de siempre, toma pedidos o agenda citas y te pasa a ti lo que necesita trato personal.'],
+      ['Captura de facturas y recibos', 'La IA lee facturas en PDF, XML o foto y guarda los datos donde los necesitas, sin escribir nada a mano.'],
+      ['Seguimiento a clientes', 'Recordatorios, cotizaciones que no se olvidan y avisos cuando un cliente lleva tiempo sin comprar.'],
+      ['Reportes que se arman solos', 'Ventas, cobranza o avance de trabajos, listos cada mañana en tu WhatsApp, Telegram o correo.'],
+      ['Flujos internos', 'Aprobaciones, asignación de tareas y avisos entre áreas, sin perseguir a nadie por mensaje.'],
+      ['Integraciones entre sistemas', 'Tu sistema de ventas, tu contabilidad y tus plataformas, hablando entre sí en una sola base de datos.'],
+      ['Portales para clientes', 'Un enlace privado donde cada cliente consulta el estado de su pedido o su obra sin tener que llamarte.'],
+      ['Sitios web', 'Un sitio rápido y fácil de actualizar, conectado a tus pedidos o citas.'],
+    ],
+    industriesTitle: 'Por industria',
+    industries: [
+      ['Construcción y contratistas', 'Facturas de proveedores, entregas, avance de obra, cobranza y portales para constructores.'],
+      ['Tiendas y comercio', 'Inventario, pedidos por WhatsApp, revendedores, cortes de caja y reportes de venta.'],
+      ['Restaurantes y comida', 'Pedidos para llevar, reservaciones, inventario de insumos y reportes del día.'],
+      ['Salud y belleza', 'Citas y recordatorios, confirmaciones, seguimiento después de la consulta o el servicio.'],
+      ['Servicios profesionales', 'Despachos y consultorías: captura de documentos, seguimiento de clientes y facturación.'],
+      ['Talleres y reparación', 'Órdenes de servicio, avisos de “tu equipo está listo” y control de refacciones.'],
+    ],
+    howTitle: 'Cómo trabajo',
+    how: [
+      'Empiezo por una sola tarea, la que más tiempo te quita.',
+      'Uso las herramientas que ya tienes; no te obligo a cambiar de sistema.',
+      'Todo queda documentado y los datos son tuyos.',
+      'Pruebo como alguien que se dedicó años a encontrar errores, antes de que los encuentres tú.',
+    ],
+    ctaTitle: '¿No ves tu caso aquí?',
+    ctaText: 'Si lo puedes imaginar, lo programamos. Cuéntame qué necesitas.',
+  },
+  en: {
+    title: 'AI Automation Services for Small Business',
+    description: 'I automate WhatsApp orders and bookings, invoice processing, customer follow-up, reports and integrations between your tools. For businesses in the US and Mexico.',
+    eyebrow: 'Services',
+    h1: 'What I can automate for your business',
+    intro: 'I don’t sell software subscriptions. I build the system your business needs, connected to the tools you already use. These are the most common jobs.',
+    servicesTitle: 'Types of automation',
+    services: [
+      ['Orders and bookings on WhatsApp', 'An assistant that answers the usual questions, takes orders or books appointments, and hands you anything that needs a personal touch.'],
+      ['Invoice and receipt processing', 'AI reads invoices from PDFs or photos and saves the data where you need it — no manual entry.'],
+      ['Customer follow-up', 'Reminders, quotes that don’t get forgotten, and a nudge when a customer hasn’t ordered in a while.'],
+      ['Reports that build themselves', 'Sales, receivables or job progress, ready every morning in your inbox, WhatsApp or Telegram.'],
+      ['Internal workflows', 'Approvals, task assignments and hand-offs between teams, without chasing people by text.'],
+      ['Integrations between tools', 'Your sales system, your accounting and your platforms, talking to each other in one database.'],
+      ['Client portals', 'A private link where each client checks the status of their order or job without calling you.'],
+      ['Websites', 'A fast site that’s easy to update, connected to your orders or bookings.'],
+    ],
+    industriesTitle: 'By industry',
+    industries: [
+      ['Construction and contractors', 'Supplier invoices, deliveries, job progress, receivables and builder portals.'],
+      ['Retail and e-commerce', 'Inventory, orders by message, reseller networks, end-of-day totals and sales reports.'],
+      ['Restaurants and food', 'Takeout orders, reservations, ingredient inventory and daily reports.'],
+      ['Health and beauty', 'Bookings and reminders, confirmations and follow-up after the visit.'],
+      ['Professional services', 'Firms and consultancies: document intake, client follow-up and billing.'],
+      ['Repair shops', 'Work orders, “your device is ready” messages and parts tracking.'],
+    ],
+    howTitle: 'How I work',
+    how: [
+      'I start with one task — the one that costs you the most time.',
+      'I use the tools you already have; you don’t have to switch systems.',
+      'Everything is documented and your data stays yours.',
+      'I test like someone who spent years finding bugs for a living — before you find them.',
+    ],
+    ctaTitle: 'Don’t see your case here?',
+    ctaText: 'If you can imagine it, we can build it. Tell me what you need.',
+  },
+}[lang];
+---
+<Base lang={lang} title={copy.title} description={copy.description} alternates={ROUTES.services} current="services" ogImage={`services-${lang}`}>
+  <PageHeader eyebrow={copy.eyebrow} title={copy.h1} intro={copy.intro} />
+
+  <section class="container-site mt-14" aria-labelledby="tipos">
+    <h2 id="tipos" class="text-3xl font-bold sm:text-4xl">{copy.servicesTitle}</h2>
+    <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+      {copy.services.map(([title, text]) => (
+        <li class="card">
+          <h3 class="text-xl font-bold">{title}</h3>
+          <p class="mt-2 text-muted">{text}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="container-site mt-20" aria-labelledby="industrias">
+    <h2 id="industrias" class="text-3xl font-bold sm:text-4xl">{copy.industriesTitle}</h2>
+    <dl class="mt-8 divide-y divide-line border-y border-line">
+      {copy.industries.map(([name, text]) => (
+        <div class="grid gap-2 py-6 sm:grid-cols-[280px_1fr] sm:gap-8">
+          <dt class="font-display text-xl font-bold">{name}</dt>
+          <dd class="text-lg text-muted">{text}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section class="container-site mt-20" aria-labelledby="como">
+    <div class="rounded-[2rem] bg-sand p-6 sm:p-10">
+      <h2 id="como" class="text-3xl font-bold sm:text-4xl">{copy.howTitle}</h2>
+      <ol class="mt-6 grid gap-4 sm:grid-cols-2">
+        {copy.how.map((line, i) => (
+          <li class="flex gap-4 text-lg"><span class="font-display text-2xl font-extrabold text-rust" aria-hidden="true">{i + 1}</span>{line}</li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <CtaBand lang={lang} title={copy.ctaTitle} text={copy.ctaText} />
+</Base>

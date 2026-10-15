@@ -17,4 +17,4 @@ results: []
 stack: ["Node.js", "Supabase (PostgreSQL)", "OpenAI", "Telegram", "Render"]
 ---
 
-Es el sistema más grande que he construido y sigue creciendo: empezó leyendo recibos de gasolina y hoy conecta casi toda la operación. La regla desde el principio fue que nadie cambiara su forma de trabajar: el sistema se adapta a las herramientas que el equipo ya usaba.
+Es el sistema más grande que he construido y sigue creciendo: empezó leyendo recibos y hoy conecta casi toda la operación. La regla desde el principio fue que nadie cambiara su forma de trabajar: el sistema se adapta a las herramientas que el equipo ya usaba.

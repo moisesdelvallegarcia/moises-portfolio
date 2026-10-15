@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+import { getPosts, postPath } from '../lib/content';
+import { ROUTES, UI, formatDate, type Lang } from '../lib/site';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = UI[lang];
+const posts = await getPosts(lang);
+const copy = {
+  es: {
+    title: 'Blog: automatización con IA para negocios',
+    description: 'Guías prácticas para automatizar pedidos, citas, facturas y reportes en tu negocio con inteligencia artificial, sin tecnicismos.',
+    eyebrow: 'Blog',
+    h1: 'Ideas prácticas para que tu negocio trabaje solo',
+    intro: 'Guías sin tecnicismos sobre qué se puede automatizar, cómo empezar y qué evitar.',
+  },
+  en: {
+    title: 'Blog: AI Automation for Small Business',
+    description: 'Practical, jargon-free guides to automating orders, bookings, invoices and reports in your business with AI.',
+    eyebrow: 'Blog',
+    h1: 'Practical ideas to put your business on autopilot',
+    intro: 'Jargon-free guides on what you can automate, how to start and what to avoid.',
+  },
+}[lang];
+---
+<Base lang={lang} title={copy.title} description={copy.description} alternates={ROUTES.blog} current="blog" ogImage={`blog-${lang}`}>
+  <PageHeader eyebrow={copy.eyebrow} title={copy.h1} intro={copy.intro} />
+  <section class="container-site mt-12 grid gap-5 md:grid-cols-2">
+    {posts.map((post) => (
+      <article class="group card relative flex flex-col hover:border-ink/40">
+        <p class="text-sm text-muted"><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate, lang)}</time></p>
+        <h2 class="mt-2 text-2xl font-bold leading-snug">
+          <a href={postPath(post)} class="after:absolute after:inset-0 after:rounded-3xl">{post.data.title}</a>
+        </h2>
+        <p class="mt-3 flex-1 text-muted">{post.data.description}</p>
+        <span class="mt-6 inline-flex items-center gap-2 font-display font-semibold" aria-hidden="true">
+          {t.readArticle}<Icon name="arrow" class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </span>
+      </article>
+    ))}
+  </section>
+</Base>
