@@ -12,7 +12,9 @@ system:
   - "Each reseller has an account with purchased or consigned units and their commission calculated automatically."
   - "The owner gets a dashboard with sales, balance and accounts receivable."
   - "Everything is built to be used from a phone, which is where the business actually runs."
-results: []
+results:
+  - "Working demo, ready to present from a phone"
+  - "Inventory, resellers and receivables in one place"
 stack: ["Next.js", "TypeScript", "Supabase (PostgreSQL)"]
 ---
 

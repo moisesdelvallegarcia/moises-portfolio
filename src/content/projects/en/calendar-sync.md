@@ -12,7 +12,9 @@ system:
   - "It reads the calendar month by month, across every development."
   - "It saves the activities to the database and flags the ones that moved or disappeared."
   - "Every change is logged with a date, so the history can be looked up anytime."
-results: []
+results:
+  - "Checks every development each morning, without anyone logging in"
+  - "Every date change is saved with its full history"
 stack: ["Python", "Supabase (PostgreSQL)", "Render"]
 ---
 

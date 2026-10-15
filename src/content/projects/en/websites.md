@@ -12,7 +12,9 @@ system:
   - "A site for a nonprofit that supports families living with autism in Mexico."
   - "Content kept separate from design, so changing a line of text or a photo doesn't require touching code."
   - "Mobile-first, fast to load and with solid SEO basics."
-results: []
+results:
+  - "2 sites live and in use"
+  - "Mobile-first and easy to update"
 stack: ["React", "Vite", "Tailwind CSS", "HTML & CSS", "Vercel"]
 ---
 
