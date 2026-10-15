@@ -11,8 +11,7 @@ export const SITE = {
   whatsapp: '524433428744',
   email: 'moises_delvalle_garcia@outlook.com',
   linkedin: 'https://www.linkedin.com/in/mois%C3%A9s-del-valle-garc%C3%ADa/',
-  // Vacío hasta que exista la cuenta nueva; mientras tanto el sitio no muestra el enlace.
-  instagram: '',
+  instagram: 'https://www.instagram.com/yosoymoisesdelvalle/',
   demo: { spots: 5, days: 7 },
 } as const;
 
