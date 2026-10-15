@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import Pendiente from '../components/Pendiente.astro';
 import CtaBand from '../components/CtaBand.astro';
 import photo from '../assets/moises.jpg';
 import { personJsonLd } from '../lib/content';
@@ -16,8 +15,6 @@ const copy = {
     description: 'Soy Moisés Del Valle García, ingeniero en sistemas de Morelia. Pasé años probando software para empresas grandes y hoy construyo automatizaciones con IA para negocios.',
     eyebrow: 'Sobre mí',
     h1: 'Hola, soy Moisés',
-    draft: 'BORRADOR: Moisés revisa y ajusta esta historia',
-    photo: 'FOTO: confirmar esta o cambiarla por una profesional',
     story: [
       'Soy ingeniero en sistemas y vivo en Morelia, Michoacán. Durante años mi trabajo fue probar software de empresas grandes antes de que llegara a sus clientes: aplicaciones web y móviles, validaciones en bases de datos y despliegues a producción. Mi trabajo era encontrar dónde fallan las cosas.',
       'Ahí aprendí algo que hoy uso todos los días: casi todos los errores vienen de pasos que alguien hace a mano. Copiar un dato de un sistema a otro, revisar una lista, acordarse de avisar. No es falta de ganas; es que las personas no deberían estar haciendo el trabajo de una máquina.',
@@ -40,8 +37,6 @@ const copy = {
     description: 'I’m Moisés Del Valle García, a systems engineer from Morelia, Mexico. I spent years testing software for large companies and now build AI automation for businesses.',
     eyebrow: 'About',
     h1: 'Hi, I’m Moisés',
-    draft: 'DRAFT: Moisés to review and adjust this story',
-    photo: 'PHOTO: keep this one or replace it with a professional one',
     story: [
       'I’m a systems engineer based in Morelia, Mexico. For years my job was testing software for large companies before it reached their customers: web and mobile apps, database validations and production releases. I got paid to find where things break.',
       'That taught me something I use every day: most errors come from steps someone does by hand. Copying data from one system to another, checking a list, remembering to tell someone. It’s not a lack of effort — people just shouldn’t be doing a machine’s job.',
@@ -67,12 +62,10 @@ const copy = {
       <Image src={photo} alt={lang === 'es' ? 'Foto de Moisés Del Valle García' : 'Photo of Moisés Del Valle García'}
         widths={[380, 760]} sizes="(min-width: 768px) 380px, 100vw" loading="eager"
         class="aspect-square w-full rounded-[2rem] object-cover" />
-      <p class="mt-3"><Pendiente label={copy.photo} /></p>
     </div>
     <div>
       <p class="eyebrow">{copy.eyebrow}</p>
       <h1 class="mt-3 text-4xl font-extrabold sm:text-6xl">{copy.h1}</h1>
-      <p class="mt-4"><Pendiente label={copy.draft} /></p>
       <div class="prose-site mt-6">
         {copy.story.map((p) => <p>{p}</p>)}
       </div>
