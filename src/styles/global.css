@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque/wght.css';
+@import '@fontsource-variable/inter/wght.css';
+
+/*
+  Paleta (contraste AA verificado sobre el fondo en que se usa):
+  - ink    #0F1B2D  texto y secciones oscuras
+  - paper  #F7F4EE  fondo general (cálido, no blanco puro)
+  - sand   #ECE5D8  tarjetas y bandas
+  - amber  #E2702A  fondo de botones (texto ink encima, 5.4:1)
+  - rust   #A84A12  acento como texto sobre paper (5.2:1)
+  - glow   #F0915A  acento como texto sobre ink (7.4:1)
+  - leaf   #1F7A4D  WhatsApp (texto blanco encima, 5.3:1)
+*/
+@theme {
+  --color-ink: #0f1b2d;
+  --color-ink-soft: #1c2b42;
+  --color-paper: #f7f4ee;
+  --color-sand: #ece5d8;
+  --color-line: #d9d0bf;
+  --color-muted: #4a5568;
+  --color-amber: #e2702a;
+  --color-rust: #a84a12;
+  --color-glow: #f0915a;
+  --color-leaf: #1f7a4d;
+  --color-leaf-dark: #17603c;
+
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-balance;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-amber);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply font-display text-sm font-semibold uppercase tracking-[0.14em] text-rust;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-display text-base font-semibold transition-colors;
+  }
+  .btn-primary {
+    @apply bg-amber text-ink hover:bg-glow;
+  }
+  .btn-whatsapp {
+    @apply bg-leaf text-white hover:bg-leaf-dark;
+  }
+  .btn-ghost {
+    @apply border-2 border-ink/80 text-ink hover:bg-ink hover:text-paper;
+  }
+  .card {
+    @apply rounded-3xl border border-line bg-white/60 p-6 sm:p-8;
+  }
+  /* Marcador visible de algo que Moisés debe llenar. Nunca se reemplaza con datos inventados. */
+  .pendiente {
+    @apply inline-flex items-center gap-1.5 rounded-md border-2 border-dashed border-rust bg-amber/10 px-2 py-0.5 font-mono text-sm font-semibold text-rust;
+  }
+}
+
+/* Texto largo de artículos y casos */
+.prose-site {
+  @apply text-lg leading-relaxed text-ink;
+}
+.prose-site > * + * { @apply mt-5; }
+.prose-site h2 { @apply mt-12 text-3xl font-bold; }
+.prose-site h3 { @apply mt-8 text-xl font-bold; }
+.prose-site a { @apply font-medium text-rust underline underline-offset-4; }
+.prose-site ul { @apply list-disc space-y-2 pl-6; }
+.prose-site ol { @apply list-decimal space-y-2 pl-6; }
+.prose-site li::marker { @apply text-rust; }
+.prose-site strong { @apply font-semibold; }
+.prose-site blockquote { @apply border-l-4 border-amber pl-5 italic text-muted; }
+.prose-site code { @apply rounded bg-sand px-1.5 py-0.5 text-base; }
+.prose-site table { @apply w-full border-collapse text-base; }
+.prose-site th, .prose-site td { @apply border border-line px-3 py-2 text-left; }

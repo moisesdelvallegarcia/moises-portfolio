@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+import { UI, whatsappUrl, type Lang } from '../lib/site';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+---
+<a href={whatsappUrl(lang)} target="_blank" rel="noopener" aria-label={UI[lang].whatsappLabel}
+  class="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-leaf text-white shadow-lg shadow-ink/25 transition-transform hover:scale-105 md:hidden">
+  <Icon name="whatsapp" class="h-7 w-7" />
+</a>

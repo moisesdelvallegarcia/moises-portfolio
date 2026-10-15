@@ -1,0 +1,54 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { NAV, ROUTES, UI, whatsappUrl, type Lang } from '../lib/site';
+
+interface Props { lang: Lang; alternates: Partial<Record<Lang, string>>; current?: string; }
+const { lang, alternates, current } = Astro.props;
+const t = UI[lang];
+const other: Lang = lang === 'es' ? 'en' : 'es';
+const switchHref = alternates[other] ?? ROUTES.home[other];
+---
+<header class="sticky top-0 z-40 border-b border-line/70 bg-paper/90 backdrop-blur">
+  <div class="container-site flex h-16 items-center justify-between gap-4">
+    <a href={ROUTES.home[lang]} class="rounded-lg" aria-label={`${t.nav.home} — Moisés Del Valle García`}>
+      <Logo />
+    </a>
+
+    <nav aria-label={t.menu} class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {NAV.map((key) => (
+          <li>
+            <a href={ROUTES[key][lang]}
+              aria-current={current === key ? 'page' : undefined}
+              class:list={['rounded-full px-3 py-2 text-[15px] font-medium transition-colors hover:bg-sand',
+                current === key && 'bg-sand']}>{t.nav[key]}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href={switchHref} hreflang={other} lang={other} aria-label={t.switchLangLabel}
+        class="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold hover:bg-sand">
+        <Icon name="globe" class="h-4 w-4" />{t.switchLang}
+      </a>
+      <a href={whatsappUrl(lang)} target="_blank" rel="noopener" class="btn btn-primary hidden !px-5 !py-2 text-sm md:inline-flex">
+        {t.ctaShort}
+      </a>
+      <details class="group relative lg:hidden">
+        <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full hover:bg-sand [&::-webkit-details-marker]:hidden" aria-label={t.menu}>
+          <Icon name="menu" class="h-6 w-6" />
+        </summary>
+        <nav aria-label={t.menu} class="absolute right-0 top-13 w-64 rounded-2xl border border-line bg-paper p-2 shadow-xl">
+          <ul>
+            {NAV.map((key) => (
+              <li><a href={ROUTES[key][lang]} aria-current={current === key ? 'page' : undefined}
+                class="block rounded-xl px-4 py-3 font-medium hover:bg-sand">{t.nav[key]}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
