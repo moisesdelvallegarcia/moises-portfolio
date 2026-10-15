@@ -25,7 +25,7 @@ Lo que Moisés hace fuera del código, en este orden.
 ## 4. Perfil de Negocio de Google
 - [ ] business.google.com → crear perfil como **negocio de servicios sin ubicación física para clientes** (no muestra tu dirección).
 - [ ] Categoría: "Consultor de software" o "Desarrollador de software". Zona: Morelia y alrededores (Google solo permite zonas locales).
-- [ ] Sitio web: `https://moisesdelvalle.com`. Teléfono: el de WhatsApp.
+- [ ] Sitio web: la dirección actual del sitio. Teléfono: el de WhatsApp.
 - [ ] Pedir reseñas a clientes reales cuando terminen un proyecto.
 
 ## 5. Bing Webmaster Tools
