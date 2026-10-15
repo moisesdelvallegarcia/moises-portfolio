@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+import { faqJsonLd } from '../lib/content';
+import { ROUTES, SITE, UI, whatsappUrl, type Lang } from '../lib/site';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = UI[lang];
+const { days, spots } = SITE.demo;
+const copy = {
+  es: {
+    title: `Demo gratis de automatización con IA en ${days} días`,
+    description: `Te construyo una automatización sencilla para tu negocio, gratis y en ${days} días. Cupo limitado a ${spots} negocios. Pídela por WhatsApp.`,
+    eyebrow: 'Demo gratis',
+    h1: `Una automatización real para tu negocio, gratis, en ${days} días`,
+    intro: 'No es una presentación ni un video: es una automatización funcionando con tu información. Si te sirve, cotizamos la versión completa. Si no, no me debes nada.',
+    spotsLine: `Abro el demo a ${spots} negocios a la vez para poder dedicarle a cada uno el tiempo que merece.`,
+    includesTitle: 'Qué incluye',
+    includes: [
+      'Una plática por WhatsApp para entender tu proceso.',
+      'Una automatización sencilla de una sola tarea (por ejemplo: leer tus facturas, avisarte de cada pedido o mandarte un reporte diario).',
+      'Funcionando con tu información real, no con datos de ejemplo.',
+      `Lista en ${days} días a partir de que me compartes lo necesario.`,
+      'Una explicación clara de cómo sería la versión completa y cuánto costaría.',
+    ],
+    excludesTitle: 'Qué no incluye',
+    excludes: [
+      'Sistemas grandes o con muchas partes (eso es la versión completa).',
+      'Pagos por licencias, servicios o plataformas de terceros, si se necesitaran.',
+      'Mantenimiento después del periodo de prueba.',
+      'Compromiso de contratar nada.',
+    ],
+    faqTitle: 'Preguntas frecuentes',
+    faq: [
+      ['¿De verdad es gratis?', `Sí. El demo no tiene costo ni te compromete a nada. Lo hago porque es la mejor forma de que veas lo que puedo construir para ti, con tu propio negocio, en lugar de pedirte que me creas.`],
+      ['¿Qué necesito para empezar?', 'Contarme qué tarea te quita más tiempo y, según el caso, compartirme algunos ejemplos: facturas, mensajes de clientes, un Excel o acceso de lectura a una plataforma.'],
+      ['¿Mi información está segura?', 'Solo uso la información necesaria para el demo, no la comparto con nadie y la borro si decides no seguir. Los detalles están en el aviso de privacidad.'],
+      ['¿Qué pasa si no me sirve?', 'Nada. Te quedas con la plática y con una idea más clara de qué se puede automatizar en tu negocio.'],
+      ['¿Trabajas con negocios fuera de Morelia?', 'Sí. Trabajo a distancia con negocios en todo México y en Estados Unidos, en español o en inglés.'],
+    ],
+  },
+  en: {
+    title: `Free ${days}-Day AI Automation Demo`,
+    description: `I’ll build a simple automation for your business, free, in ${days} days. Limited to ${spots} businesses at a time. Request yours on WhatsApp.`,
+    eyebrow: 'Free demo',
+    h1: `A real automation for your business, free, in ${days} days`,
+    intro: 'Not a slide deck or a video — a working automation running on your own data. If it helps, I quote the full version. If not, you owe me nothing.',
+    spotsLine: `I open the demo to ${spots} businesses at a time so each one gets the attention it deserves.`,
+    includesTitle: 'What’s included',
+    includes: [
+      'A WhatsApp chat to understand how your process works today.',
+      'One simple automation for a single task (for example: reading your invoices, alerting you about every order, or sending you a daily report).',
+      'Running on your real data, not sample data.',
+      `Ready in ${days} days once you share what’s needed.`,
+      'A clear explanation of what the full version would look like and what it would cost.',
+    ],
+    excludesTitle: 'What’s not included',
+    excludes: [
+      'Large systems with many moving parts (that’s the full version).',
+      'Fees for third-party licenses, services or platforms, if any are needed.',
+      'Maintenance after the trial period.',
+      'Any obligation to hire me.',
+    ],
+    faqTitle: 'FAQ',
+    faq: [
+      ['Is it really free?', 'Yes. The demo costs nothing and doesn’t commit you to anything. It’s the best way for you to see what I can build for your business, instead of asking you to take my word for it.'],
+      ['What do I need to get started?', 'Tell me which task takes up most of your time and, depending on the case, share a few examples: invoices, customer messages, a spreadsheet or read-only access to a platform.'],
+      ['Is my data safe?', 'I only use the data the demo needs, I don’t share it with anyone and I delete it if you decide not to continue. Details are in the privacy notice.'],
+      ['What if it doesn’t work for me?', 'Nothing happens. You keep the conversation and a clearer idea of what can be automated in your business.'],
+      ['Do you work with businesses in the US?', 'Yes. I work remotely with businesses across the US and Mexico, in English or Spanish.'],
+    ],
+  },
+}[lang];
+const faqLd = faqJsonLd(copy.faq.map(([question, answer]) => ({ question, answer })));
+---
+<Base lang={lang} title={copy.title} description={copy.description} alternates={ROUTES.demo} current="demo" ogImage={`demo-${lang}`} jsonLd={[faqLd]}>
+  <PageHeader eyebrow={copy.eyebrow} title={copy.h1} intro={copy.intro}>
+    <div class="mt-8 flex flex-wrap items-center gap-4">
+      <a href={whatsappUrl(lang)} target="_blank" rel="noopener" class="btn btn-primary"><Icon name="whatsapp" />{t.cta}</a>
+      <p class="rounded-full bg-sand px-4 py-2 text-sm font-semibold">{t.spots(spots)}</p>
+    </div>
+    <p class="mt-4 max-w-2xl text-muted">{copy.spotsLine}</p>
+  </PageHeader>
+
+  <section class="container-site mt-14 grid gap-5 md:grid-cols-2">
+    <div class="card">
+      <h2 class="text-2xl font-bold">{copy.includesTitle}</h2>
+      <ul class="mt-5 space-y-3">
+        {copy.includes.map((i) => <li class="flex gap-3 text-lg"><Icon name="check" class="mt-1.5 h-5 w-5 shrink-0 text-leaf" />{i}</li>)}
+      </ul>
+    </div>
+    <div class="rounded-3xl bg-sand p-6 sm:p-8">
+      <h2 class="text-2xl font-bold">{copy.excludesTitle}</h2>
+      <ul class="mt-5 space-y-3">
+        {copy.excludes.map((i) => <li class="flex gap-3 text-lg"><Icon name="x" class="mt-1.5 h-5 w-5 shrink-0 text-rust" />{i}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="container-site mt-20 max-w-4xl" aria-labelledby="faq">
+    <h2 id="faq" class="text-3xl font-bold sm:text-4xl">{copy.faqTitle}</h2>
+    <div class="mt-8 divide-y divide-line border-y border-line">
+      {copy.faq.map(([q, a]) => (
+        <details class="group py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-bold [&::-webkit-details-marker]:hidden">
+            {q}<span class="text-2xl text-rust transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <p class="mt-3 text-lg text-muted">{a}</p>
+        </details>
+      ))}
+    </div>
+    <a href={whatsappUrl(lang)} target="_blank" rel="noopener" class="btn btn-whatsapp mt-10"><Icon name="whatsapp" />{t.cta}</a>
+  </section>
+</Base>

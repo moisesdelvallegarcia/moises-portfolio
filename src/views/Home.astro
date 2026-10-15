@@ -1,0 +1,224 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import photo from '../assets/moises.jpg';
+import { getProjects, personJsonLd } from '../lib/content';
+import { ROUTES, SITE, SLOGAN, UI, whatsappUrl, type Lang } from '../lib/site';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = UI[lang];
+const featured = (await getProjects(lang)).filter((p) => p.data.featured);
+
+const copy = {
+  es: {
+    title: 'Automatización con IA para negocios | Moisés Del Valle García',
+    description: 'Creo sistemas automatizados a la medida con inteligencia artificial: pedidos, citas, seguimiento a clientes, reportes e integraciones. Demo gratis en 7 días.',
+    eyebrow: 'Automatización con IA para negocios',
+    lead: 'Convierto el trabajo repetitivo de tu negocio en sistemas que trabajan solos: pedidos, citas, seguimiento a clientes, reportes y todo lo que hoy se hace a mano.',
+    note: `Demo gratis · lista en ${SITE.demo.days} días · cupo para ${SITE.demo.spots} negocios`,
+    flowTitle: 'Así se ve un sistema',
+    flow: [
+      ['Llega un pedido por WhatsApp', '9:02 a. m.'],
+      ['La IA lo entiende y lo registra', 'al instante'],
+      ['Tu equipo recibe el aviso', '9:02 a. m.'],
+      ['El reporte del día se arma solo', '6:00 p. m.'],
+    ],
+    painsEyebrow: '¿A quién ayudo?',
+    painsTitle: 'A negocios que crecieron más rápido que sus procesos',
+    pains: [
+      ['Capturas lo mismo dos veces', 'Pedidos, facturas o recibos que alguien vuelve a escribir en Excel o en otro sistema.'],
+      ['Contestas lo mismo todo el día', 'Precios, horarios, citas y estatus que se preguntan una y otra vez por WhatsApp.'],
+      ['Se te pasan cosas', 'Clientes sin seguimiento, trabajos sin cobrar, fechas que cambiaron y nadie avisó.'],
+      ['Tus sistemas no se hablan', 'La información vive en varias plataformas y juntarla es trabajo de alguien cada semana.'],
+      ['Los reportes llegan tarde', 'Para saber cómo vas tienes que pedir el reporte, esperar y confiar en que esté bien.'],
+      ['Dependes de una persona', 'Si quien sabe cómo se hace falta un día, el proceso se detiene.'],
+    ],
+    casesEyebrow: 'Proyectos reales',
+    casesTitle: 'Sistemas que ya están trabajando',
+    casesAll: 'Ver todos los proyectos',
+    stepsEyebrow: 'Cómo funciona',
+    stepsTitle: 'De la idea al sistema funcionando, en cuatro pasos',
+    steps: [
+      ['Me cuentas', 'Una plática por WhatsApp sobre qué te quita más tiempo. Sin tecnicismos.'],
+      ['Te propongo algo sencillo', 'Elegimos una sola tarea que valga la pena automatizar primero.'],
+      [`En ${SITE.demo.days} días está funcionando`, 'Lo pruebas con tu información real, en tu día a día. Sin costo.'],
+      ['Si te sirve, crecemos', 'Cotizamos la versión completa. Si no, te quedas con lo aprendido.'],
+    ],
+    aboutEyebrow: 'Sobre mí',
+    aboutTitle: 'Hola, soy Moisés',
+    about: 'Soy ingeniero en sistemas, de Morelia. Antes de construir automatizaciones me dediqué a probar software para empresas grandes: mi trabajo era encontrar dónde fallan las cosas. Hoy uso esa misma mirada para entender cómo trabaja tu negocio y construir sistemas que no se caen.',
+    aboutMore: 'Conoce mi historia',
+    ctaTitle: 'Cuéntame qué te quita más tiempo',
+    ctaText: `Te armo una automatización sencilla, gratis, en ${SITE.demo.days} días. Si te sirve, hablamos de la versión completa.`,
+    service: 'Automatización con inteligencia artificial y sistemas a la medida para negocios',
+  },
+  en: {
+    title: 'AI Automation for Small Business | Moisés Del Valle García',
+    description: 'I build custom AI-powered systems for businesses: orders, bookings, customer follow-up, reports and integrations. Free demo in 7 days.',
+    eyebrow: 'AI automation for small business',
+    lead: 'I turn the repetitive work in your business into systems that run on their own: orders, bookings, customer follow-up, reports and everything that still gets done by hand.',
+    note: `Free demo · ready in ${SITE.demo.days} days · open to ${SITE.demo.spots} businesses`,
+    flowTitle: 'What a system looks like',
+    flow: [
+      ['An order comes in on WhatsApp', '9:02 am'],
+      ['AI reads it and logs it', 'instantly'],
+      ['Your team gets the alert', '9:02 am'],
+      ['The daily report builds itself', '6:00 pm'],
+    ],
+    painsEyebrow: 'Who I help',
+    painsTitle: 'Businesses that grew faster than their processes',
+    pains: [
+      ['You type the same thing twice', 'Orders, invoices or receipts someone re-enters into a spreadsheet or another system.'],
+      ['You answer the same questions all day', 'Prices, hours, bookings and status updates, over and over in your messages.'],
+      ['Things slip through the cracks', 'Customers nobody followed up with, work that never got billed, dates that changed without notice.'],
+      ['Your tools don’t talk to each other', 'Your data lives in several platforms and pulling it together is someone’s weekly chore.'],
+      ['Reports show up late', 'To know how you’re doing you have to ask, wait and hope the numbers are right.'],
+      ['It all depends on one person', 'If the one who knows how it works is out, the process stops.'],
+    ],
+    casesEyebrow: 'Real projects',
+    casesTitle: 'Systems already doing the work',
+    casesAll: 'See all projects',
+    stepsEyebrow: 'How it works',
+    stepsTitle: 'From idea to working system in four steps',
+    steps: [
+      ['Tell me about it', 'A quick WhatsApp chat about what eats up your time. No jargon.'],
+      ['I propose one simple thing', 'We pick a single task that’s worth automating first.'],
+      [`Running in ${SITE.demo.days} days`, 'You try it with your real data, in your real day. Free.'],
+      ['If it helps, we grow it', 'I quote the full version. If not, you keep what we learned.'],
+    ],
+    aboutEyebrow: 'About me',
+    aboutTitle: 'Hi, I’m Moisés',
+    about: 'I’m a systems engineer from Morelia, Mexico. Before building automation I spent years testing software for large companies — my job was finding where things break. Now I use that same eye to understand how your business runs and build systems that hold up.',
+    aboutMore: 'Read my story',
+    ctaTitle: 'Tell me what eats up your time',
+    ctaText: `I’ll build you a simple automation, free, in ${SITE.demo.days} days. If it helps, we talk about the full version.`,
+    service: 'AI automation and custom software for businesses',
+  },
+}[lang];
+
+const jsonLd = [
+  personJsonLd(lang),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': `${SITE.url}/#service`,
+    name: SITE.name,
+    description: copy.service,
+    slogan: SLOGAN[lang],
+    url: new URL(ROUTES.home[lang], SITE.url).href,
+    image: `${SITE.url}/og/home-${lang}.png`,
+    founder: { '@id': `${SITE.url}/#person` },
+    telephone: `+${SITE.whatsapp}`,
+    address: { '@type': 'PostalAddress', addressLocality: 'Morelia', addressRegion: 'Michoacán', addressCountry: 'MX' },
+    areaServed: [{ '@type': 'Country', name: 'México' }, { '@type': 'Country', name: 'United States' }],
+    availableLanguage: ['Spanish', 'English'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE.url}/#website`,
+    name: SITE.name,
+    url: SITE.url,
+    inLanguage: ['es-MX', 'en-US'],
+    publisher: { '@id': `${SITE.url}/#person` },
+  },
+];
+---
+<Base lang={lang} title={copy.title} description={copy.description} alternates={ROUTES.home} jsonLd={jsonLd}>
+  <!-- Hero -->
+  <section class="container-site grid items-center gap-12 pt-12 sm:pt-20 lg:grid-cols-[1.25fr_1fr]">
+    <div>
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1 class="mt-4 text-5xl font-extrabold leading-[0.98] sm:text-7xl">
+        {SLOGAN[lang].split(',')[0]},<br /><span class="text-rust">{SLOGAN[lang].split(',')[1].trim()}</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-muted sm:text-xl">{copy.lead}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={whatsappUrl(lang)} target="_blank" rel="noopener" class="btn btn-primary"><Icon name="whatsapp" />{t.cta}</a>
+        <a href={ROUTES.projects[lang]} class="btn btn-ghost">{t.seeProjects}</a>
+      </div>
+      <p class="mt-5 text-sm font-medium text-muted">{copy.note}</p>
+    </div>
+
+    <figure class="rounded-[2rem] bg-ink p-6 text-paper shadow-2xl shadow-ink/20 sm:p-8" aria-label={copy.flowTitle}>
+      <figcaption class="font-display text-sm font-semibold uppercase tracking-[0.14em] text-glow">{copy.flowTitle}</figcaption>
+      <ol class="relative mt-6 space-y-5 before:absolute before:bottom-3 before:left-[11px] before:top-3 before:w-0.5 before:bg-amber/60">
+        {copy.flow.map(([step, time], i) => (
+          <li class="relative flex items-start gap-4">
+            <span class:list={['relative z-10 mt-0.5 h-6 w-6 shrink-0 rounded-full border-[3px] border-amber', i === copy.flow.length - 1 ? 'bg-amber' : 'bg-ink']} />
+            <div class="flex-1 rounded-2xl bg-ink-soft px-4 py-3">
+              <p class="font-medium">{step}</p>
+              <p class="mt-0.5 text-sm text-paper/70">{time}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </figure>
+  </section>
+
+  <!-- A quién ayudo -->
+  <section class="container-site mt-28" aria-labelledby="pains">
+    <p class="eyebrow">{copy.painsEyebrow}</p>
+    <h2 id="pains" class="mt-3 max-w-2xl text-3xl font-bold sm:text-5xl">{copy.painsTitle}</h2>
+    <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {copy.pains.map(([title, text]) => (
+        <li class="rounded-3xl bg-sand p-6">
+          <h3 class="text-xl font-bold">{title}</h3>
+          <p class="mt-2 text-muted">{text}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Casos -->
+  <section class="container-site mt-28" aria-labelledby="cases">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="eyebrow">{copy.casesEyebrow}</p>
+        <h2 id="cases" class="mt-3 text-3xl font-bold sm:text-5xl">{copy.casesTitle}</h2>
+      </div>
+      <a href={ROUTES.projects[lang]} class="inline-flex items-center gap-2 font-display font-semibold text-rust hover:underline">
+        {copy.casesAll}<Icon name="arrow" class="h-4 w-4" />
+      </a>
+    </div>
+    <div class="mt-10 grid gap-5 md:grid-cols-3">
+      {featured.map((p) => <ProjectCard project={p} />)}
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section class="container-site mt-28" aria-labelledby="steps">
+    <p class="eyebrow">{copy.stepsEyebrow}</p>
+    <h2 id="steps" class="mt-3 max-w-2xl text-3xl font-bold sm:text-5xl">{copy.stepsTitle}</h2>
+    <ol class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {copy.steps.map(([title, text], i) => (
+        <li class="card">
+          <span class="font-display text-5xl font-extrabold text-amber" aria-hidden="true">0{i + 1}</span>
+          <h3 class="mt-4 text-xl font-bold">{title}</h3>
+          <p class="mt-2 text-muted">{text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- Sobre mí -->
+  <section class="container-site mt-28 grid items-center gap-10 md:grid-cols-[minmax(0,320px)_1fr]" aria-labelledby="about">
+    <Image src={photo} alt={lang === 'es' ? 'Foto de Moisés Del Valle García' : 'Photo of Moisés Del Valle García'}
+      widths={[320, 640]} sizes="(min-width: 768px) 320px, 100vw"
+      class="aspect-square w-full max-w-[320px] rounded-[2rem] object-cover" />
+    <div>
+      <p class="eyebrow">{copy.aboutEyebrow}</p>
+      <h2 id="about" class="mt-3 text-3xl font-bold sm:text-5xl">{copy.aboutTitle}</h2>
+      <p class="mt-5 max-w-2xl text-lg text-muted">{copy.about}</p>
+      <a href={ROUTES.about[lang]} class="mt-6 inline-flex items-center gap-2 font-display font-semibold text-rust hover:underline">
+        {copy.aboutMore}<Icon name="arrow" class="h-4 w-4" />
+      </a>
+    </div>
+  </section>
+
+  <CtaBand lang={lang} title={copy.ctaTitle} text={copy.ctaText} />
+</Base>

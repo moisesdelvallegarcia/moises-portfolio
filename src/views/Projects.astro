@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { getProjects } from '../lib/content';
+import { ROUTES, type Lang } from '../lib/site';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const projects = await getProjects(lang);
+const copy = {
+  es: {
+    title: 'Proyectos de automatización con IA',
+    description: 'Casos reales de sistemas automatizados: operación de una constructora, portal para clientes, inventario con revendedores y más.',
+    eyebrow: 'Proyectos',
+    h1: 'Sistemas reales, trabajando todos los días',
+    intro: 'Cada caso cuenta el problema, lo que construí y cómo funciona. Algunos clientes prefieren no aparecer con su nombre, así que los describo por su industria.',
+    ctaTitle: '¿Tu negocio tiene un problema parecido?',
+    ctaText: 'Cuéntamelo por WhatsApp. Si se puede automatizar, te armo un demo gratis.',
+  },
+  en: {
+    title: 'AI Automation Projects',
+    description: 'Real automated systems: a contractor’s operations, a client portal, inventory with a reseller network and more.',
+    eyebrow: 'Projects',
+    h1: 'Real systems, working every day',
+    intro: 'Each case covers the problem, what I built and how it works. Some clients prefer not to be named, so I describe them by industry.',
+    ctaTitle: 'Does your business have a similar problem?',
+    ctaText: 'Tell me on WhatsApp. If it can be automated, I’ll build you a free demo.',
+  },
+}[lang];
+---
+<Base lang={lang} title={copy.title} description={copy.description} alternates={ROUTES.projects} current="projects" ogImage={`projects-${lang}`}>
+  <PageHeader eyebrow={copy.eyebrow} title={copy.h1} intro={copy.intro} />
+  <section class="container-site mt-12 grid gap-5 md:grid-cols-2">
+    {projects.map((p) => <ProjectCard project={p} headingLevel="h2" />)}
+  </section>
+  <CtaBand lang={lang} title={copy.ctaTitle} text={copy.ctaText} />
+</Base>

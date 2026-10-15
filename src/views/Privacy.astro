@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Pendiente from '../components/Pendiente.astro';
+import { ROUTES, SITE, type Lang } from '../lib/site';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const copy = {
+  es: {
+    title: 'Aviso de privacidad',
+    description: 'Cómo trato la información que me compartes al contactarme o al pedir un demo.',
+    h1: 'Aviso de privacidad',
+    review: 'REVISAR: confirmar con un abogado antes de publicar',
+    body: [
+      ['Responsable', `${SITE.name}, con domicilio en ${SITE.city}, México, es responsable del tratamiento de los datos personales que me compartas.`],
+      ['Qué datos uso', 'Tu nombre, teléfono, correo, el nombre de tu negocio y la información que decidas compartirme por WhatsApp o correo para entender tu proceso o construir un demo.'],
+      ['Para qué', 'Para responderte, preparar y entregar el demo, cotizar y dar seguimiento a nuestro trabajo. No vendo ni comparto tus datos con terceros con fines comerciales.'],
+      ['Información de tu negocio', 'Los ejemplos que me compartas para un demo (facturas, mensajes, archivos) se usan solo para ese fin y se borran si decides no continuar.'],
+      ['Tus derechos', `Puedes pedir acceso, corrección, cancelación u oposición al uso de tus datos (derechos ARCO) escribiendo a ${SITE.email}.`],
+      ['Este sitio', 'Este sitio no usa formularios ni cookies de publicidad. Los botones de WhatsApp te llevan a la aplicación de WhatsApp, que tiene su propia política de privacidad.'],
+    ],
+  },
+  en: {
+    title: 'Privacy notice',
+    description: 'How I handle the information you share when you contact me or request a demo.',
+    h1: 'Privacy notice',
+    review: 'REVIEW: have a lawyer confirm before publishing',
+    body: [
+      ['Who is responsible', `${SITE.name}, based in ${SITE.city}, Mexico, is responsible for the personal data you share with me.`],
+      ['What data I use', 'Your name, phone number, email, business name and any information you choose to share on WhatsApp or email so I can understand your process or build a demo.'],
+      ['Why', 'To reply to you, build and deliver the demo, prepare a quote and follow up on our work. I don’t sell or share your data with third parties for marketing.'],
+      ['Your business information', 'Examples you share for a demo (invoices, messages, files) are used only for that purpose and deleted if you decide not to continue.'],
+      ['Your rights', `You can request access to, correction or deletion of your data, or object to its use, by writing to ${SITE.email}.`],
+      ['This website', 'This site has no forms and no advertising cookies. WhatsApp buttons take you to the WhatsApp app, which has its own privacy policy.'],
+    ],
+  },
+}[lang];
+---
+<Base lang={lang} title={copy.title} description={copy.description} alternates={ROUTES.privacy}>
+  <PageHeader eyebrow={SITE.name} title={copy.h1}>
+    <p class="mt-4"><Pendiente label={copy.review} /></p>
+  </PageHeader>
+  <section class="container-site prose-site mt-10 max-w-3xl">
+    {copy.body.map(([h, p]) => (<><h2>{h}</h2><p>{p}</p></>))}
+  </section>
+</Base>

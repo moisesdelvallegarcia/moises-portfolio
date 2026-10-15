@@ -1,0 +1,70 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { alternatesFor, slugOf } from '../lib/content';
+import { ROUTES, SITE, UI } from '../lib/site';
+
+interface Props { project: CollectionEntry<'projects'>; }
+const { project } = Astro.props;
+const { lang } = project.data;
+const t = UI[lang];
+const { Content } = await render(project);
+const alternates = await alternatesFor(project);
+const copy = {
+  es: { ctaTitle: '¿Quieres algo así para tu negocio?', ctaText: `Te armo una versión sencilla, gratis, en ${SITE.demo.days} días.`, resultHint: 'RESULTADO: dato real medido (tiempo ahorrado, errores evitados, etc.)' },
+  en: { ctaTitle: 'Want something like this for your business?', ctaText: `I’ll build you a simple version, free, in ${SITE.demo.days} days.`, resultHint: 'RESULT: real measured outcome (time saved, errors avoided, etc.)' },
+}[lang];
+const crumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t.nav.projects, item: new URL(ROUTES.projects[lang], SITE.url).href },
+    { '@type': 'ListItem', position: 2, name: project.data.title },
+  ],
+};
+---
+<Base lang={lang} title={project.data.title} description={project.data.summary} alternates={alternates}
+  current="projects" ogImage={`project-${lang}-${slugOf(project)}`} jsonLd={[crumbs]}>
+  <article class="container-site max-w-4xl pt-12 sm:pt-16">
+    <a href={ROUTES.projects[lang]} class="inline-flex items-center gap-2 text-sm font-semibold text-rust hover:underline">
+      <Icon name="arrow" class="h-4 w-4 rotate-180" />{t.backToProjects}
+    </a>
+    <p class="eyebrow mt-8">{t.industry}: {project.data.industry}</p>
+    <h1 class="mt-3 text-4xl font-extrabold leading-[1.05] sm:text-6xl">{project.data.title}</h1>
+    <p class="mt-5 text-xl text-muted">{project.data.summary}</p>
+    <p class="mt-4 text-sm text-muted">{t.privateNote}</p>
+
+    <div class="mt-12 grid gap-5">
+      <section class="rounded-3xl bg-sand p-6 sm:p-8" aria-labelledby="problema">
+        <h2 id="problema" class="text-2xl font-bold">{t.problem}</h2>
+        <p class="mt-3 text-lg leading-relaxed">{project.data.problem}</p>
+      </section>
+      <section class="card" aria-labelledby="sistema">
+        <h2 id="sistema" class="text-2xl font-bold">{t.system}</h2>
+        <ul class="mt-4 space-y-3">
+          {project.data.system.map((s) => (
+            <li class="flex gap-3 text-lg leading-relaxed"><Icon name="check" class="mt-1.5 h-5 w-5 shrink-0 text-leaf" />{s}</li>
+          ))}
+        </ul>
+      </section>
+      <section class="rounded-3xl bg-ink p-6 text-paper sm:p-8" aria-labelledby="resultado">
+        <h2 id="resultado" class="text-2xl font-bold">{t.result}</h2>
+        {project.data.results.length > 0 ? (
+          <ul class="mt-4 space-y-2 text-lg">{project.data.results.map((r) => <li>{r}</li>)}</ul>
+        ) : (
+          <p class="mt-4"><span class="pendiente !border-glow !text-glow">✎ [{copy.resultHint}]</span></p>
+        )}
+      </section>
+    </div>
+
+    <div class="prose-site mt-10"><Content /></div>
+
+    <h2 class="mt-10 text-sm font-semibold uppercase tracking-[0.14em] text-muted">{t.stack}</h2>
+    <ul class="mt-3 flex flex-wrap gap-2">
+      {project.data.stack.map((s) => <li class="rounded-full bg-sand px-3 py-1 text-sm font-medium">{s}</li>)}
+    </ul>
+  </article>
+  <CtaBand lang={lang} title={copy.ctaTitle} text={copy.ctaText} />
+</Base>

@@ -1,0 +1,49 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { alternatesFor, extractFaq, faqJsonLd, postPath, slugOf } from '../lib/content';
+import { ROUTES, SITE, UI, formatDate } from '../lib/site';
+
+interface Props { post: CollectionEntry<'blog'>; }
+const { post } = Astro.props;
+const { lang } = post.data;
+const t = UI[lang];
+const { Content } = await render(post);
+const alternates = await alternatesFor(post);
+const faq = extractFaq(post.body ?? '');
+const url = new URL(postPath(post), SITE.url).href;
+const jsonLd: object[] = [{
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  inLanguage: lang === 'es' ? 'es-MX' : 'en-US',
+  keywords: post.data.keywords.join(', '),
+  url,
+  mainEntityOfPage: url,
+  image: `${SITE.url}/og/post-${lang}-${slugOf(post)}.png`,
+  author: { '@type': 'Person', '@id': `${SITE.url}/#person`, name: SITE.name, url: SITE.url },
+}];
+if (faq.length) jsonLd.push(faqJsonLd(faq));
+const copy = {
+  es: { ctaTitle: '¿Quieres probarlo en tu negocio?', ctaText: `Te armo una automatización sencilla, gratis, en ${SITE.demo.days} días.` },
+  en: { ctaTitle: 'Want to try this in your business?', ctaText: `I’ll build you a simple automation, free, in ${SITE.demo.days} days.` },
+}[lang];
+---
+<Base lang={lang} title={post.data.title} description={post.data.description} alternates={alternates}
+  current="blog" ogType="article" ogImage={`post-${lang}-${slugOf(post)}`} jsonLd={jsonLd}>
+  <article class="container-site max-w-3xl pt-12 sm:pt-16">
+    <a href={ROUTES.blog[lang]} class="inline-flex items-center gap-2 text-sm font-semibold text-rust hover:underline">
+      <Icon name="arrow" class="h-4 w-4 rotate-180" />{t.backToBlog}
+    </a>
+    <h1 class="mt-8 text-4xl font-extrabold leading-[1.08] sm:text-5xl">{post.data.title}</h1>
+    <p class="mt-5 text-muted">
+      {SITE.name} · {t.published} <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate, lang)}</time>
+    </p>
+    <div class="prose-site mt-10"><Content /></div>
+  </article>
+  <CtaBand lang={lang} title={copy.ctaTitle} text={copy.ctaText} />
+</Base>
