@@ -5,9 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   // Dirección pública del sitio: se usa en canonical, hreflang, sitemap y robots.
-  // Mientras no haya dominio propio es la dirección gratis de Cloudflare Pages;
-  // al comprar moisesdelvalle.com solo se cambia esta línea.
-  site: 'https://moisesdelvalle.pages.dev',
+  // Dominio propio (comprado en Cloudflare el 15-oct-2026, vence el 15-oct-2027).
+  site: 'https://moisesdelvalle.com',
   trailingSlash: 'always',
   i18n: {
     defaultLocale: 'es',
