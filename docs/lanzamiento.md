@@ -3,17 +3,17 @@
 Lo que Moisés hace fuera del código, en este orden.
 
 ## 1. Publicar gratis en Cloudflare Pages
-- [ ] Crear cuenta en dash.cloudflare.com/sign-up (gratis).
-- [ ] Workers & Pages → Create → pestaña **Pages** → **Connect to Git** → autorizar GitHub y elegir `moises-portfolio`.
-- [ ] Nombre del proyecto: **moisesdelvalle** (así la dirección queda `moisesdelvalle.pages.dev`; si cambia, actualizar `site` en `astro.config.mjs`).
-- [ ] Framework preset: **Astro** · Build command: `npm run build` · Build output directory: `dist`.
-- [ ] Production branch: `main`. Cada PR tiene su vista previa automática.
-- [ ] Cuando el sitio nuevo esté publicado: desactivar GitHub Pages (Settings → Pages) y borrar el proyecto de Vercel.
+- [x] Crear cuenta en dash.cloudflare.com/sign-up (gratis).
+- [x] Workers & Pages → Create → pestaña **Pages** → **Connect to Git** → autorizar GitHub y elegir `moises-portfolio`.
+- [x] Nombre del proyecto: **moisesdelvalle** (así la dirección queda `moisesdelvalle.pages.dev`; si cambia, actualizar `site` en `astro.config.mjs`).
+- [x] Framework preset: **Astro** · Build command: `npm run build` · Build output directory: `dist`.
+- [x] Production branch: `main`. Cada PR tiene su vista previa automática.
+- [x] Cuando el sitio nuevo esté publicado: desactivar GitHub Pages (Settings → Pages) y borrar el proyecto de Vercel.
 
 ## 2. Dominio (cuando se compre)
-- [ ] Cloudflare → Domain Registration → Register Domains → **moisesdelvalle.com** (alrededor de USD 10 al año, sin margen de reventa).
+- [x] Cloudflare → Domain Registration → Register Domains → **moisesdelvalle.com** (comprado el 15-oct-2026, USD 10.46; vence el 15-oct-2027 con renovación automática).
 - [ ] Workers & Pages → moisesdelvalle → Custom domains → agregar `moisesdelvalle.com` y `www.moisesdelvalle.com` (Cloudflare pone el DNS solo).
-- [ ] Cambiar `site` en `astro.config.mjs` a `https://moisesdelvalle.com` y publicar.
+- [x] Cambiar `site` en `astro.config.mjs` a `https://moisesdelvalle.com` y publicar.
 - [ ] Redirigir `moisesdelvalle.pages.dev` al dominio (Bulk Redirects en Cloudflare) para no tener dos copias en Google.
 
 ## 3. Google Search Console
