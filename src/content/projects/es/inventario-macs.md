@@ -12,7 +12,9 @@ system:
   - "Cada revendedor tiene su cuenta, con equipos comprados o a consignación y su comisión calculada sola."
   - "El dueño tiene un tablero con ventas, balance y cuentas por cobrar."
   - "Todo está pensado para usarse desde el celular, que es donde el negocio realmente trabaja."
-results: []
+results:
+  - "Demo funcionando, lista para presentarse desde el celular"
+  - "Inventario, revendedores y cuentas por cobrar en un solo lugar"
 stack: ["Next.js", "TypeScript", "Supabase (PostgreSQL)"]
 ---
 

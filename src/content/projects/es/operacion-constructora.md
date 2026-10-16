@@ -13,7 +13,11 @@ system:
   - "Cada pocos minutos el sistema trae las entregas de concreto, los trabajos y los calendarios de las otras plataformas y los junta en una sola base de datos."
   - "Cruza la información y avisa lo que nadie ve a simple vista: obra hecha sin facturar, factura con dirección equivocada, entregas sin trabajo asignado."
   - "Cada mañana manda por Telegram el plan del día y los pendientes."
-results: []
+results:
+  - "5 sistemas conectados en una sola base de datos"
+  - "7,859 conceptos de 1,793 trabajos sincronizados"
+  - "3,095 fotos de obra guardadas en un archivo privado"
+  - "Plan del día por Telegram a las 8:00, con máximo 3 pendientes"
 stack: ["Node.js", "Supabase (PostgreSQL)", "OpenAI", "Telegram", "Render"]
 ---
 

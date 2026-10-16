@@ -12,7 +12,9 @@ system:
   - "Sitio de una organización civil que acompaña a familias que viven con autismo en México."
   - "Contenido separado del diseño, para que cambiar un texto o una foto no requiera tocar código."
   - "Diseñados primero para el celular, con buena velocidad de carga y lo básico de SEO."
-results: []
+results:
+  - "2 sitios publicados y en uso"
+  - "Diseñados primero para celular y fáciles de actualizar"
 stack: ["React", "Vite", "Tailwind CSS", "HTML y CSS", "Vercel"]
 ---
 

@@ -13,7 +13,11 @@ system:
   - "Every few minutes the system pulls concrete deliveries, jobs and schedules from the other platforms into one database."
   - "It cross-checks everything and flags what nobody would catch by eye: work done but not invoiced, invoices with the wrong address, deliveries with no job attached."
   - "Every morning it sends the day's plan and open items on Telegram."
-results: []
+results:
+  - "5 systems connected in a single database"
+  - "7,859 line items from 1,793 jobs synced"
+  - "3,095 job-site photos stored in a private archive"
+  - "Daily plan on Telegram at 8:00 am, with 3 items max"
 stack: ["Node.js", "Supabase (PostgreSQL)", "OpenAI", "Telegram", "Render"]
 ---
 

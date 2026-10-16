@@ -12,7 +12,10 @@ system:
   - "La página muestra solo sus obras: qué se hizo, cuándo, qué está programado y qué está facturado."
   - "Los datos salen de la misma base que alimenta la operación, así que siempre están al día."
   - "Un permiso de solo lectura en la base de datos garantiza que cada cliente ve únicamente lo suyo."
-results: []
+results:
+  - "180 registros de obra visibles en vivo para el constructor"
+  - "Sin usuario ni contraseña: un enlace privado por cliente"
+  - "Los datos se actualizan solos desde la operación"
 stack: ["React", "Supabase (PostgreSQL)", "Vercel"]
 ---
 

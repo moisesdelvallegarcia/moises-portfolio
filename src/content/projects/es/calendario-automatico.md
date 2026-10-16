@@ -12,7 +12,9 @@ system:
   - "Lee el calendario mes por mes, de todos los desarrollos."
   - "Guarda las actividades en la base de datos y marca las que se movieron o desaparecieron."
   - "Cada cambio queda registrado con fecha, para poder consultar el historial."
-results: []
+results:
+  - "Revisa todos los desarrollos cada mañana, sin que nadie entre al portal"
+  - "Cada cambio de fecha queda guardado con su historial"
 stack: ["Python", "Supabase (PostgreSQL)", "Render"]
 ---
 

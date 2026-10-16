@@ -12,7 +12,10 @@ system:
   - "The page shows only their jobs: what's done, when, what's scheduled and what's been invoiced."
   - "The data comes from the same database that runs the operation, so it's always current."
   - "A read-only database role guarantees each client only sees their own work."
-results: []
+results:
+  - "180 job records visible live to the builder"
+  - "No username or password: one private link per client"
+  - "Data updates itself straight from operations"
 stack: ["React", "Supabase (PostgreSQL)", "Vercel"]
 ---
 
