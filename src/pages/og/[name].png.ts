@@ -21,7 +21,7 @@ const PAGES: Record<string, Record<Lang, [string, string]>> = {
   projects: { es: ['Proyectos', 'Sistemas reales, trabajando todos los días'], en: ['Projects', 'Real systems, working every day'] },
   services: { es: ['Servicios', 'Lo que puedo automatizar en tu negocio'], en: ['Services', 'What I can automate for your business'] },
   demo: { es: ['Demo gratis', 'Una automatización real para tu negocio, en 7 días'], en: ['Free demo', 'A real automation for your business, in 7 days'] },
-  about: { es: ['Sobre mí', 'Hola, soy Moisés'], en: ['About', 'Hi, I’m Moisés'] },
+  about: { es: ['Sobre mí', 'Hola, yo soy Moisés'], en: ['About', 'Hi, I’m Moisés'] },
   blog: { es: ['Blog', 'Ideas prácticas para que tu negocio trabaje solo'], en: ['Blog', 'Practical ideas to put your business on autopilot'] },
 };
 
