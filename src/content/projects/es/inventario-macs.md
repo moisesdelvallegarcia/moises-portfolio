@@ -19,3 +19,5 @@ stack: ["Next.js", "TypeScript", "Supabase (PostgreSQL)"]
 ---
 
 Empezó como demo para presentarse desde un teléfono, y la construí para que pueda crecer a producto real sin tener que reescribirla.
+
+Hoy este mismo sistema alimenta mi propia tienda: las Macs disponibles y sus precios salen de aquí y se actualizan solos cada vez que llega o se vende un equipo. [Mira las Macs que tengo en venta en Morelia →](/macs/)
