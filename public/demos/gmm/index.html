@@ -10,8 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0a1a33; --navy-2:#10284d; --blue:#1d5fb8; --sky:#5aa9ff;
-  --steel:#c9d3df; --paper:#f4f6f9; --ink:#14202f; --muted:#5b6b80; --line:#dde3ea;
+  /* martín pescador: lomo azul, turquesa del ala, pecho naranja */
+  --navy:#06263a; --navy-2:#0a3550; --blue:#0b6fae; --sky:#22c3e6;
+  --orange:#f2762e; --orange-2:#d9611c;
+  --steel:#c9d3df; --paper:#f2f7f9; --ink:#10202b; --muted:#56697a; --line:#d9e4ea;
   --wa:#1fa855;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -31,14 +33,14 @@ nav a{text-decoration:none;font-size:14px;opacity:.85;margin-left:22px}
 nav a:hover{opacity:1}
 .btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;text-decoration:none;font:600 15px Inter;padding:13px 20px;border-radius:8px;transition:transform .15s ease,background .15s ease}
 .btn:active{transform:scale(.97)}
-.btn-wa{background:var(--wa);color:#fff}
-.btn-wa:hover{background:#18934a}
+.btn-wa{background:var(--orange);color:#fff}
+.btn-wa:hover{background:var(--orange-2)}
 .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
 .btn-ghost:hover{background:rgba(255,255,255,.08)}
 nav .btn{margin-left:22px;padding:9px 14px;font-size:14px;opacity:1}
 
 /* hero */
-.hero{background:radial-gradient(1200px 600px at 85% 20%,#173a6e 0%,var(--navy) 60%);color:#fff;overflow:hidden}
+.hero{background:radial-gradient(1200px 600px at 85% 20%,#0d5a86 0%,var(--navy) 62%);color:#fff;overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:72px;padding-bottom:84px}
 .eyebrow{display:inline-block;font:600 12px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-bottom:18px}
 .hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800}
@@ -68,7 +70,7 @@ section{padding:88px 0}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;transition:transform .2s ease,box-shadow .2s ease}
 .card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(10,26,51,.1)}
-.card .pic{aspect-ratio:4/3;background:linear-gradient(160deg,#eef2f7,#d9e1eb);display:grid;place-items:center;position:relative}
+.card .pic{aspect-ratio:4/3;background:linear-gradient(160deg,#eef8fb,#d3e8f0);display:grid;place-items:center;position:relative}
 .card .pic svg{width:62%;height:auto}
 .card .pic em{position:absolute;bottom:8px;right:10px;font:500 11px Inter;font-style:normal;color:#8a99ad}
 .card .txt{padding:18px}
@@ -86,8 +88,8 @@ section{padding:88px 0}
 /* projects */
 .projects .wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .proj{border-radius:14px;padding:36px;color:#fff;min-height:250px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
-.proj.metro{background:linear-gradient(135deg,#e2560b,#b23d05)}
-.proj.mina{background:linear-gradient(135deg,#2b3644,#151c26)}
+.proj.metro{background:linear-gradient(135deg,var(--orange),#b9480f)}
+.proj.mina{background:linear-gradient(135deg,var(--blue),var(--navy))}
 .proj b{font:600 12px Inter;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
 .proj h3{font-size:28px;margin:8px 0}
 .proj p{opacity:.85;max-width:420px}
@@ -117,7 +119,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--sky);outline-off
 form .btn{justify-content:center}
 form small{color:var(--muted);font-size:12px;text-align:center}
 
-footer{background:#061224;color:#7f93ad;font-size:13px;padding:26px 0}
+footer{background:#041b29;color:#7d97a8;font-size:13px;padding:26px 0}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 .wa-float{position:fixed;right:18px;bottom:18px;z-index:30;width:56px;height:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25)}
@@ -170,7 +172,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
     <svg class="guard" viewBox="0 0 440 440" aria-hidden="true">
       <defs>
-        <linearGradient id="st" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef3f9"/><stop offset=".5" stop-color="#9fb0c4"/><stop offset="1" stop-color="#e3e9f1"/></linearGradient>
+        <linearGradient id="st" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9fbff"/><stop offset=".5" stop-color="#22c3e6"/><stop offset="1" stop-color="#d6f3fb"/></linearGradient>
       </defs>
       <circle cx="220" cy="220" r="214" fill="none" stroke="url(#st)" stroke-width="10"/>
       <g class="spin" fill="none" stroke="url(#st)" stroke-width="3.2">
@@ -183,8 +185,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <line x1="371" y1="69" x2="262" y2="178"/><line x1="178" y1="262" x2="69" y2="371"/>
         </g>
       </g>
-      <circle cx="220" cy="220" r="52" fill="#0d2242" stroke="url(#st)" stroke-width="6"/>
-      <circle cx="220" cy="220" r="10" fill="#9fb0c4"/>
+      <circle cx="220" cy="220" r="52" fill="#06263a" stroke="url(#st)" stroke-width="6"/>
+      <circle cx="220" cy="220" r="10" fill="#f2762e"/>
     </svg>
   </div>
 </section>
