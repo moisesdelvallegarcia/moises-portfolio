@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Maciel · Software Developer</title>
+<meta name="description" content="Maciel, desarrollador de software. Escribe código, resuelve bugs e invita al cine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07070b;--bg2:#0f0f17;--card:#14141f;--line:#26263a;
+  --ink:#f4f1ea;--mute:#9a97a8;--gold:#f5c542;--red:#e11d48;--cyan:#38e1ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:"JetBrains Mono",monospace}
+.disp{font-family:"Bebas Neue",sans-serif;letter-spacing:.02em;line-height:.9}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;backdrop-filter:blur(14px);background:rgba(7,7,11,.6);border-bottom:1px solid rgba(255,255,255,.06)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:"Bebas Neue";font-size:28px;letter-spacing:.06em}
+.logo b{color:var(--gold)}
+nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--mute)}
+nav ul a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;border:0;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#111;box-shadow:0 10px 30px -10px rgba(245,197,66,.6)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+nav .btn{padding:9px 16px;font-size:13px}
+
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto;height:120%;background:
+  radial-gradient(600px 400px at 75% 30%,rgba(225,29,72,.28),transparent 70%),
+  radial-gradient(500px 400px at 20% 70%,rgba(56,225,255,.14),transparent 70%);pointer-events:none}
+.beam{position:absolute;top:-10%;right:8%;width:520px;height:140%;background:linear-gradient(180deg,rgba(255,240,200,.16),transparent 70%);clip-path:polygon(45% 0,55% 0,100% 100%,0 100%);filter:blur(6px);animation:flick 4s infinite;pointer-events:none}
+@keyframes flick{0%,100%{opacity:.9}45%{opacity:.75}50%{opacity:.95}53%{opacity:.7}}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,197,66,.35);padding:7px 14px;border-radius:999px;margin-bottom:26px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 12px var(--red);animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.3}}
+h1{font-size:clamp(72px,12vw,168px)}
+h1 span{display:block;background:linear-gradient(90deg,var(--gold),#ffe9a8 40%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(18px,2vw,22px);color:#d6d3de;max-width:560px;margin:22px 0 34px}
+.sub em{color:var(--gold);font-style:normal}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+
+/* terminal */
+.term{background:#0b0b12;border:1px solid var(--line);border-radius:16px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.02);overflow:hidden;transform:rotate(1.5deg)}
+.term-bar{display:flex;gap:7px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.term-bar i{width:11px;height:11px;border-radius:50%;background:#333}
+.term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term pre{padding:20px;font:13.5px/1.75 "JetBrains Mono",monospace;color:#cfcbe0;white-space:pre-wrap;min-height:290px}
+.k{color:#ff79c6}.s{color:#f1fa8c}.c{color:#6c6a80}.f{color:var(--cyan)}.n{color:#bd93f9}
+.cursor{display:inline-block;width:8px;height:16px;background:var(--gold);vertical-align:-3px;animation:pulse 1s infinite}
+
+/* marquee */
+.marq{border-block:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:18px 0}
+.marq div{display:flex;gap:48px;width:max-content;animation:roll 30s linear infinite;font-family:"Bebas Neue";font-size:30px;color:var(--mute);letter-spacing:.05em}
+.marq b{color:var(--gold);font-weight:400}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+section{padding:110px 0}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:14px}
+h2{font-family:"Bebas Neue";font-size:clamp(48px,7vw,84px);line-height:.95;margin-bottom:18px}
+.lead{color:var(--mute);max-width:620px;font-size:18px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:50px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 24px;position:relative;overflow:hidden}
+.stat .v{font-family:"Bebas Neue";font-size:64px;line-height:1;color:var(--gold)}
+.stat .l{color:var(--mute);font-size:14px;margin-top:6px}
+.stat.hot{background:linear-gradient(160deg,#2a0b16,var(--card));border-color:rgba(225,29,72,.4)}
+.stat.hot .v{color:#ff4d79}
+
+/* cartelera */
+.posters{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.poster{position:relative;aspect-ratio:2/3;border-radius:16px;overflow:hidden;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid rgba(255,255,255,.08);transition:transform .35s}
+.poster:hover{transform:translateY(-8px) rotate(-.6deg)}
+.poster::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.85));z-index:0}
+.poster>*{position:relative;z-index:1}
+.p1{background:radial-gradient(circle at 30% 20%,#3b82f6,#0b1a3d 70%)}
+.p2{background:radial-gradient(circle at 70% 25%,#e11d48,#2a0611 70%)}
+.p3{background:radial-gradient(circle at 50% 20%,#10b981,#04231a 70%)}
+.poster .big{position:absolute;top:22px;left:24px;right:24px;font-family:"JetBrains Mono";font-size:56px;font-weight:600;opacity:.9}
+.rating{display:inline-block;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.5);padding:2px 7px;border-radius:4px;margin-bottom:12px;width:max-content}
+.poster h3{font-family:"Bebas Neue";font-size:42px;line-height:.95;margin-bottom:8px}
+.poster p{font-size:14px;color:#d8d5e2}
+.poster .gen{font-size:12px;color:var(--gold);margin-top:10px;letter-spacing:.1em;text-transform:uppercase}
+
+/* stack */
+.stack{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.chip{padding:11px 18px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-family:"JetBrains Mono"}
+.chip.y{border-color:rgba(245,197,66,.5);color:var(--gold)}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px}
+.stars{color:var(--gold);letter-spacing:3px;margin-bottom:14px}
+.rev q{display:block;font-size:18px;line-height:1.5;quotes:"“" "”"}
+.rev .who{margin-top:18px;font-size:13px;color:var(--mute)}
+.rev .who b{color:var(--ink);display:block;font-size:14px}
+
+/* ticket */
+.ticket-sec{text-align:center}
+.ticket{margin:50px auto 0;max-width:720px;display:grid;grid-template-columns:1fr 200px;background:linear-gradient(120deg,#f5c542,#ffdf7e);color:#16130a;border-radius:20px;position:relative;text-align:left;box-shadow:0 30px 70px -25px rgba(245,197,66,.55);transform:rotate(-2deg);transition:transform .4s}
+.ticket:hover{transform:rotate(0) scale(1.02)}
+.ticket::before,.ticket::after{content:"";position:absolute;left:calc(100% - 200px);width:34px;height:34px;border-radius:50%;background:var(--bg);transform:translateX(-50%)}
+.ticket::before{top:-17px}.ticket::after{bottom:-17px}
+.t-main{padding:32px 34px;border-right:2px dashed rgba(0,0,0,.25)}
+.t-main small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;opacity:.65}
+.t-main h3{font-family:"Bebas Neue";font-size:46px;line-height:1;margin:6px 0 16px}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:13px}
+.t-grid b{display:block;font-size:17px}
+.t-stub{padding:28px 20px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px}
+.t-stub .price{font-family:"Bebas Neue";font-size:58px;line-height:1}
+.t-stub .strike{text-decoration:line-through;opacity:.5;font-size:14px}
+.barcode{height:44px;width:140px;background:repeating-linear-gradient(90deg,#16130a 0 2px,transparent 2px 4px,#16130a 4px 7px,transparent 7px 9px);margin-top:8px}
+#buy{margin-top:40px}
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,40px);opacity:0;visibility:hidden;background:#fff;color:#111;padding:16px 22px;border-radius:14px;font-weight:600;box-shadow:0 20px 50px rgba(0,0,0,.5);transition:transform .45s cubic-bezier(.2,.9,.3,1.3),opacity .3s,visibility .3s;z-index:99;max-width:calc(100% - 32px);text-align:center}
+.toast.on{transform:translate(-50%,0);opacity:1;visibility:visible}
+
+/* contact */
+.contact{background:linear-gradient(180deg,var(--bg),#12060b);text-align:center}
+.contact h2{font-size:clamp(56px,9vw,120px)}
+
+/* credits */
+footer{padding:60px 0 50px;border-top:1px solid var(--line);color:var(--mute);font-size:13px;text-align:center}
+.credits{font-family:"JetBrains Mono";font-size:12px;line-height:2.1;margin-bottom:24px}
+.credits b{color:var(--ink);font-weight:600}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+.pop{position:fixed;font-size:26px;pointer-events:none;z-index:98;animation:fall 1.6s ease-in forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.8}}
+
+@media (max-width:900px){
+  nav ul{display:none}
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
+  .term{transform:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .posters,.reviews{grid-template-columns:1fr}
+  .poster{aspect-ratio:4/5}
+}
+@media (max-width:560px){
+  .ticket{grid-template-columns:1fr;transform:none}
+  .ticket::before,.ticket::after{display:none}
+  .t-main{border-right:0;border-bottom:2px dashed rgba(0,0,0,.25);padding:26px 22px}
+  .t-grid{grid-template-columns:1fr 1fr}
+  .stat .v{font-size:48px}
+  section{padding:80px 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a href="#" class="logo">MACIEL<b>.</b>DEV</a>
+  <ul><li><a href="#sobre">Sobre mí</a></li><li><a href="#proyectos">Cartelera</a></li><li><a href="#criticas">Críticas</a></li><li><a href="#boleto">Boletos</a></li></ul>
+  <a href="#contacto" class="btn btn-gold">Contrátalo</a>
+</div></nav>
+
+<header class="hero">
+  <div class="beam"></div>
+  <div class="wrap">
+    <div>
+      <div class="tag"><span class="dot"></span> Ahora en cartelera</div>
+      <h1 class="disp">Maciel<span>Software Dev</span></h1>
+      <p class="sub">Escribe código limpio, resuelve bugs a la primera y, según fuentes confiables, <em>nunca le ha cobrado un boleto a un amigo.</em></p>
+      <div class="ctas">
+        <a href="#proyectos" class="btn btn-gold">▶ Ver el tráiler</a>
+        <a href="#boleto" class="btn btn-ghost">🎟 Apartar mi boleto</a>
+      </div>
+    </div>
+    <div class="term" aria-label="Código de ejemplo">
+      <div class="term-bar"><i></i><i></i><i></i></div>
+      <pre id="code"></pre>
+    </div>
+  </div>
+</header>
+
+<div class="marq" aria-hidden="true"><div id="marq"></div></div>
+
+<section id="sobre" class="reveal"><div class="wrap">
+  <div class="eyebrow">Sinopsis</div>
+  <h2>Un desarrollador.<br>Una misión.<br>Cero cobros.</h2>
+  <p class="lead">Maciel construye software de día y de noche. Domina el frontend, el backend y el arte de conseguir buenos lugares en la sala. Sus amigos lo describen como “el único deploy que nunca falla”.</p>
+  <div class="stats">
+    <div class="stat"><div class="v" data-n="12480">0</div><div class="l">Commits</div></div>
+    <div class="stat"><div class="v" data-n="3127">0</div><div class="l">Bugs resueltos</div></div>
+    <div class="stat"><div class="v">∞</div><div class="l">Palomitas compartidas</div></div>
+    <div class="stat hot"><div class="v">$0</div><div class="l">Lo que le ha cobrado a Moi</div></div>
+  </div>
+</div></section>
+
+<section id="proyectos" class="reveal" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow">Cartelera</div>
+  <h2>Proyectos destacados</h2>
+  <p class="lead">Tres estrenos que la crítica no ha podido dejar de comentar.</p>
+  <div class="posters">
+    <article class="poster p1"><div class="big">{ }</div><span class="rating">A</span><h3>El Señor de los Endpoints</h3><p>Una API tan rápida que responde antes de que le preguntes.</p><div class="gen">Backend · Épica · 99.99% uptime</div></article>
+    <article class="poster p2"><div class="big">404</div><span class="rating">B15</span><h3>Bug: La Venganza</h3><p>Viernes 6 pm, producción en llamas. Solo un hombre lo puede arreglar.</p><div class="gen">Suspenso · Basada en hechos reales</div></article>
+    <article class="poster p3"><div class="big">&lt;/&gt;</div><span class="rating">AA</span><h3>Rápido y Refactorizado</h3><p>Código heredado de 2014. Sin documentación. Sin miedo.</p><div class="gen">Acción · Clean code</div></article>
+  </div>
+</div></section>
+
+<section class="reveal"><div class="wrap">
+  <div class="eyebrow">Reparto técnico</div>
+  <h2>Su stack</h2>
+  <div class="stack">
+    <span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">SQL</span><span class="chip">APIs REST</span><span class="chip">Git</span><span class="chip">Cloud</span>
+    <span class="chip y">Elegir butacas centrales</span><span class="chip y">Combo grande sin culpa</span><span class="chip y">Spoilers: nunca</span>
+  </div>
+</div></section>
+
+<section id="criticas" class="reveal" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow">Lo que dice la crítica</div>
+  <h2>Cinco estrellas</h2>
+  <div class="reviews">
+    <div class="rev"><div class="stars">★★★★★</div><q>Lo he invitado a mis peores películas y aun así me sigue invitando a las suyas.</q><div class="who"><b>Moi</b>Amigo y crítico profesional de palomitas</div></div>
+    <div class="rev"><div class="stars">★★★★★</div><q>Su código compila a la primera. Es inquietante.</q><div class="who"><b>Un compilador</b>Testigo anónimo</div></div>
+    <div class="rev"><div class="stars">★★★★★</div><q>Lo mandamos a producción en viernes y no pasó nada. Leyenda.</q><div class="who"><b>Su equipo</b>Todavía no lo creen</div></div>
+  </div>
+</div></section>
+
+<section id="boleto" class="ticket-sec reveal"><div class="wrap">
+  <div class="eyebrow">Taquilla</div>
+  <h2>Tu boleto para conocerlo</h2>
+  <p class="lead" style="margin:0 auto">Función exclusiva. Cupo limitado a sus amigos.</p>
+  <div class="ticket">
+    <div class="t-main">
+      <small>Admite uno · Función de estreno</small>
+      <h3>Maciel: El Desarrollador</h3>
+      <div class="t-grid">
+        <div>Sala<b>VIP 1</b></div><div>Asiento<b>F-12</b></div><div>Hora<b>Siempre</b></div>
+      </div>
+    </div>
+    <div class="t-stub">
+      <span class="strike">$180.00</span>
+      <span class="price">$0</span>
+      <small style="font-weight:700">Invita Maciel</small>
+      <div class="barcode"></div>
+    </div>
+  </div>
+  <button id="buy" class="btn btn-gold">🍿 Comprar boleto</button>
+</div></section>
+
+<section id="contacto" class="contact reveal"><div class="wrap">
+  <div class="eyebrow">Próximamente</div>
+  <h2 class="disp">¿Tienes un proyecto?</h2>
+  <p class="lead" style="margin:0 auto 34px">Maciel está disponible para buenos proyectos, buenas ideas y buenas películas.</p>
+  <a href="#" class="btn btn-gold" id="hire">Hablar con Maciel</a>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="credits">
+    Dirigida por <b>Maciel</b> · Producida por <b>Mucho café</b> · Guion de <b>Stack Overflow</b><br>
+    Efectos especiales: <b>CSS</b> · Catering: <b>Palomitas que nadie pagó</b><br>
+    Con la participación especial de <b>Moi</b>, que hizo esta página como pago simbólico
+  </div>
+  Ninguna computadora fue dañada en la producción de esta página. © 2026
+</div></footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// typing terminal
+const lines=[
+ '<span class="c">// maciel.config.js</span>',
+ '<span class="k">const</span> <span class="f">maciel</span> = {',
+ '  rol: <span class="s">"Software Developer"</span>,',
+ '  cafe: <span class="n">Infinity</span>,',
+ '  bugs: <span class="s">"resueltos"</span>,',
+ '  amigos: [<span class="s">"Moi"</span>, <span class="s">"..."</span>],',
+ '};',
+ '',
+ '<span class="k">function</span> <span class="f">cobrarleAMoi</span>() {',
+ '  <span class="k">return</span> <span class="n">0</span>; <span class="c">// siempre</span>',
+ '}'
+];
+const pre=document.getElementById('code');let i=0;
+function tick(){if(i>lines.length)return;pre.innerHTML=lines.slice(0,i).join('\n')+'<span class="cursor"></span>';i++;setTimeout(tick,i<3?400:260)}
+tick();
+
+// marquee
+const words=['Clean Code','<b>★</b>','Full Stack','<b>★</b>','Cero Bugs','<b>★</b>','Butaca Central','<b>★</b>','Deploy en Viernes','<b>★</b>','Palomitas Gratis','<b>★</b>'];
+document.getElementById('marq').innerHTML=words.concat(words).map(w=>'<span>'+w+'</span>').join('');
+
+// reveal + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');
+  e.target.querySelectorAll('[data-n]').forEach(el=>{const n=+el.dataset.n,t0=performance.now();
+    (function step(t){const p=Math.min(1,(t-t0)/1400);el.textContent=Math.round(n*(1-Math.pow(1-p,3))).toLocaleString('es-MX');if(p<1)requestAnimationFrame(step)})(t0)});
+  io.unobserve(e.target)}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// toast + popcorn
+const toast=document.getElementById('toast');let tt;
+function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('on'),3200)}
+function popcorn(){for(let k=0;k<28;k++){const s=document.createElement('span');s.className='pop';s.textContent=k%5?'🍿':'🎟';
+  s.style.left=Math.random()*100+'vw';s.style.top='-40px';s.style.animationDelay=Math.random()*.6+'s';s.style.animationDuration=1.2+Math.random()*1.2+'s';
+  document.body.appendChild(s);setTimeout(()=>s.remove(),3200)}}
+const msgs=['Total: $0.00. Invita Maciel 🎬','Error 402: Maciel se niega a cobrarte','Tu boleto ya estaba pagado. Siempre lo estuvo.','Procesando pago... jaja no, es gratis'];let mi=0;
+document.getElementById('buy').onclick=()=>{popcorn();say(msgs[mi++%msgs.length])};
+document.getElementById('hire').onclick=e=>{e.preventDefault();say('Pídele su contacto a Moi 😉')};
+</script>
+</body>
+</html>
