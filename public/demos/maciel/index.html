@@ -129,6 +129,13 @@ h2{font-family:"Bebas Neue";font-size:clamp(48px,7vw,84px);line-height:.95;margi
 
 /* contact */
 /* buzón */
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.paso{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.paso .num{flex:none;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#111;font-family:"Bebas Neue";font-size:24px;display:grid;place-items:center}
+.paso b{display:block;margin-bottom:2px}
+.paso span{color:var(--mute);font-size:14px}
+@media (max-width:900px){.pasos{grid-template-columns:1fr}}
+
 .buzon{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:46px;align-items:start}
 .form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px}
 .form label{display:block;font-size:13px;color:var(--mute);margin:0 0 7px}
@@ -279,6 +286,11 @@ footer{padding:60px 0 50px;border-top:1px solid var(--line);color:var(--mute);fo
   <div class="eyebrow">Buzón de los cuates</div>
   <h2>¿Le sacó boletos?<br>Agrégale algo a su página</h2>
   <p class="lead">Si Maciel te ha invitado al cine, tienes derecho a pedir un cambio: una broma, una sección, un botón que haga algo absurdo. Se va construyendo con lo que manden sus cuates.</p>
+  <div class="pasos">
+    <div class="paso"><div class="num">1</div><div><b>Pides</b><span>Escribe tu nombre y lo que se te ocurra agregarle.</span></div></div>
+    <div class="paso"><div class="num">2</div><div><b>Lo revisamos</b><span>Antes de que se vea, se revisa que esté chido y no se pase de lanza.</span></div></div>
+    <div class="paso"><div class="num">3</div><div><b>Aparece aquí</b><span>Se construye y queda en la página con tu nombre en la lista.</span></div></div>
+  </div>
   <div class="buzon">
     <form class="form" id="fbuzon" autocomplete="off">
       <label for="bnom">¿Quién eres?</label>
@@ -374,7 +386,7 @@ document.getElementById('fbuzon').onsubmit=async e=>{e.preventDefault();
   const b=document.getElementById('bsend');b.disabled=true;
   try{const r=await fetch(TOPIC,{method:'POST',headers:{Title:'Buzon Maciel: '+autor.replace(/[^\x20-\x7E]/g,'')},body:JSON.stringify({autor,texto})});
     if(!r.ok)throw 0;try{localStorage.setItem('buzon_ult',Date.now())}catch(_){}
-    pedidos.push({autor,texto,estado:'nuevo',fecha:'ahorita'});pintar(pedidos);e.target.reset();popcorn();say('¡Llegó al buzón! Pronto aparece en la página 🎬')}
+    pedidos.push({autor,texto,estado:'nuevo',fecha:'ahorita'});pintar(pedidos);e.target.reset();popcorn();say('¡Llegó al buzón! Lo revisamos y pronto aparece 🎬')}
   catch(_){say('No se pudo mandar, intenta otra vez')}
   b.disabled=false};
 </script>
