@@ -128,6 +128,28 @@ h2{font-family:"Bebas Neue";font-size:clamp(48px,7vw,84px);line-height:.95;margi
 .toast.on{transform:translate(-50%,0);opacity:1;visibility:visible}
 
 /* contact */
+/* buzón */
+.buzon{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:46px;align-items:start}
+.form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px}
+.form label{display:block;font-size:13px;color:var(--mute);margin:0 0 7px}
+.form input,.form textarea{width:100%;background:#0b0b12;border:1px solid var(--line);border-radius:12px;color:var(--ink);font:inherit;padding:13px 14px;margin-bottom:18px;outline:none;transition:border-color .2s}
+.form input:focus,.form textarea:focus{border-color:var(--gold)}
+.form textarea{min-height:130px;resize:vertical}
+.form .hp{position:absolute;left:-9999px}
+.form .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.form small{color:var(--mute);font-size:12px}
+.feed{display:flex;flex-direction:column;gap:12px}
+.ped{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.ped .top{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--mute);margin-bottom:6px}
+.ped .top b{color:var(--ink)}
+.est{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.est.nuevo{background:rgba(56,225,255,.12);color:var(--cyan)}
+.est.en_proceso{background:rgba(245,197,66,.14);color:var(--gold)}
+.est.listo{background:rgba(40,200,72,.14);color:#4ade80}
+.est.descartado{background:rgba(255,255,255,.07);color:var(--mute)}
+.ped .resp{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:14px;color:#d6d3de}
+.empty{color:var(--mute);font-size:15px;border:1px dashed var(--line);border-radius:16px;padding:26px;text-align:center}
+@media (max-width:900px){.buzon{grid-template-columns:1fr}}
 .contact{background:linear-gradient(180deg,var(--bg),#12060b);text-align:center}
 .contact h2{font-size:clamp(56px,9vw,120px)}
 
@@ -164,7 +186,7 @@ footer{padding:60px 0 50px;border-top:1px solid var(--line);color:var(--mute);fo
 
 <nav><div class="wrap">
   <a href="#" class="logo">MACIEL<b>.</b>DEV</a>
-  <ul><li><a href="#sobre">Sobre mí</a></li><li><a href="#proyectos">Cartelera</a></li><li><a href="#criticas">Críticas</a></li><li><a href="#boleto">Boletos</a></li></ul>
+  <ul><li><a href="#sobre">Sobre mí</a></li><li><a href="#proyectos">Cartelera</a></li><li><a href="#criticas">Críticas</a></li><li><a href="#boleto">Boletos</a></li><li><a href="#buzon">Buzón</a></li></ul>
   <a href="#contacto" class="btn btn-gold">Contrátalo</a>
 </div></nav>
 
@@ -253,6 +275,28 @@ footer{padding:60px 0 50px;border-top:1px solid var(--line);color:var(--mute);fo
   <button id="buy" class="btn btn-gold">🍿 Comprar boleto</button>
 </div></section>
 
+<section id="buzon" class="reveal" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow">Buzón de los cuates</div>
+  <h2>¿Le sacó boletos?<br>Agrégale algo a su página</h2>
+  <p class="lead">Si Maciel te ha invitado al cine, tienes derecho a pedir un cambio: una broma, una sección, un botón que haga algo absurdo. Se va construyendo con lo que manden sus cuates.</p>
+  <div class="buzon">
+    <form class="form" id="fbuzon" autocomplete="off">
+      <label for="bnom">¿Quién eres?</label>
+      <input id="bnom" maxlength="40" required placeholder="Tu nombre o apodo">
+      <label for="btxt">¿Qué le agregamos?</label>
+      <textarea id="btxt" maxlength="600" required placeholder="Ej. que al pasar el mouse por su foto suene un 'shhh' de sala de cine"></textarea>
+      <input class="hp" id="bweb" tabindex="-1" aria-hidden="true">
+      <div class="row">
+        <small>Sin datos personales; lo que pidas se ve aquí.</small>
+        <button class="btn btn-gold" id="bsend" type="submit">📮 Mandar al buzón</button>
+      </div>
+    </form>
+    <div>
+      <div class="feed" id="feed"><div class="empty">Todavía nadie pide nada. Sé el primero.</div></div>
+    </div>
+  </div>
+</div></section>
+
 <section id="contacto" class="contact reveal"><div class="wrap">
   <div class="eyebrow">Próximamente</div>
   <h2 class="disp">¿Tienes un proyecto?</h2>
@@ -310,6 +354,29 @@ function popcorn(){for(let k=0;k<28;k++){const s=document.createElement('span');
 const msgs=['Total: $0.00. Invita Maciel 🎬','Error 402: Maciel se niega a cobrarte','Tu boleto ya estaba pagado. Siempre lo estuvo.','Procesando pago... jaja no, es gratis'];let mi=0;
 document.getElementById('buy').onclick=()=>{popcorn();say(msgs[mi++%msgs.length])};
 document.getElementById('hire').onclick=e=>{e.preventDefault();say('Pídele su contacto a Moi 😉')};
+
+// buzón: los pedidos llegan por ntfy; lo hecho vive en buzon.json
+const TOPIC='https://ntfy.sh/maciel-buzon-f233a4b2f3';
+const ESTADOS={nuevo:'Nuevo',en_proceso:'En proceso',listo:'Listo',descartado:'No se hará'};
+function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function pintar(lista){const f=document.getElementById('feed');if(!lista.length)return;f.innerHTML='';
+  lista.slice().reverse().forEach(p=>{const d=el('div','ped'),top=el('div','top'),w=el('span');w.append(el('b',null,p.autor),' · '+(p.fecha||''));
+    top.append(w,el('span','est '+p.estado,ESTADOS[p.estado]||p.estado));d.append(top,el('div',null,p.texto));
+    if(p.respuesta)d.append(el('div','resp','↳ '+p.respuesta));f.append(d)})}
+let pedidos=[];
+fetch('buzon.json?'+Date.now()).then(r=>r.ok?r.json():[]).then(l=>{pedidos=l;pintar(pedidos)}).catch(()=>{});
+document.getElementById('fbuzon').onsubmit=async e=>{e.preventDefault();
+  if(document.getElementById('bweb').value)return;
+  const autor=document.getElementById('bnom').value.trim(),texto=document.getElementById('btxt').value.trim();
+  if(!autor||!texto)return;
+  let ult=0;try{ult=+localStorage.getItem('buzon_ult')||0}catch(_){}
+  if(Date.now()-ult<60000){say('Tranquilo, uno por minuto 🍿');return}
+  const b=document.getElementById('bsend');b.disabled=true;
+  try{const r=await fetch(TOPIC,{method:'POST',headers:{Title:'Buzon Maciel: '+autor.replace(/[^\x20-\x7E]/g,'')},body:JSON.stringify({autor,texto})});
+    if(!r.ok)throw 0;try{localStorage.setItem('buzon_ult',Date.now())}catch(_){}
+    pedidos.push({autor,texto,estado:'nuevo',fecha:'ahorita'});pintar(pedidos);e.target.reset();popcorn();say('¡Llegó al buzón! Pronto aparece en la página 🎬')}
+  catch(_){say('No se pudo mandar, intenta otra vez')}
+  b.disabled=false};
 </script>
 </body>
 </html>
