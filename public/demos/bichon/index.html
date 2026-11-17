@@ -32,6 +32,10 @@ section{padding:80px 0}
 .btn-line:hover{background:var(--white)}
 .btn-wa{background:var(--wa);color:#fff}
 svg.i{width:20px;height:20px;flex:none}
+.cupon{display:flex;align-items:center;gap:14px;background:var(--mint);border:2px dashed var(--teal);border-radius:16px;padding:12px 16px}
+.cupon b{font:700 28px "Fredoka";color:var(--teal);flex:none}
+.cupon span{font-size:14px;color:var(--muted)}
+.cupon strong{display:block;color:var(--ink);font-size:15px}
 
 /* nav */
 header{position:sticky;top:0;z-index:30;background:rgba(255,250,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
@@ -171,7 +175,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <p class="lead">Consulta veterinaria, estética canina y tienda en la colonia Cosmos, Morelia. Trato honesto y precios accesibles.</p>
       <div class="cta">
         <a class="btn btn-coral" href="#cita">Agendar cita</a>
-        <a class="btn btn-line" href="tel:4433162073">Llamar 443 316 2073</a>
+        <a class="btn btn-line" href="tel:4433162073" data-ev="tel">Llamar 443 316 2073</a>
       </div>
       <div class="stars"><b>4.7</b><span style="color:#f5a623;font-size:18px;letter-spacing:2px">★★★★★</span><span>1,075 opiniones en Google</span></div>
     </div>
@@ -244,6 +248,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       </div>
     </div>
     <form id="f">
+      <div class="cupon"><b>10%</b><span><strong>En tu primera consulta</strong>Agenda desde aquí y te llega un cupón en el mensaje.</span></div>
       <div class="row">
         <label>Tu nombre<input name="dueno" required placeholder="Ej. Andrea"></label>
         <label>Nombre de tu mascota<input name="mascota" required placeholder="Ej. Copito"></label>
@@ -285,7 +290,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <div class="place">
       <div class="box"><span>Dirección</span><b>Asteroides 80, col. Cosmos</b>58050 Morelia, Mich.</div>
       <div class="box"><span>Teléfono</span><b>443 316 2073</b></div>
-      <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Veterinaria+Bichon+Frise+Asteroides+80+Morelia" target="_blank" rel="noopener">Cómo llegar</a>
+      <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Veterinaria+Bichon+Frise+Asteroides+80+Morelia" target="_blank" rel="noopener" data-ev="mapa">Cómo llegar</a>
     </div>
   </div>
 </section>
@@ -323,10 +328,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   </div>
 </footer>
 
-<a class="float" href="https://wa.me/524433162073" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l.9-1.1c.2-.3.5-.3.7-.2l2.2 1c.3.2.5.3.6.4.1.2.1.8-.1 1.5z"/></svg></a>
+<a class="float" href="https://wa.me/524433162073" target="_blank" rel="noopener" aria-label="WhatsApp" data-ev="wa"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l.9-1.1c.2-.3.5-.3.7-.2l2.2 1c.3.2.5.3.6.4.1.2.1.8-.1 1.5z"/></svg></a>
 
 <script>
 const WA='524433162073';
+// medición: cuántos visitan, tocan WhatsApp, llaman, piden cómo llegar y mandan cita
+const API='https://demos-stats.transcriptor.workers.dev',SITIO='bichon';
+function enviar(ruta,datos){
+  try{const b=new Blob([JSON.stringify(datos)],{type:'text/plain'});
+    if(!navigator.sendBeacon(API+ruta,b))fetch(API+ruta,{method:'POST',body:b,keepalive:true}).catch(()=>{});}catch(e){}
+}
+enviar('/e',{s:SITIO,e:'visita'});
+document.querySelectorAll('[data-ev]').forEach(a=>a.addEventListener('click',()=>enviar('/e',{s:SITIO,e:a.dataset.ev})));
 // abierto/cerrado con la hora de Morelia
 (function(){
   const now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Mexico_City'}));
@@ -344,6 +357,9 @@ document.getElementById('f').addEventListener('submit',e=>{
   const dia=v.dia?new Date(v.dia+'T12:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'}):'';
   let t=`Hola, soy ${v.dueno}. Quiero agendar ${v.servicio.toLowerCase()} para ${v.mascota} (${v.tipo.toLowerCase()}) el ${dia}.`;
   if(v.nota)t+=` ${v.nota}`;
+  const c='BF-'+String(Math.floor(1000+Math.random()*9000));
+  t+=` Vengo de la página, mi cupón es ${c} (10% en la primera consulta).`;
+  enviar('/cupon',{s:SITIO,c,servicio:v.servicio,dia:v.dia});
   location.href='https://wa.me/'+WA+'?text='+encodeURIComponent(t);
 });
 </script>

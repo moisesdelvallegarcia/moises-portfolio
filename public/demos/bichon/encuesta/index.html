@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>¿Cómo te fue? · Veterinaria Bichon Frise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fffaf4;--white:#fff;--coral:#f2735b;--coral-2:#d95a42;--mint:#dff3ec;--teal:#1f7a6a;--ink:#24323a;--muted:#647079;--line:#efe5d8;--sun:#f5a623}
+[hidden]{display:none!important}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Nunito",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;min-height:100vh;display:grid;place-items:center;padding:32px max(16px,env(safe-area-inset-right,0px)) 32px max(16px,env(safe-area-inset-left,0px))}
+h1{font:600 30px/1.15 "Fredoka",system-ui,sans-serif;text-wrap:balance}
+button,input,textarea{font:inherit;color:inherit}
+.card{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:28px;max-width:480px;width:100%;display:grid;gap:22px;box-shadow:0 18px 40px rgba(36,50,58,.07)}
+.top{display:grid;gap:6px}
+.top p{color:var(--muted)}
+.code{justify-self:start;background:var(--mint);color:var(--teal);font-weight:800;border-radius:999px;padding:2px 12px;font-size:13px;letter-spacing:.06em}
+fieldset{border:0;display:grid;gap:10px}
+legend{font-weight:800;margin-bottom:10px}
+.opts{display:flex;gap:10px}
+.opts label{flex:1;text-align:center;border:1.5px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;background:var(--cream);font-weight:700}
+.opts input{position:absolute;opacity:0}
+.opts label:has(input:checked){border-color:var(--coral);background:#fff0ec}
+.stars{display:flex;gap:6px;flex-direction:row-reverse;justify-content:flex-end}
+.stars input{position:absolute;opacity:0}
+.stars label{font-size:38px;line-height:1;color:var(--line);cursor:pointer}
+.stars label:hover,.stars label:hover~label,.stars input:checked~label{color:var(--sun)}
+textarea{border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--cream);width:100%}
+textarea:focus{outline:none;border-color:var(--coral)}
+.btn{background:var(--coral);color:#fff;border:0;border-radius:999px;padding:14px 22px;font-weight:800;cursor:pointer}
+.btn:hover{background:var(--coral-2)}
+.btn:disabled{opacity:.6;cursor:default}
+.msg{color:var(--coral-2);font-size:14px}
+.gracias{text-align:center;display:grid;gap:10px;justify-items:center}
+.gracias .big{font-size:56px}
+</style>
+</head>
+<body>
+<main class="card">
+  <form id="f" style="display:grid;gap:22px">
+    <div class="top">
+      <span class="code" id="code"></span>
+      <h1>¿Cómo les fue a ti y a tu mascota?</h1>
+      <p>Son 3 preguntas y nos ayudan mucho a mejorar.</p>
+    </div>
+    <fieldset>
+      <legend>¿Ya fuiste a tu cita?</legend>
+      <div class="opts">
+        <label><input type="radio" name="fue" value="si" required> Sí, ya fui</label>
+        <label><input type="radio" name="fue" value="no"> Todavía no</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>¿Cómo calificas la atención?</legend>
+      <div class="stars">
+        <input type="radio" id="s5" name="estrellas" value="5" required><label for="s5" title="5">★</label>
+        <input type="radio" id="s4" name="estrellas" value="4"><label for="s4" title="4">★</label>
+        <input type="radio" id="s3" name="estrellas" value="3"><label for="s3" title="3">★</label>
+        <input type="radio" id="s2" name="estrellas" value="2"><label for="s2" title="2">★</label>
+        <input type="radio" id="s1" name="estrellas" value="1"><label for="s1" title="1">★</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>¿Regresarías con nosotros?</legend>
+      <div class="opts">
+        <label><input type="radio" name="volveria" value="si" required> Sí</label>
+        <label><input type="radio" name="volveria" value="no"> No</label>
+      </div>
+    </fieldset>
+    <label style="display:grid;gap:6px;font-weight:800">¿Algo que quieras decirnos? <span style="font-weight:400;color:var(--muted)">(opcional)</span>
+      <textarea name="comentario" rows="3" maxlength="500" placeholder="Ej. Muy amables con Copito"></textarea>
+    </label>
+    <button class="btn" type="submit">Enviar</button>
+    <p class="msg" id="msg" hidden></p>
+  </form>
+  <div class="gracias" id="ok" hidden>
+    <div class="big">🐾</div>
+    <h1>¡Gracias!</h1>
+    <p>Tu opinión ya le llegó a la veterinaria.</p>
+  </div>
+</main>
+<script>
+const API='https://demos-stats.transcriptor.workers.dev',SITIO='bichon';
+const c=(new URLSearchParams(location.search).get('c')||'').toUpperCase();
+const f=document.getElementById('f'),msg=document.getElementById('msg');
+document.getElementById('code').textContent=c?'Cupón '+c:'';
+document.getElementById('code').hidden=!c;
+f.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!/^[A-Z]{2}-\d{4}$/.test(c)){msg.textContent='Este link no trae cupón. Pídele a la veterinaria el link de tu cita.';msg.hidden=false;return}
+  const b=f.querySelector('button');b.disabled=true;msg.hidden=true;
+  try{
+    const r=await fetch(API+'/encuesta',{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({s:SITIO,c,...Object.fromEntries(new FormData(f))})});
+    if(!r.ok)throw new Error(r.status);
+    f.hidden=true;document.getElementById('ok').hidden=false;
+  }catch(err){
+    msg.textContent='No se pudo enviar. Revisa tu conexión e intenta otra vez.';msg.hidden=false;b.disabled=false;
+  }
+});
+</script>
+</body>
+</html>

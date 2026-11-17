@@ -1,0 +1,8 @@
+name = "demos-stats"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+
+# id real se llena al crear el KV (wrangler kv namespace create STATS)
+[[kv_namespaces]]
+binding = "STATS"
+id = "PENDIENTE"
