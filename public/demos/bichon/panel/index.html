@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Panel · Veterinaria Bichon Frise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fffaf4;--white:#fff;--coral:#f2735b;--coral-2:#d95a42;--mint:#dff3ec;--teal:#1f7a6a;--ink:#24323a;--muted:#647079;--line:#efe5d8;--sun:#f5a623;--wa:#1fa855}
+[hidden]{display:none!important}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Nunito",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+h1,h2{font-family:"Fredoka",system-ui,sans-serif;font-weight:600;line-height:1.15;text-wrap:balance}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:32px max(16px,env(safe-area-inset-right,0px)) 48px max(16px,env(safe-area-inset-left,0px));display:grid;gap:28px}
+.head{display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between}
+.head p{color:var(--muted)}
+select,input{border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;background:var(--white)}
+.btn{background:var(--coral);color:#fff;border:0;border-radius:999px;padding:10px 18px;font-weight:800;cursor:pointer}
+.btn.sm{padding:6px 12px;font-size:13px}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.login{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:24px;display:grid;gap:12px;max-width:420px}
+.login form{display:flex;gap:8px;flex-wrap:wrap}
+.login input{flex:1;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:16px 18px;display:grid;gap:2px}
+.kpi b{font:600 34px "Fredoka";font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;color:var(--muted);font-weight:700}
+.kpi.main{background:var(--mint);border-color:transparent}
+.kpi.main b{color:var(--teal)}
+.funnel{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:140px 1fr 48px;gap:10px;align-items:center;font-size:14px}
+.bar i{display:block;height:14px;border-radius:7px;background:var(--coral);min-width:2px}
+.bar em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums;font-weight:800}
+.tbl{overflow-x:auto;background:var(--white);border:1px solid var(--line);border-radius:18px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.code{font-weight:800;letter-spacing:.04em}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:800}
+.pill.si{background:var(--mint);color:var(--teal)}
+.pill.no{background:#fdeee9;color:var(--coral-2)}
+.st{color:var(--sun);letter-spacing:1px}
+.muted{color:var(--muted)}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.note{font-size:13px;color:var(--muted)}
+@media (max-width:560px){.bar{grid-template-columns:110px 1fr 40px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div>
+      <h1>Lo que trae tu página</h1>
+      <p>Veterinaria Bichon Frise · moisesdelvalle.com/demos/bichon</p>
+    </div>
+    <label id="rango" hidden>Periodo
+      <select id="dias"><option value="7">Últimos 7 días</option><option value="30" selected>Últimos 30 días</option><option value="90">Últimos 90 días</option><option value="0">Todo</option></select>
+    </label>
+  </div>
+
+  <section class="login" id="login">
+    <h2>Entrar</h2>
+    <form id="lf"><input id="clave" type="password" placeholder="Clave del panel" required autocomplete="current-password"><button class="btn">Ver</button></form>
+    <p class="note" id="lmsg"></p>
+  </section>
+
+  <div id="datos" hidden style="display:grid;gap:28px">
+    <div class="kpis" id="kpis"></div>
+    <div class="funnel" id="funnel"></div>
+    <div style="display:grid;gap:10px">
+      <h2>Cupones de la página</h2>
+      <p class="note">Cuando llegue alguien con su cupón, márcalo como usado. Después de la cita, copia el mensaje de la encuesta y mándaselo por WhatsApp.</p>
+      <div class="tbl"><table><thead><tr><th>Cupón</th><th>Pidió</th><th>Para el día</th><th>¿Llegó?</th><th>Encuesta</th><th></th></tr></thead><tbody id="tb"></tbody></table></div>
+    </div>
+  </div>
+</div>
+<script>
+const API='https://demos-stats.transcriptor.workers.dev',SITIO='bichon';
+const ENC=location.origin+'/demos/bichon/encuesta/?c=';
+let clave='',data=null;
+try{clave=sessionStorage.getItem('clave_bichon')||''}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=t=>String(t??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[m]);
+const fdia=d=>d?new Date(d+'T12:00').toLocaleDateString('es-MX',{weekday:'short',day:'numeric',month:'short'}):'—';
+
+async function cargar(){
+  const r=await fetch(API+'/panel?s='+SITIO,{headers:{'X-Clave':clave}});
+  if(r.status===401)throw new Error('clave');
+  if(!r.ok)throw new Error('red');
+  data=await r.json();
+  try{sessionStorage.setItem('clave_bichon',clave)}catch(e){}
+  $('login').hidden=true;$('datos').hidden=false;$('rango').hidden=false;
+  pintar();
+}
+function desde(){
+  const n=+$('dias').value;if(!n)return '';
+  const d=new Date(Date.now()-n*864e5);return d.toLocaleDateString('en-CA',{timeZone:'America/Mexico_City'});
+}
+function pintar(){
+  const d0=desde(),t={visita:0,wa:0,tel:0,mapa:0,cita:0};
+  for(const[d,v]of Object.entries(data.dias))if(d>=d0)for(const k in t)t[k]+=v[k]||0;
+  const cs=data.cupones.filter(c=>c.creado.slice(0,10)>=d0);
+  const usados=cs.filter(c=>c.usado||c.encuesta?.fue).length;
+  const enc=cs.filter(c=>c.encuesta);
+  const prom=enc.length?(enc.reduce((a,c)=>a+c.encuesta.estrellas,0)/enc.length).toFixed(1):'—';
+  const contactos=t.wa+t.tel+t.cita;
+  $('kpis').innerHTML=[
+    ['main',usados,'Clientes que llegaron con cupón'],
+    ['',t.visita,'Visitas a la página'],
+    ['',contactos,'Te contactaron (WhatsApp, llamada o cita)'],
+    ['',t.mapa,'Pidieron cómo llegar'],
+    ['',prom,'Calificación en encuestas ('+enc.length+')'],
+  ].map(([c,n,l])=>`<div class="kpi ${c}"><b>${n}</b><span>${l}</span></div>`).join('');
+  const pasos=[['Visitaron',t.visita],['Te contactaron',contactos],['Mandaron cita',t.cita],['Llegaron',usados]];
+  const max=Math.max(1,...pasos.map(p=>p[1]));
+  $('funnel').innerHTML='<h2 style="font-size:20px">De la visita a la consulta</h2>'+pasos.map(([l,n])=>`<div class="bar"><span>${l}</span><i style="width:${n/max*100}%"></i><em>${n}</em></div>`).join('');
+  $('tb').innerHTML=cs.length?cs.map(c=>{
+    const e=c.encuesta;
+    const encT=e?`<span class="st">${'★'.repeat(e.estrellas)}</span> ${e.volveria?'regresaría':'no regresaría'}${e.comentario?`<div class="muted">“${esc(e.comentario)}”</div>`:''}`:'<span class="muted">Sin contestar</span>';
+    return `<tr><td class="code">${esc(c.codigo)}</td><td>${esc(c.servicio)}</td><td>${fdia(c.dia)}</td>
+      <td>${c.usado?'<span class="pill si">Sí llegó</span>':'<span class="pill no">Pendiente</span>'}</td><td>${encT}</td>
+      <td><div class="acts"><button class="btn sm ${c.usado?'ghost':''}" data-canje="${esc(c.codigo)}" data-v="${c.usado?0:1}">${c.usado?'Deshacer':'Marcar usado'}</button>
+      <button class="btn sm ghost" data-copia="${esc(c.codigo)}">Copiar encuesta</button></div></td></tr>`;
+  }).join(''):'<tr><td colspan="6" class="muted">Todavía no hay cupones en este periodo.</td></tr>';
+}
+$('lf').addEventListener('submit',async e=>{
+  e.preventDefault();clave=$('clave').value.trim();$('lmsg').textContent='Cargando…';
+  try{await cargar();}catch(err){$('lmsg').textContent=err.message==='clave'?'Clave incorrecta.':'No se pudo conectar. Intenta otra vez.';}
+});
+$('dias').addEventListener('change',pintar);
+$('tb').addEventListener('click',async e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.canje){
+    b.disabled=true;
+    await fetch(API+'/canje?s='+SITIO,{method:'POST',headers:{'X-Clave':clave,'Content-Type':'application/json'},body:JSON.stringify({c:b.dataset.canje,usado:b.dataset.v==='1'})}).catch(()=>{});
+    await cargar().catch(()=>{});
+  }else if(b.dataset.copia){
+    const t=`¡Gracias por venir a Veterinaria Bichon Frise! 🐾 ¿Nos ayudas con 3 preguntas? ${ENC}${b.dataset.copia}`;
+    try{await navigator.clipboard.writeText(t);b.textContent='Copiado';}catch(err){prompt('Copia este mensaje',t);}
+    setTimeout(()=>b.textContent='Copiar encuesta',1800);
+  }
+});
+if(clave)cargar().catch(()=>{$('login').hidden=false});
+</script>
+</body>
+</html>
