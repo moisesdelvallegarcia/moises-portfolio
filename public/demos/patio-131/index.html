@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>Patio 131 · Salamanca</title>
-<meta name="description" content="Habitaciones con llegada autónoma a pasos del Hospital del IMSS en Salamanca, Guanajuato. Reserva directo por WhatsApp.">
+<title>Patio 131 · Café, pizza y hospedaje en Salamanca</title>
+<meta name="description" content="Café, pizza y hospedaje en López Velarde 131, Salamanca, Gto. Habitaciones con llegada autónoma a pasos del IMSS. Reserva y pide por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* patio de casa del Bajío: muro cal, barro, verde de maceta, noche índigo */
-  --cal:#f7f3ec; --white:#ffffff; --barro:#c4622d; --barro-2:#a54f20; --maceta:#2f6b4f; --hoja:#e3efe6;
-  --ink:#1f2421; --muted:#636b66; --line:#e8e0d3; --noche:#1d2b3a; --sun:#f4c45c; --wa:#1fa855; --ocupado:#e9e3da;
+  /* colores del logo de Patio 131: azul marino, crema de papel, dorado del 131, verde de la maceta */
+  --cal:#f6f0e6; --white:#fffdf9; --barro:#a9803f; --barro-2:#8c6930; --maceta:#4d6b4a; --hoja:#e9ecdf;
+  --ink:#263145; --muted:#5f6878; --line:#e6dccb; --noche:#263145; --sun:#d9b46a; --wa:#1fa855; --ocupado:#ebe3d5;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:var(--cal);line-height:1.6;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.05;text-wrap:balance}
+h1,h2,h3{font-family:"Fraunces",system-ui,sans-serif;line-height:1.05;text-wrap:balance}
 a{color:inherit}
 button,input,select,textarea{font:inherit;color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
@@ -35,7 +35,8 @@ svg.i{width:20px;height:20px;flex:none}
 
 header{position:sticky;top:0;z-index:30;background:rgba(247,243,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:12px}
-.logo{display:flex;align-items:baseline;gap:6px;text-decoration:none;font:800 24px "Bricolage Grotesque";letter-spacing:-.02em}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 22px "Fraunces"}
+.logo img{width:42px;height:42px;border-radius:50%}
 .logo span{color:var(--barro)}
 nav ul{display:flex;gap:24px;list-style:none;font-weight:600;font-size:15px}
 nav a{text-decoration:none;color:var(--muted)}
@@ -44,12 +45,12 @@ nav a:hover{color:var(--ink)}
 
 .hero{padding:48px 0 64px}
 .hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:44px;align-items:center}
-.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:800;letter-spacing:-.03em;margin:12px 0 18px}
+.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:700;letter-spacing:-.02em;margin:12px 0 18px}
 .hero h1 em{font-style:normal;color:var(--barro)}
 .lead{font-size:19px;color:var(--muted);max-width:36ch}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .rating{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:26px;font-weight:600;font-size:14px;color:var(--muted)}
-.rating b{font:800 28px "Bricolage Grotesque";color:var(--ink)}
+.rating b{font:700 28px "Fraunces";color:var(--ink)}
 .badge{background:var(--hoja);color:var(--maceta);font-weight:700;padding:4px 10px;border-radius:999px;font-size:13px}
 .shots{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:10px;aspect-ratio:5/4;max-width:100%}
 .shots img{width:100%;height:100%;object-fit:cover;border-radius:16px;display:block;background:var(--ocupado)}
@@ -69,10 +70,18 @@ nav a:hover{color:var(--ink)}
 .perk h3{font-size:20px}
 .perk p{color:var(--muted);font-size:15px}
 
+.food .fgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:860px){.food .fgrid{grid-template-columns:1fr}}
+.dish{background:var(--white);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin:0}
+.dish img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.dish figcaption{padding:18px 20px;display:grid;gap:4px}
+.dish h3{font-size:22px}
+.dish p{color:var(--muted);font-size:15px}
+.food .cta{margin-top:26px}
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:8px}
 @media (max-width:760px){.steps{grid-template-columns:1fr}}
 .step{background:var(--noche);color:#eef1f4;border-radius:18px;padding:22px;display:grid;gap:6px}
-.step b{font:800 34px "Bricolage Grotesque";color:var(--sun)}
+.step b{font:700 34px "Fraunces";color:var(--sun)}
 .step p{color:#c4ccd5;font-size:15px}
 
 .rooms .rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
@@ -106,7 +115,7 @@ nav a:hover{color:var(--ink)}
 .sync{display:flex;gap:10px;align-items:flex-start;background:var(--hoja);color:var(--maceta);border-radius:14px;padding:12px 14px;font-size:14px;margin-top:14px}
 form{display:grid;gap:14px}
 .sum{border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:4px;background:var(--cal)}
-.sum b{font:800 22px "Bricolage Grotesque"}
+.sum b{font:700 22px "Fraunces"}
 .sum span{color:var(--muted);font-size:14px}
 label{display:grid;gap:6px;font-weight:600;font-size:14px}
 input,select,textarea{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--cal);width:100%}
@@ -140,13 +149,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 </head>
 <body>
 
-<div class="demo">Propuesta de diseño para Patio 131 · fotos y opiniones de su anuncio de Airbnb · calendario de ejemplo</div>
+<div class="demo">Propuesta de diseño para Patio 131 mx · fotos de su Instagram y Airbnb · calendario de ejemplo</div>
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#">Patio<span>131</span></a>
+    <a class="logo" href="#"><img src="logo.jpg" alt="">patio <span>131.mx</span></a>
     <nav><ul>
-      <li><a href="#llegada">Llegada</a></li>
+      <li><a href="#cafe">Café y pizza</a></li>
+      <li><a href="#llegada">Hospedaje</a></li>
       <li><a href="#habitaciones">Habitaciones</a></li>
       <li><a href="#reservar">Fechas</a></li>
       <li><a href="#opiniones">Opiniones</a></li>
@@ -159,14 +169,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="kicker">Salamanca, Guanajuato · a pasos del IMSS</span>
-      <h1>Llegas, pones tu código y <em>a descansar</em></h1>
-      <p class="lead">Habitaciones tranquilas con wifi rápido, patio con mesas y cocina compartida. Ideal si vienes a consulta, a trabajar o a visitar familia.</p>
+      <span class="kicker">Café · Pizza · Hospedaje · López Velarde 131</span>
+      <h1>Meet. Eat. <em>Repeat.</em></h1>
+      <p class="lead">Desayunos, paninis y pizza artesanal en un patio con mesas al aire libre, y habitaciones con llegada autónoma a pasos del IMSS, en el centro de Salamanca.</p>
       <div class="cta">
-        <a class="btn btn-barro" href="#reservar">Ver fechas libres</a>
-        <a class="btn btn-line" href="#habitaciones">Ver habitaciones</a>
+        <a class="btn btn-barro" href="#reservar">Reservar habitación</a>
+        <a class="btn btn-line" href="#cafe">Ver el menú</a>
       </div>
-      <div class="rating"><b>4.94</b><span>★★★★★ · 17 opiniones en Airbnb</span><span class="badge">Favorito entre huéspedes</span><span class="badge">Superanfitrión</span></div>
+      <div class="rating"><b>4.94</b><span>★★★★★ · 17 opiniones en Airbnb</span><span class="badge">Favorito entre huéspedes</span><span class="badge">Superanfitrión</span><span class="badge">Comer aquí · Para llevar</span></div>
     </div>
     <div class="shots">
       <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1716134202769069460/original/ba110f07-d825-4bd9-899c-8e7a79309d68.jpeg?im_w=1200" alt="Habitación con cama matrimonial, TV y ventilador de techo">
@@ -176,10 +186,26 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   </div>
 </section>
 
+<section class="food" id="cafe">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Café y pizza</span>
+      <h2>Para comer en el patio o para llevar</h2>
+      <p>Desayunos, paninis y pizza hecha a mano todos los días. Pide por WhatsApp y pasa por ella, o quédate a comer en el patio.</p>
+    </div>
+    <div class="fgrid">
+      <figure class="dish"><img loading="lazy" src="desayunos.jpg" alt="Enmoladas con cebolla morada y queso"><figcaption><h3>Desayunos</h3><p>Enmoladas, chilaquiles y café para empezar el día.</p></figcaption></figure>
+      <figure class="dish"><img loading="lazy" src="torta.jpg" alt="Panini con aguacate, jitomate y pepperoni"><figcaption><h3>Paninis</h3><p>Pan crujiente con aguacate, jitomate y carnes frías.</p></figcaption></figure>
+      <figure class="dish"><img loading="lazy" src="pizza.jpg" alt="Masa de pizza estirada a mano"><figcaption><h3>Pizza artesanal</h3><p>Masa estirada a mano y horneada al momento.</p></figcaption></figure>
+    </div>
+    <div class="cta"><a class="btn btn-wa" id="pedir" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a><a class="btn btn-line" href="https://www.instagram.com/patio131mx/" target="_blank" rel="noopener">Ver Instagram</a></div>
+  </div>
+</section>
+
 <section class="perks" id="llegada">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">Por qué Patio 131</span>
+      <span class="kicker">Hospedaje</span>
       <h2>Todo listo para que llegues a la hora que sea</h2>
       <p>Sin esperar a nadie para recibir llaves, y con lo necesario para trabajar o descansar.</p>
     </div>
@@ -189,7 +215,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/></svg></div><h3>A pasos del IMSS</h3><p>En el centro de Salamanca, junto a la zona hospitalaria y a restaurantes locales.</p></div>
       <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/></svg></div><h3>Wifi de alta velocidad</h3><p>Para videollamadas y trabajo remoto sin cortes.</p></div>
       <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 10h16v10H4z"/><path d="M8 10V6M16 10V6M12 10V4"/></svg></div><h3>Patio con 7 mesas</h3><p>Un patio amplio abajo para desayunar, trabajar o platicar al aire libre.</p></div>
-      <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11h18"/><path d="M5 11v9h14v-9"/><path d="M9 6a3 3 0 0 1 6 0v5H9z"/></svg></div><h3>Cocina y pizzería</h3><p>Cocina compartida arriba con cafetera, y pizzería, paninis y desayunos en el lugar.</p></div>
+      <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11h18"/><path d="M5 11v9h14v-9"/><path d="M9 6a3 3 0 0 1 6 0v5H9z"/></svg></div><h3>Cocina compartida</h3><p>Cocina arriba con cafetera y mesita, y el café abajo por si no quieres cocinar.</p></div>
     </div>
   </div>
 </section>
@@ -257,32 +283,35 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   <div class="wrap">
     <div>
       <span class="kicker">Ubicación</span>
-      <h2>En el centro, junto al hospital</h2>
+      <h2>López Velarde 131, centro de Salamanca</h2>
       <ul>
         <li><span>Llegada</span><span>Desde las 2:00 pm</span></li>
         <li><span>Salida</span><span>Antes de las 12:00 pm</span></li>
         <li><span>Entrada</span><span>Autónoma con teclado</span></li>
+        <li><span>Dirección</span><span>López Velarde 131, 36760</span></li>
         <li><span>Anfitrión</span><span>Gastón · Superanfitrión</span></li>
-        <li><span>Respuesta</span><span>En menos de una hora</span></li>
+        <li><span>WhatsApp</span><span>464 205 9145</span></li>
+        <li><span>Correo</span><span>patio131salamanca@gmail.com</span></li>
       </ul>
     </div>
-    <iframe class="map" src="https://www.google.com/maps?q=Hospital+General+de+Zona+IMSS+Salamanca+Guanajuato&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de la zona del Hospital del IMSS en Salamanca"></iframe>
+    <iframe class="map" src="https://www.google.com/maps?q=L%C3%B3pez+Velarde+131,+Salamanca,+Guanajuato+36760&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Patio 131 en López Velarde 131, Salamanca"></iframe>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© Patio 131 · Salamanca, Guanajuato</span>
+    <span>© Patio 131 mx · Café · Pizza · Hospedaje · <a href="https://www.instagram.com/patio131mx/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/p/Patio-131-mx-61591806524389/" target="_blank" rel="noopener">Facebook</a></span>
     <span>Demo hecho por <a href="https://moisesdelvalle.com">Moisés del Valle</a></span>
   </div>
 </footer>
 
-<a class="float" href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l.9-1.1c.2-.3.5-.3.7-.2l2.2 1c.3.2.5.3.6.4.1.2.1.8-.1 1.5z"/></svg></a>
+<a class="float" href="https://wa.me/524642059145" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l.9-1.1c.2-.3.5-.3.7-.2l2.2 1c.3.2.5.3.6.4.1.2.1.8-.1 1.5z"/></svg></a>
 
 <script>
-// En la versión final: WA = número de Gastón y OCUPADAS = fechas leídas del iCal de Airbnb (Cloudflare Worker).
-const WA='';
+// En la versión final: OCUPADAS = fechas leídas del iCal de Airbnb (Cloudflare Worker).
+const WA='524642059145';
+document.getElementById('pedir').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola, quiero hacer un pedido en Patio 131: ');
 const hoy=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Mexico_City'}));hoy.setHours(0,0,0,0);
 const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 // fechas ocupadas de ejemplo: unos fines de semana y bloques sueltos, relativos a hoy
