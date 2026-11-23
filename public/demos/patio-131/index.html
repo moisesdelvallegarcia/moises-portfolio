@@ -89,7 +89,7 @@ nav a:hover{color:var(--ink)}
 @media (max-width:900px){.book .wrap{grid-template-columns:1fr}}
 .cal{border:1px solid var(--line);border-radius:20px;padding:20px;background:var(--cal)}
 .calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.calhead h3{font-size:20px;text-transform:capitalize}
+.calhead h3{font-size:20px}
 .calhead button{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--white);cursor:pointer;font-size:18px}
 .calhead button:disabled{opacity:.35;cursor:default}
 .days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}
@@ -292,7 +292,7 @@ let vista=new Date(hoy.getFullYear(),hoy.getMonth(),1),ini=null,fin=null;
 const grid=document.getElementById('grid'),mes=document.getElementById('mes');
 function libreEntre(a,b){for(let d=new Date(a);d<b;d.setDate(d.getDate()+1))if(OCUPADAS.has(iso(d)))return false;return true}
 function pintar(){
-  mes.textContent=vista.toLocaleDateString('es-MX',{month:'long',year:'numeric'});
+  const m=vista.toLocaleDateString('es-MX',{month:'long',year:'numeric'});mes.textContent=m.charAt(0).toUpperCase()+m.slice(1);
   document.getElementById('prev').disabled=vista<=new Date(hoy.getFullYear(),hoy.getMonth(),1);
   grid.innerHTML='';
   ['L','M','M','J','V','S','D'].forEach(n=>{const s=document.createElement('div');s.className='dn';s.textContent=n;grid.appendChild(s)});
