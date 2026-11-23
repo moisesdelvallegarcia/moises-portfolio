@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Patio 131 · Salamanca</title>
+<meta name="description" content="Habitaciones con llegada autónoma a pasos del Hospital del IMSS en Salamanca, Guanajuato. Reserva directo por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* patio de casa del Bajío: muro cal, barro, verde de maceta, noche índigo */
+  --cal:#f7f3ec; --white:#ffffff; --barro:#c4622d; --barro-2:#a54f20; --maceta:#2f6b4f; --hoja:#e3efe6;
+  --ink:#1f2421; --muted:#636b66; --line:#e8e0d3; --noche:#1d2b3a; --sun:#f4c45c; --wa:#1fa855; --ocupado:#e9e3da;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:var(--cal);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.05;text-wrap:balance}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.demo{background:#fff1c7;color:#6b5200;font-size:13px;text-align:center;padding:6px 16px}
+.kicker{font:700 12px "Inter";letter-spacing:.16em;text-transform:uppercase;color:var(--barro)}
+section{padding:80px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;padding:13px 22px;border-radius:12px;border:0;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-barro{background:var(--barro);color:#fff}
+.btn-barro:hover{background:var(--barro-2)}
+.btn-line{border:2px solid currentColor;background:transparent}
+.btn-wa{background:var(--wa);color:#fff}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+svg.i{width:20px;height:20px;flex:none}
+
+header{position:sticky;top:0;z-index:30;background:rgba(247,243,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:12px}
+.logo{display:flex;align-items:baseline;gap:6px;text-decoration:none;font:800 24px "Bricolage Grotesque";letter-spacing:-.02em}
+.logo span{color:var(--barro)}
+nav ul{display:flex;gap:24px;list-style:none;font-weight:600;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+@media (max-width:820px){nav ul{display:none}}
+
+.hero{padding:48px 0 64px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:44px;align-items:center}
+.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:800;letter-spacing:-.03em;margin:12px 0 18px}
+.hero h1 em{font-style:normal;color:var(--barro)}
+.lead{font-size:19px;color:var(--muted);max-width:36ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.rating{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:26px;font-weight:600;font-size:14px;color:var(--muted)}
+.rating b{font:800 28px "Bricolage Grotesque";color:var(--ink)}
+.badge{background:var(--hoja);color:var(--maceta);font-weight:700;padding:4px 10px;border-radius:999px;font-size:13px}
+.shots{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:10px;aspect-ratio:5/4;max-width:100%}
+.shots img{width:100%;height:100%;object-fit:cover;border-radius:16px;display:block;background:var(--ocupado)}
+.shots img:first-child{grid-row:1/3}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+
+.perks{background:var(--white)}
+.head{max-width:640px;margin-bottom:40px}
+.head h2{font-size:clamp(30px,4.4vw,46px);letter-spacing:-.02em;margin-top:10px}
+.head p{color:var(--muted);margin-top:10px}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.pgrid{grid-template-columns:1fr}}
+.perk{border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:8px;align-content:start;background:var(--cal)}
+.perk .ic{width:44px;height:44px;border-radius:12px;background:var(--hoja);color:var(--maceta);display:grid;place-items:center}
+.perk .ic svg{width:24px;height:24px}
+.perk h3{font-size:20px}
+.perk p{color:var(--muted);font-size:15px}
+
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:8px}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+.step{background:var(--noche);color:#eef1f4;border-radius:18px;padding:22px;display:grid;gap:6px}
+.step b{font:800 34px "Bricolage Grotesque";color:var(--sun)}
+.step p{color:#c4ccd5;font-size:15px}
+
+.rooms .rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:900px){.rooms .rgrid{grid-template-columns:1fr}}
+.room{background:var(--white);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.room img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--ocupado)}
+.room .b{padding:20px;display:grid;gap:8px}
+.room h3{font-size:22px}
+.room ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.room li{font-size:13px;font-weight:600;background:var(--cal);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
+
+.book{background:var(--white)}
+.book .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+@media (max-width:900px){.book .wrap{grid-template-columns:1fr}}
+.cal{border:1px solid var(--line);border-radius:20px;padding:20px;background:var(--cal)}
+.calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.calhead h3{font-size:20px;text-transform:capitalize}
+.calhead button{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--white);cursor:pointer;font-size:18px}
+.calhead button:disabled{opacity:.35;cursor:default}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}
+.days .dn{font-size:12px;font-weight:700;color:var(--muted);padding:4px 0}
+.day{aspect-ratio:1/1;border-radius:10px;border:0;background:var(--white);font-weight:600;font-size:15px;cursor:pointer;font-variant-numeric:tabular-nums}
+.day:hover:not(:disabled){outline:2px solid var(--barro)}
+.day.off{background:var(--ocupado);color:#b2a99c;text-decoration:line-through;cursor:not-allowed}
+.day.past{background:transparent;color:#c9c1b4;cursor:default}
+.day.sel{background:var(--barro);color:#fff}
+.day.mid{background:#f3d8c8}
+.day.blank{background:transparent;cursor:default}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);margin-top:12px}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px}
+.sync{display:flex;gap:10px;align-items:flex-start;background:var(--hoja);color:var(--maceta);border-radius:14px;padding:12px 14px;font-size:14px;margin-top:14px}
+form{display:grid;gap:14px}
+.sum{border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:4px;background:var(--cal)}
+.sum b{font:800 22px "Bricolage Grotesque"}
+.sum span{color:var(--muted);font-size:14px}
+label{display:grid;gap:6px;font-weight:600;font-size:14px}
+input,select,textarea{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--cal);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--barro)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.row{grid-template-columns:1fr}}
+.note{font-size:13px;color:var(--muted)}
+
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:860px){.quotes{grid-template-columns:1fr}}
+.q{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:10px;align-content:start}
+.q .s{color:var(--barro);letter-spacing:2px}
+.q small{color:var(--muted);font-weight:600}
+
+.place{background:var(--noche);color:#eef1f4}
+.place .kicker{color:var(--sun)}
+.place .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+@media (max-width:860px){.place .wrap{grid-template-columns:1fr}}
+.place h2{font-size:clamp(30px,4vw,44px);margin:10px 0 18px}
+.place ul{list-style:none;display:grid;gap:10px}
+.place li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:10px}
+.place li span:last-child{font-weight:700}
+.map{width:100%;aspect-ratio:4/3;max-width:100%;border:0;border-radius:18px;display:block;background:rgba(255,255,255,.06)}
+
+footer{padding:36px 0 calc(36px + env(safe-area-inset-bottom,0px));font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+.float{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 26px rgba(31,168,85,.4)}
+.float svg{width:30px;height:30px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="demo">Propuesta de diseño para Patio 131 · fotos y opiniones de su anuncio de Airbnb · calendario de ejemplo</div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">Patio<span>131</span></a>
+    <nav><ul>
+      <li><a href="#llegada">Llegada</a></li>
+      <li><a href="#habitaciones">Habitaciones</a></li>
+      <li><a href="#reservar">Fechas</a></li>
+      <li><a href="#opiniones">Opiniones</a></li>
+    </ul></nav>
+    <a class="btn btn-barro" href="#reservar">Reservar</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Salamanca, Guanajuato · a pasos del IMSS</span>
+      <h1>Llegas, pones tu código y <em>a descansar</em></h1>
+      <p class="lead">Habitaciones tranquilas con wifi rápido, patio con mesas y cocina compartida. Ideal si vienes a consulta, a trabajar o a visitar familia.</p>
+      <div class="cta">
+        <a class="btn btn-barro" href="#reservar">Ver fechas libres</a>
+        <a class="btn btn-line" href="#habitaciones">Ver habitaciones</a>
+      </div>
+      <div class="rating"><b>4.94</b><span>★★★★★ · 17 opiniones en Airbnb</span><span class="badge">Favorito entre huéspedes</span><span class="badge">Superanfitrión</span></div>
+    </div>
+    <div class="shots">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1716134202769069460/original/ba110f07-d825-4bd9-899c-8e7a79309d68.jpeg?im_w=1200" alt="Habitación con cama matrimonial, TV y ventilador de techo">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1716134202769069460/original/f32bf667-363d-4776-896a-2714d9a26ec0.jpeg?im_w=720" alt="Cocineta con mesa para dos">
+      <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1716134202769069460/original/e18ba882-7e6b-48ae-92b6-c9e7ece15912.jpeg?im_w=720" alt="Habitación con clóset de madera">
+    </div>
+  </div>
+</section>
+
+<section class="perks" id="llegada">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Por qué Patio 131</span>
+      <h2>Todo listo para que llegues a la hora que sea</h2>
+      <p>Sin esperar a nadie para recibir llaves, y con lo necesario para trabajar o descansar.</p>
+    </div>
+    <div class="pgrid">
+      <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h.01M12 7h.01M15 7h.01M9 11h.01M12 11h.01M15 11h.01M9 15h.01M12 15h.01M15 15h.01"/></svg></div><h3>Entrada con código</h3><p>Te mandamos tu código por WhatsApp y entras a cualquier hora desde las 2 pm.</p></div>
+      <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.2-8.2"/><path d="m16 7 3 3"/><path d="m14 9 2 2"/></svg></div><h3>Caja de llave en tu cuarto</h3><p>Cada habitación tiene su caja con la llave. Llegada autónoma, sin coordinarte con nadie.</p></div>
+      <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/></svg></div><h3>A pasos del IMSS</h3><p>En el centro de Salamanca, junto a la zona hospitalaria y a restaurantes locales.</p></div>
+      <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/></svg></div><h3>Wifi de alta velocidad</h3><p>Para videollamadas y trabajo remoto sin cortes.</p></div>
+      <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 10h16v10H4z"/><path d="M8 10V6M16 10V6M12 10V4"/></svg></div><h3>Patio con 7 mesas</h3><p>Un patio amplio abajo para desayunar, trabajar o platicar al aire libre.</p></div>
+      <div class="perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11h18"/><path d="M5 11v9h14v-9"/><path d="M9 6a3 3 0 0 1 6 0v5H9z"/></svg></div><h3>Cocina y pizzería</h3><p>Cocina compartida arriba con cafetera, y pizzería, paninis y desayunos en el lugar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head"><span class="kicker">Cómo funciona</span><h2>Reservar directo es más fácil y sin comisión</h2></div>
+    <div class="steps">
+      <div class="step"><b>1</b><h3>Elige tus fechas</h3><p>En el calendario ves qué noches están libres, al día con Airbnb.</p></div>
+      <div class="step"><b>2</b><h3>Manda tu solicitud</h3><p>Te llega por WhatsApp a Gastón con tus fechas y tu nombre.</p></div>
+      <div class="step"><b>3</b><h3>Recibe tu código</h3><p>Confirmamos, pagas y te llega tu código de entrada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="rooms" id="habitaciones">
+  <div class="wrap">
+    <div class="head"><span class="kicker">Habitaciones</span><h2>Tres habitaciones para descansar</h2><p>Cama matrimonial, TV, ventilador y cerradura propia. Baño compartido limpio y bien equipado.</p></div>
+    <div class="rgrid">
+      <div class="room"><img loading="lazy" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1716134202769069460/original/ba110f07-d825-4bd9-899c-8e7a79309d68.jpeg?im_w=720" alt="Habitación 1"><div class="b"><h3>Habitación 1</h3><ul><li>Cama matrimonial</li><li>TV</li><li>2 huéspedes</li></ul></div></div>
+      <div class="room"><img loading="lazy" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1716134202769069460/original/e18ba882-7e6b-48ae-92b6-c9e7ece15912.jpeg?im_w=720" alt="Habitación 2"><div class="b"><h3>Habitación 2</h3><ul><li>Cama matrimonial</li><li>Clóset</li><li>2 huéspedes</li></ul></div></div>
+      <div class="room"><img loading="lazy" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1716134202769069460/original/7ab10acd-f757-47b5-b01f-84220ad5fee9.jpeg?im_w=720" alt="Baño compartido"><div class="b"><h3>Habitación 3</h3><ul><li>Cama matrimonial</li><li>Baño compartido</li><li>2 huéspedes</li></ul></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="reservar">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Fechas libres</span>
+      <h2 style="font-size:clamp(30px,4.4vw,44px);margin:10px 0 18px">Elige tu llegada y tu salida</h2>
+      <div class="cal">
+        <div class="calhead"><button type="button" id="prev" aria-label="Mes anterior">‹</button><h3 id="mes"></h3><button type="button" id="next" aria-label="Mes siguiente">›</button></div>
+        <div class="days" id="grid"></div>
+        <div class="legend"><span><i style="background:var(--white);border:1px solid var(--line)"></i>Libre</span><span><i style="background:var(--ocupado)"></i>Ocupado</span><span><i style="background:var(--barro)"></i>Tu estancia</span></div>
+      </div>
+      <div class="sync"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></svg><span>En la versión final, las noches ocupadas se leen del calendario de Airbnb y lo que reserves aquí se bloquea allá. Aquí se muestran fechas de ejemplo.</span></div>
+    </div>
+    <form id="f">
+      <div class="sum" id="sum"><span>Tu estancia</span><b id="noches">Elige tus fechas</b><span id="rango">Toca el día de llegada y luego el de salida.</span></div>
+      <div class="row">
+        <label for="nombre">Tu nombre<input id="nombre" name="nombre" required placeholder="Ej. Luis"></label>
+        <label for="huespedes">Huéspedes<select id="huespedes" name="huespedes"><option>1</option><option>2</option></select></label>
+      </div>
+      <label for="motivo">¿A qué vienes?<select id="motivo" name="motivo"><option>Consulta o visita al hospital</option><option>Trabajo</option><option>Visitar familia</option><option>Otro</option></select></label>
+      <label for="nota">¿Algo que debamos saber?<textarea id="nota" name="nota" rows="3" placeholder="Ej. Llego tarde, como a las 11 pm"></textarea></label>
+      <button class="btn btn-wa" type="submit"><svg class="i" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l.9-1.1c.2-.3.5-.3.7-.2l2.2 1c.3.2.5.3.6.4.1.2.1.8-.1 1.5z"/></svg>Pedir mis fechas por WhatsApp</button>
+      <p class="note" id="aviso">Llegada desde las 2:00 pm · salida antes de las 12:00 pm.</p>
+    </form>
+  </div>
+</section>
+
+<section id="opiniones">
+  <div class="wrap">
+    <div class="head"><span class="kicker">Opiniones</span><h2>4.94 de 5 en Airbnb</h2><p>Limpieza, llegada, comunicación y ubicación con 4.9; calidad-precio con 5.0.</p></div>
+    <div class="quotes">
+      <div class="q"><span class="s">★★★★★</span><p>“¡Equilibrio perfecto entre costo y beneficio! La atención por parte del anfitrión fue excelente, totalmente recomendado.”</p><small>Luis · Tlajomulco</small></div>
+      <div class="q"><span class="s">★★★★★</span><p>“El anfitrión está en contacto constante y al pendiente. La habitación es cómoda; elegiría volver a reservar aquí.”</p><small>Carmelina</small></div>
+      <div class="q"><span class="s">★★★★★</span><p>“Muy bonita la estancia, tranquilo y muy a gusto, limpio y cómodo.”</p><small>Miguel Ángel · León</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="place">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Ubicación</span>
+      <h2>En el centro, junto al hospital</h2>
+      <ul>
+        <li><span>Llegada</span><span>Desde las 2:00 pm</span></li>
+        <li><span>Salida</span><span>Antes de las 12:00 pm</span></li>
+        <li><span>Entrada</span><span>Autónoma con teclado</span></li>
+        <li><span>Anfitrión</span><span>Gastón · Superanfitrión</span></li>
+        <li><span>Respuesta</span><span>En menos de una hora</span></li>
+      </ul>
+    </div>
+    <iframe class="map" src="https://www.google.com/maps?q=Hospital+General+de+Zona+IMSS+Salamanca+Guanajuato&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de la zona del Hospital del IMSS en Salamanca"></iframe>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Patio 131 · Salamanca, Guanajuato</span>
+    <span>Demo hecho por <a href="https://moisesdelvalle.com">Moisés del Valle</a></span>
+  </div>
+</footer>
+
+<a class="float" href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l.9-1.1c.2-.3.5-.3.7-.2l2.2 1c.3.2.5.3.6.4.1.2.1.8-.1 1.5z"/></svg></a>
+
+<script>
+// En la versión final: WA = número de Gastón y OCUPADAS = fechas leídas del iCal de Airbnb (Cloudflare Worker).
+const WA='';
+const hoy=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Mexico_City'}));hoy.setHours(0,0,0,0);
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+// fechas ocupadas de ejemplo: unos fines de semana y bloques sueltos, relativos a hoy
+const OCUPADAS=new Set();
+[[2,3],[6,8],[13,14],[19,22],[27,28],[34,36],[41,41],[48,50]].forEach(([a,b])=>{for(let i=a;i<=b;i++){const d=new Date(hoy);d.setDate(d.getDate()+i);OCUPADAS.add(iso(d))}});
+let vista=new Date(hoy.getFullYear(),hoy.getMonth(),1),ini=null,fin=null;
+const grid=document.getElementById('grid'),mes=document.getElementById('mes');
+function libreEntre(a,b){for(let d=new Date(a);d<b;d.setDate(d.getDate()+1))if(OCUPADAS.has(iso(d)))return false;return true}
+function pintar(){
+  mes.textContent=vista.toLocaleDateString('es-MX',{month:'long',year:'numeric'});
+  document.getElementById('prev').disabled=vista<=new Date(hoy.getFullYear(),hoy.getMonth(),1);
+  grid.innerHTML='';
+  ['L','M','M','J','V','S','D'].forEach(n=>{const s=document.createElement('div');s.className='dn';s.textContent=n;grid.appendChild(s)});
+  const pad=(vista.getDay()+6)%7;for(let i=0;i<pad;i++){const b=document.createElement('span');b.className='day blank';grid.appendChild(b)}
+  const ult=new Date(vista.getFullYear(),vista.getMonth()+1,0).getDate();
+  for(let n=1;n<=ult;n++){
+    const d=new Date(vista.getFullYear(),vista.getMonth(),n),b=document.createElement('button');
+    b.type='button';b.className='day';b.textContent=n;
+    if(d<hoy){b.classList.add('past');b.disabled=true}
+    else if(OCUPADAS.has(iso(d))){b.classList.add('off');b.disabled=true;b.setAttribute('aria-label',n+' ocupado')}
+    if(ini&&+d===+ini)b.classList.add('sel');
+    if(fin&&+d===+fin)b.classList.add('sel');
+    if(ini&&fin&&d>ini&&d<fin)b.classList.add('mid');
+    b.addEventListener('click',()=>elegir(d));
+    grid.appendChild(b);
+  }
+  resumen();
+}
+function elegir(d){
+  if(!ini||fin||d<=ini){ini=d;fin=null}
+  else if(libreEntre(ini,d)){fin=d}
+  else{ini=d;fin=null}
+  pintar();
+}
+function resumen(){
+  const f=x=>x.toLocaleDateString('es-MX',{weekday:'short',day:'numeric',month:'short'});
+  const n=ini&&fin?Math.round((fin-ini)/864e5):0;
+  document.getElementById('noches').textContent=n?n+(n===1?' noche':' noches'):(ini?'Ahora elige tu salida':'Elige tus fechas');
+  document.getElementById('rango').textContent=ini?('Llegada '+f(ini)+(fin?' · salida '+f(fin):'')):'Toca el día de llegada y luego el de salida.';
+}
+document.getElementById('prev').onclick=()=>{vista=new Date(vista.getFullYear(),vista.getMonth()-1,1);pintar()};
+document.getElementById('next').onclick=()=>{vista=new Date(vista.getFullYear(),vista.getMonth()+1,1);pintar()};
+pintar();
+document.getElementById('f').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!ini||!fin){document.getElementById('aviso').textContent='Primero elige tu llegada y tu salida en el calendario.';return}
+  const v=Object.fromEntries(new FormData(e.target));
+  const f=x=>x.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});
+  let t=`Hola Gastón, soy ${v.nombre}. Quiero reservar en Patio 131 del ${f(ini)} al ${f(fin)} para ${v.huespedes} ${v.huespedes==='1'?'persona':'personas'}. Motivo: ${v.motivo.toLowerCase()}.`;
+  if(v.nota)t+=` ${v.nota}`;
+  location.href='https://wa.me/'+WA+'?text='+encodeURIComponent(t);
+});
+</script>
+</body>
+</html>
